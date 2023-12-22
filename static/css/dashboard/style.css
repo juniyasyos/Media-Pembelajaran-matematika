@@ -1,0 +1,41 @@
+.bg-welcome {
+  margin: 0;
+  position: absolute;
+  top: 0;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 100;
+}
+
+.bg-welcome img{
+  left: 0;
+  width: 390px;
+  margin-top: -15px;
+}
+
+#welcoming{
+  margin-top: -140px;
+}
+
+.info-user{
+  margin: 0;
+  position: absolute;
+  top: 0;
+  margin-top: 120px;
+  z-index: 110;
+}
+
+.content{
+  margin: 0;
+  position: absolute;
+  top: 0;
+  margin-top: 230px;
+}
+
+body{
+  background-image: url("../../img/bg\ base\ 1.png");
+}
+
+.select-kelas{
+  z-index: 1000;
+}

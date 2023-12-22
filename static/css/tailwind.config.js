@@ -1,8 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./base/base_output.css", "../../templates/base.html"],
+  content: ["./base/base_output.css", "../../templates/base.html", "../../templates/dashboard.html"],
   theme: {
-    extend: {},
+    extend: {
+      "bg-arrow":"#F99437"
+    },
   },
   plugins: [],
 };

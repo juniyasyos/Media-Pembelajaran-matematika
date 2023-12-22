@@ -8,7 +8,6 @@ body {
   margin: 0;
   display: flex;
   width: 390px;
-  overflow: hidden;
   align-items: center;
   justify-content: center;
   background-color: white;
@@ -16,10 +15,21 @@ body {
   transition: background-color var(--duration);
 }
 
+.container-static {
+  background-color: white;
+  margin: 0 auto;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+
+/* Start syle mobile bar battom */
 .menu {
   margin: 0;
   display: flex;
-  width: 390px;
+  width: 100%;
   font-size: 1.5em;
   padding: 0 2.85em;
   position: fixed;
@@ -31,19 +41,15 @@ body {
 }
 
 .menu__item {
-  all: unset;
-  flex-grow: 1;
   z-index: 100;
   display: flex;
   cursor: pointer;
   position: relative;
-  border-radius: 50%;
   align-items: center;
   will-change: transform;
   justify-content: center;
   padding: 0.55em 0 0.85em;
   transition: transform var(--timeOut, var(--duration));
-  margin: 0 0.5em; /* Adjust spacing as needed */
 }
 
 .menu__item::before {
@@ -72,13 +78,6 @@ body {
   stroke: white;
   fill: transparent;
   stroke-width: 1pt;
-  stroke-miterlimit: 10;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.menu__item.active .icon {
-  animation: strok 1.5s reverse;
 }
 
 .menu__border {
@@ -93,12 +92,6 @@ body {
   transition: transform var(--timeOut, var(--duration));
 }
 
-@keyframes strok {
-  100% {
-    stroke-dashoffset: 400;
-  }
-}
-
 .svg-container {
   width: 0;
   height: 0;
@@ -108,13 +101,6 @@ body {
   font-size: 0.8em;
 }
 
-.container-static {
-  background-color: white;
-  margin: 0 auto;
-  padding: 20px;
-  width: 390px;
-  min-height: 100vh;
-  box-sizing: border-box;
-  border: 2px solid #000;
-  z-index: 100;
-}
+/* End Style mobile bar battom */
+
+/* Start style welcome dashboard */
