@@ -751,6 +751,18 @@ video {
   margin-top: 0.25rem;
 }
 
+.mt-\[-\] {
+  margin-top: -;
+}
+
+.mt-\[-1\] {
+  margin-top: -1;
+}
+
+.ml-4 {
+  margin-left: 1rem;
+}
+
 .block {
   display: block;
 }
@@ -1243,6 +1255,11 @@ video {
 .bg-slate-800 {
   --tw-bg-opacity: 1;
   background-color: rgb(30 41 59 / var(--tw-bg-opacity));
+}
+
+.bg-slate-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
 }
 
 .from-orange-800 {

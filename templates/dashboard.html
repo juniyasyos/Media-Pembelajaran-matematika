@@ -1,420 +1,227 @@
-<html>
+{% extends 'base.html' %}
 
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../static/css/base/style.css">
-    <link rel="stylesheet" href="../static/css/base/base_output.css">
-    <link rel="stylesheet" href="../static/css/dashboard/style.css">
-</head>
+{% block stylecss %}
+<link rel="stylesheet" href="../static/css/dashboard/style.css">
+{% endblock %}
 
-<body class="container-static">
-    <!-- START NAVBAR BOTTOM BAR -->
-    <menu class="menu ">
-        <button class="menu__item active" style="--bgColorItem: #ff8c00;">
-            <svg viewBox="-3 0 24 24" class="icon">
-                <path
-                    d="M7.92173917,18.2568881 L3.92173915,18.2568881 C2.62561934,18.2521579 1.57473912,17.2051555 1.5652174,15.909062 L1.5652174,7.95254022 C1.56776138,7.51865617 1.76191292,7.1080734 2.09565218,6.83080108 L2.80000001,6.30906195 C3.05714116,6.03509289 3.08328826,5.61704285 2.86228858,5.31316828 C2.6412889,5.00929372 2.23552029,4.90536419 1.89565218,5.06558368 L1.89565218,5.06558368 L1.17391305,5.60471412 C0.445875565,6.16803633 0.0138352771,7.0321169 -7.10542736e-15,7.95254022 L-7.10542736e-15,15.9177576 C0.0047821894,18.0816904 1.75780637,19.8347146 3.92173915,19.8394968 L7.92173917,19.8394968 C8.35396202,19.8394968 8.70434787,19.4891109 8.70434787,19.0568881 C8.70434787,18.6246652 8.35396202,18.2742794 7.92173917,18.2742794 L7.92173917,18.2568881 Z">
-                </path>
-                <path
-                    d="M18.7913044,7.93514891 C18.7821625,7.02148476 18.3641697,6.15997273 17.652174,5.58732281 L11.6434783,0.796018441 C10.3230761,-0.26533948 8.44214141,-0.26533948 7.12173917,0.796018441 L5.21739133,2.17862714 C4.85960686,2.43555961 4.77785016,2.93388616 5.03478263,3.29167063 C5.29171511,3.6494551 5.79004165,3.7312118 6.14782612,3.47427932 L8.07826091,2.03080106 C8.83595413,1.40700621 9.92926336,1.40700621 10.6869566,2.03080106 L16.6956523,6.82210543 C17.0414821,7.0962427 17.245809,7.51128176 17.252174,7.95254022 L17.252174,15.9177576 C17.252174,17.2144262 16.2010165,18.2655837 14.9043479,18.2655837 L13.1217392,18.2655837 C12.9392451,18.2655837 12.7913044,18.1176431 12.7913044,17.935149 L12.7913044,14.3438446 C12.7913144,13.1994401 11.8661337,12.270372 10.7217392,12.2655837 L8.11304352,12.2655837 C7.56185446,12.2655837 7.03324068,12.4845427 6.64349116,12.8742922 C6.25374164,13.2640418 6.03478264,13.7926555 6.03478264,14.3438446 L6.03478264,15.7177576 C6.03478264,16.1499805 6.38516849,16.5003663 6.81739134,16.5003663 C7.24961419,16.5003663 7.60000004,16.1499805 7.60000004,15.7177576 L7.60000004,14.3438446 C7.59766759,14.208583 7.64977261,14.0780549 7.74461016,13.9815822 C7.83944772,13.8851095 7.96906617,13.830781 8.10434787,13.8308011 L10.7130435,13.8308011 C10.9915871,13.8308011 11.2173914,14.0566053 11.2173914,14.3351489 L11.2173914,14.3351489 L11.2173914,17.935149 C11.2221784,18.9834938 12.0733835,19.8308011 13.1217392,19.8308011 L14.8608696,19.8308011 C17.0267864,19.8308011 18.7826088,18.0749787 18.7826088,15.909062 L18.7913044,7.93514891 Z">
-                </path>
-            </svg>
-        </button>
-
-        <button class="menu__item" style="--bgColorItem: #f54888;">
-            <svg fill="#ffff" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" class="icon"
-                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 490 490" xml:space="preserve" stroke="#ffff">
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC"
-                    stroke-width="17.64">
-                    <g>
-                        <g>
-                            <g>
-                                <path
-                                    d="M357.071,87.929l-85-85c-1.912-1.912-4.47-2.904-7.071-2.905V0H10C4.477,0,0,4.477,0,10v470c0,5.523,4.477,10,10,10h340 c5.523,0,10-4.477,10-10V95h-0.024C359.975,92.399,358.983,89.841,357.071,87.929z M275,34.142L325.858,85H275V34.142z M340,470 H20V20h235v75c0,5.523,4.477,10,10,10h75V470z">
-                                </path>
-                                <path
-                                    d="M470,235v155h-15V120h-0.012c0-1.302-0.242-2.609-0.757-3.846l-25-60C427.678,52.427,424.037,50,420,50 s-7.678,2.427-9.231,6.154l-25,60c-0.515,1.237-0.757,2.544-0.757,3.846H385v360c0,5.523,4.477,10,10,10h50 c5.523,0,10-4.477,10-10v-70h25c5.523,0,10-4.477,10-10V235H470z M420,86l10,24h-20L420,86z M435,470h-30v-60h30V470z M435,390 h-30V130h30V390z">
-                                </path>
-                                <path
-                                    d="M125,135H75c-5.523,0-10,4.477-10,10v50c0,5.523,4.477,10,10,10h50c5.523,0,10-4.477,10-10v-50 C135,139.477,130.523,135,125,135z M115,185H85v-30h30V185z">
-                                </path>
-                                <path
-                                    d="M125,245H75c-5.523,0-10,4.477-10,10v50c0,5.523,4.477,10,10,10h50c5.523,0,10-4.477,10-10v-50 C135,249.477,130.523,245,125,245z M115,295H85v-30h30V295z">
-                                </path>
-                                <path
-                                    d="M125,355H75c-5.523,0-10,4.477-10,10v50c0,5.523,4.477,10,10,10h50c5.523,0,10-4.477,10-10v-50 C135,359.477,130.523,355,125,355z M115,405H85v-30h30V405z">
-                                </path>
-                                <rect x="150" y="140" width="50" height="20"></rect>
-                                <rect x="150" y="180" width="135" height="20"></rect>
-                                <rect x="150" y="250" width="50" height="20"></rect>
-                                <rect x="150" y="290" width="135" height="20"></rect>
-                                <rect x="150" y="360" width="50" height="20"></rect>
-                                <rect x="150" y="400" width="135" height="20"></rect>
-                            </g>
-                        </g>
-                    </g>
-                </g>
-                <g id="SVGRepo_iconCarrier">
-                    <g>
-                        <g>
-                            <g>
-                                <path
-                                    d="M357.071,87.929l-85-85c-1.912-1.912-4.47-2.904-7.071-2.905V0H10C4.477,0,0,4.477,0,10v470c0,5.523,4.477,10,10,10h340 c5.523,0,10-4.477,10-10V95h-0.024C359.975,92.399,358.983,89.841,357.071,87.929z M275,34.142L325.858,85H275V34.142z M340,470 H20V20h235v75c0,5.523,4.477,10,10,10h75V470z">
-                                </path>
-                                <path
-                                    d="M470,235v155h-15V120h-0.012c0-1.302-0.242-2.609-0.757-3.846l-25-60C427.678,52.427,424.037,50,420,50 s-7.678,2.427-9.231,6.154l-25,60c-0.515,1.237-0.757,2.544-0.757,3.846H385v360c0,5.523,4.477,10,10,10h50 c5.523,0,10-4.477,10-10v-70h25c5.523,0,10-4.477,10-10V235H470z M420,86l10,24h-20L420,86z M435,470h-30v-60h30V470z M435,390 h-30V130h30V390z">
-                                </path>
-                                <path
-                                    d="M125,135H75c-5.523,0-10,4.477-10,10v50c0,5.523,4.477,10,10,10h50c5.523,0,10-4.477,10-10v-50 C135,139.477,130.523,135,125,135z M115,185H85v-30h30V185z">
-                                </path>
-                                <path
-                                    d="M125,245H75c-5.523,0-10,4.477-10,10v50c0,5.523,4.477,10,10,10h50c5.523,0,10-4.477,10-10v-50 C135,249.477,130.523,245,125,245z M115,295H85v-30h30V295z">
-                                </path>
-                                <path
-                                    d="M125,355H75c-5.523,0-10,4.477-10,10v50c0,5.523,4.477,10,10,10h50c5.523,0,10-4.477,10-10v-50 C135,359.477,130.523,355,125,355z M115,405H85v-30h30V405z">
-                                </path>
-                                <rect x="150" y="140" width="50" height="20"></rect>
-                                <rect x="150" y="180" width="135" height="20"></rect>
-                                <rect x="150" y="250" width="50" height="20"></rect>
-                                <rect x="150" y="290" width="135" height="20"></rect>
-                                <rect x="150" y="360" width="50" height="20"></rect>
-                                <rect x="150" y="400" width="135" height="20"></rect>
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </svg>
-        </button>
-
-        <button class="menu__item" style="--bgColorItem: #e0b115;">
-            <svg fill="white" height="30px" width="30px" version="1.1" id="Layer_1"
-                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 343.899 343.899" xml:space="preserve"
-                stroke="#ffff" class="icon">
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="white"
-                    stroke-width="10">
-                    <g>
-                        <g>
-                            <g>
-                                <path
-                                    d="M306.33,181.261h-71.064v-49.554c0-20.716-16.854-37.569-37.569-37.569h-51.494c-20.716,0-37.569,16.854-37.569,37.569 v14.418H37.569C16.854,146.126,0,162.979,0,183.695v115.199c0,4.971,4.029,9,9,9h325.899c4.971,0,9-4.029,9-9v-80.063 C343.899,198.115,327.046,181.261,306.33,181.261z M108.633,289.894H18V183.695c0-10.791,8.779-19.569,19.569-19.569h71.064 V289.894z M217.266,289.894h-90.633V131.708c0-10.791,8.779-19.57,19.57-19.57h51.494c10.791,0,19.569,8.779,19.569,19.569 V289.894z M325.899,289.894h-90.633v-90.633h71.064c10.791,0,19.569,8.779,19.569,19.569V289.894z">
-                                </path>
-                                <path
-                                    d="M171.95,77.694c4.971,0,9-4.029,9-9V45.005c0-4.971-4.029-9-9-9s-9,4.029-9,9v23.688 C162.95,73.665,166.979,77.694,171.95,77.694z">
-                                </path>
-                                <path
-                                    d="M51.504,124.827c4.971,0,9-4.029,9-9V92.138c0-4.971-4.029-9-9-9c-4.971,0-9,4.029-9,9v23.688 C42.504,120.797,46.533,124.827,51.504,124.827z">
-                                </path>
-                                <path
-                                    d="M76.562,124.827c4.971,0,9-4.029,9-9V92.138c0-4.971-4.029-9-9-9s-9,4.029-9,9v23.688 C67.562,120.797,71.591,124.827,76.562,124.827z">
-                                </path>
-                                <path
-                                    d="M254.983,162.752c4.971,0,9-4.029,9-9v-23.688c0-4.971-4.029-9-9-9s-9,4.029-9,9v23.688 C245.983,158.723,250.012,162.752,254.983,162.752z">
-                                </path>
-                                <path
-                                    d="M280.041,162.752c4.971,0,9-4.029,9-9v-23.688c0-4.971-4.029-9-9-9s-9,4.029-9,9v23.688 C271.041,158.723,275.07,162.752,280.041,162.752z">
-                                </path>
-                                <path
-                                    d="M304.14,162.752c4.971,0,9-4.029,9-9v-23.688c0-4.971-4.029-9-9-9s-9,4.029-9,9v23.688 C295.14,158.723,299.169,162.752,304.14,162.752z">
-                                </path>
-                            </g>
-                        </g>
-                    </g>
-                </g>
-                <g id="SVGRepo_iconCarrier">
-                    <g>
-                        <g>
-                            <g>
-                                <path
-                                    d="M306.33,181.261h-71.064v-49.554c0-20.716-16.854-37.569-37.569-37.569h-51.494c-20.716,0-37.569,16.854-37.569,37.569 v14.418H37.569C16.854,146.126,0,162.979,0,183.695v115.199c0,4.971,4.029,9,9,9h325.899c4.971,0,9-4.029,9-9v-80.063 C343.899,198.115,327.046,181.261,306.33,181.261z M108.633,289.894H18V183.695c0-10.791,8.779-19.569,19.569-19.569h71.064 V289.894z M217.266,289.894h-90.633V131.708c0-10.791,8.779-19.57,19.57-19.57h51.494c10.791,0,19.569,8.779,19.569,19.569 V289.894z M325.899,289.894h-90.633v-90.633h71.064c10.791,0,19.569,8.779,19.569,19.569V289.894z">
-                                </path>
-                                <path
-                                    d="M171.95,77.694c4.971,0,9-4.029,9-9V45.005c0-4.971-4.029-9-9-9s-9,4.029-9,9v23.688 C162.95,73.665,166.979,77.694,171.95,77.694z">
-                                </path>
-                                <path
-                                    d="M51.504,124.827c4.971,0,9-4.029,9-9V92.138c0-4.971-4.029-9-9-9c-4.971,0-9,4.029-9,9v23.688 C42.504,120.797,46.533,124.827,51.504,124.827z">
-                                </path>
-                                <path
-                                    d="M76.562,124.827c4.971,0,9-4.029,9-9V92.138c0-4.971-4.029-9-9-9s-9,4.029-9,9v23.688 C67.562,120.797,71.591,124.827,76.562,124.827z">
-                                </path>
-                                <path
-                                    d="M254.983,162.752c4.971,0,9-4.029,9-9v-23.688c0-4.971-4.029-9-9-9s-9,4.029-9,9v23.688 C245.983,158.723,250.012,162.752,254.983,162.752z">
-                                </path>
-                                <path
-                                    d="M280.041,162.752c4.971,0,9-4.029,9-9v-23.688c0-4.971-4.029-9-9-9s-9,4.029-9,9v23.688 C271.041,158.723,275.07,162.752,280.041,162.752z">
-                                </path>
-                                <path
-                                    d="M304.14,162.752c4.971,0,9-4.029,9-9v-23.688c0-4.971-4.029-9-9-9s-9,4.029-9,9v23.688 C295.14,158.723,299.169,162.752,304.14,162.752z">
-                                </path>
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </svg>
-        </button>
-
-        <button class="menu__item" style="--bgColorItem:#65ddb7;">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffff" class="icon">
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC"
-                    stroke-width="0.43200000000000005">
-                    <path
-                        d="M12.12 12.78C12.05 12.77 11.96 12.77 11.88 12.78C10.12 12.72 8.71997 11.28 8.71997 9.50998C8.71997 7.69998 10.18 6.22998 12 6.22998C13.81 6.22998 15.28 7.69998 15.28 9.50998C15.27 11.28 13.88 12.72 12.12 12.78Z"
-                        stroke="#ffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                    <path
-                        d="M18.74 19.3801C16.96 21.0101 14.6 22.0001 12 22.0001C9.40001 22.0001 7.04001 21.0101 5.26001 19.3801C5.36001 18.4401 5.96001 17.5201 7.03001 16.8001C9.77001 14.9801 14.25 14.9801 16.97 16.8001C18.04 17.5201 18.64 18.4401 18.74 19.3801Z"
-                        stroke="#ffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                    <path
-                        d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-                        stroke="#ffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                </g>
-                <g id="SVGRepo_iconCarrier">
-                    <path
-                        d="M12.12 12.78C12.05 12.77 11.96 12.77 11.88 12.78C10.12 12.72 8.71997 11.28 8.71997 9.50998C8.71997 7.69998 10.18 6.22998 12 6.22998C13.81 6.22998 15.28 7.69998 15.28 9.50998C15.27 11.28 13.88 12.72 12.12 12.78Z"
-                        stroke="#ffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                    <path
-                        d="M18.74 19.3801C16.96 21.0101 14.6 22.0001 12 22.0001C9.40001 22.0001 7.04001 21.0101 5.26001 19.3801C5.36001 18.4401 5.96001 17.5201 7.03001 16.8001C9.77001 14.9801 14.25 14.9801 16.97 16.8001C18.04 17.5201 18.64 18.4401 18.74 19.3801Z"
-                        stroke="#ffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                    <path
-                        d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-                        stroke="#ffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                </g>
-            </svg>
-        </button>
-
-        <div class="menu__border"></div>
-    </menu>
-    <div class="svg-container">
-        <svg viewBox="0 0 202.9 45.5">
-            <clipPath id="menu" clipPathUnits="objectBoundingBox"
-                transform="scale(0.0049285362247413 0.021978021978022)">
-                <path d="M6.7,45.5c5.7,0.1,14.1-0.4,23.3-4c5.7-2.3,9.9-5,18.1-10.5c10.7-7.1,11.8-9.2,20.6-14.3c5-2.9,9.2-5.2,15.2-7
-              c7.1-2.1,13.3-2.3,17.6-2.1c4.2-0.2,10.5,0.1,17.6,2.1c6.1,1.8,10.2,4.1,15.2,7c8.8,5,9.9,7.1,20.6,14.3c8.3,5.5,12.4,8.2,18.1,10.5
-              c9.2,3.6,17.6,4.2,23.3,4H6.7z" />
-            </clipPath>
-        </svg>
+{% block content %}
+<!-- WELCOMING TO USER --> n
+<div class="bg-welcome text-center">
+    <img src="../static/img/bg welcome 3.jpg" alt="background welcome" class="rounded-2xl">
+    <div class="welcoming">
+        <h1 class="font-bold">Holla, Xyron</h1>
+        <h1 class="font-normal">Siapkah kamu mempelajari hal baru?</h1>
     </div>
-    <!-- END NAVBAR BOTTOM BAR -->
+</div>
+<!-- END WELCOMING TO USER -->
 
-    <!-- WELCOMING TO USER --> n
-    <div class="bg-welcome text-center">
-        <img src="../static/img/bg welcome 3.jpg" alt="background welcome" class="rounded-2xl">
-        <h1 class="font-bold" id="welcoming">Holla, Xyron</h1>
-        <h1 class="font-normal" id="description">Siapkah kamu mempelajari hal baru?</h1>
+<!-- Start Status User -->
+<div class="info-user flex py-2 bg-white shadow-sm shadow-slate-600 justify-center rounded-lg">
+    <div class="pl-12">
+        <h1 class="font-semibold">Xyron</h1>
+        <h1>Rank 32</h1>
     </div>
-    <!-- END WELCOMING TO USER -->
+    <div class="px-20 mt-2 flex">
+        <img src="../static/img/point.png" alt="point image" class="w-8 h-8">
+        <h1 class="ml-4">39081</h1>
+    </div>
+</div>
+<!-- End Status User -->
 
-    <!-- Start Status User -->
-    <div class="info-user flex py-2 bg-white shadow-sm shadow-slate-600 justify-center rounded-lg">
-        <div class="pl-12">
-            <h1 class="font-semibold">Xyron</h1>
-            <h1>Rank 32</h1>
-        </div>
-        <div class="px-20 mt-2 flex">
-            <img src="../static/img/point.png" alt="point image" class="w-8 h-8">
-            <h1 class="ml-7">39081</h1>
+<!-- Start Content -->
+<div class="flex-none content w-[370px] h-auto bg-white shadow-sm shadow-slate-600 rounded-lg">
+    <div class="flex justify-end mb-5">
+        <!-- Kelas selection -->
+        <div
+            class="flex w-[270px] h-[40px] bg-white shadow-sm shadow-slate-600 justify-start rounded-lg mt-[-20px] mr-2">
+            <h1 id="selectedValue" class="m-2 ml-2 mr-7">Kelas 10: Semester 1</h1>
+            <button
+                class="w-[90px] h-[40px] bg-amber-500 shadow-sm shadow-slate-600 justify-center rounded-lg hover:bg-amber-400 cursor-pointer flex"
+                type="button" data-dropdown-toggle="dropdown">
+                <img src="../static/img/down arrow.png" alt="arrow down image" class="mt-1">
+            </button>
+
+            <!-- Dropdown pilih kelas -->
+            <div class="hidden bg-white text-base list-none divide-y divide-gray-300 rounded shadow my-4" id="dropdown">
+                <ul class="py-1" aria-labelledby="dropdown">
+                    <li>
+                        <a href="javascript:void(0);" onclick="handleMenuSelection('Kelas 10: Semester 1')"
+                            class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Kelas 10: Semester 1</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" onclick="handleMenuSelection('Kelas 10: Semester 2')"
+                            class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Kelas 10: Semester 2</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" onclick="handleMenuSelection('Kelas 11: Semester 1')"
+                            class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Kelas 11: Semester 1</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" onclick="handleMenuSelection('Kelas 11: Semester 2')"
+                            class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Kelas 11: Semester 2</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" onclick="handleMenuSelection('Kelas 12: Semester 1')"
+                            class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Kelas 12: Semester 1</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" onclick="handleMenuSelection('Kelas 12: Semester 2')"
+                            class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Kelas 12: Semester 2</a>
+                    </li>
+                </ul>
+            </div>
+
         </div>
     </div>
-    <!-- End Status User -->
-
-    <!-- Start Content -->
-    <div class="flex-none content w-[370px] h-auto bg-white shadow-sm shadow-slate-600 rounded-lg">
-        <div class="flex justify-end mb-5">
-            <!-- Kelas selection -->
-            <div
-                class="flex w-[270px] h-[40px] bg-white shadow-sm shadow-slate-600 justify-start rounded-lg mt-[-20px] mr-2">
-                <h1 id="selectedValue" class="m-2 ml-2 mr-7">Kelas 10: Semester 1</h1>
-                <button
-                    class="w-[90px] h-[40px] bg-amber-500 shadow-sm shadow-slate-600 justify-center rounded-lg hover:bg-amber-400 cursor-pointer flex"
-                    type="button" data-dropdown-toggle="dropdown">
-                    <img src="../static/img/down arrow.png" alt="arrow down image" class="mt-1">
+    <!-- Start sub materi display -->
+    <div class="flex justify-center mb-4">
+        <!-- Kelas selection -->
+        <div class="w-[360px] bg-white shadow-sm shadow-slate-600 justify-start rounded-lg">
+            <div class="flex">
+                <img src="../static/img/ogo.jpg" alt="" width="90" class="border border-slate-600 rounded-xl m-2">
+                <h1 class="m-2 ml-3 mr-7">Persamaan dan Pertidaksamaan Linear Satu Variabel</h1>
+            </div>
+            <h1 class="m-2 ml-3 mr-7 font-extralight">Progres </h1>
+            <div class="flex">
+                <h1 class="ml-3 mr-7 mt-[-10px] font-semibold">10/30 sub-materi</h1>
+            </div>
+            <div class="flex justify-end mt-[-40px] mr-2">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-4 rounded">
+                    Belajar
                 </button>
-
-                <!-- Dropdown pilih kelas -->
-                <div class="hidden bg-white text-base list-none divide-y divide-gray-300 rounded shadow my-4"
-                    id="dropdown">
-                    <ul class="py-1" aria-labelledby="dropdown">
-                        <li>
-                            <a href="javascript:void(0);" onclick="handleMenuSelection('Kelas 10: Semester 1')"
-                                class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Kelas 10: Semester 1</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);" onclick="handleMenuSelection('Kelas 10: Semester 2')"
-                                class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Kelas 10: Semester 2</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);" onclick="handleMenuSelection('Kelas 11: Semester 1')"
-                                class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Kelas 11: Semester 1</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);" onclick="handleMenuSelection('Kelas 11: Semester 2')"
-                                class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Kelas 11: Semester 2</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);" onclick="handleMenuSelection('Kelas 12: Semester 1')"
-                                class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Kelas 12: Semester 1</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);" onclick="handleMenuSelection('Kelas 12: Semester 2')"
-                                class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Kelas 12: Semester 2</a>
-                        </li>
-                    </ul>
-                </div>
-
             </div>
-        </div>
-        <!-- Start sub materi display -->
-        <div class="flex justify-center mb-4">
-            <!-- Kelas selection -->
-            <div class="w-[360px] bg-white shadow-sm shadow-slate-600 justify-start rounded-lg">
-                <div class="flex">
-                    <img src="../static/img/ogo.jpg" alt="" width="90" class="border border-slate-600 rounded-xl m-2">
-                    <h1 class="m-2 ml-3 mr-7">Persamaan dan Pertidaksamaan Linear Satu Variabel</h1>
-                </div>
-                <h1 class="m-2 ml-3 mr-7 font-extralight">Progres </h1>
-                <div class="flex">
-                    <h1 class="ml-3 mr-7 mt-[-10px] font-semibold">10/30 sub-materi</h1>
-                </div>
-                <div class="flex justify-end mt-[-40px] mr-2">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-4 rounded">
-                        Belajar
-                    </button>
-                </div>
-                <div class="flex justify-center mt-4 mb-2">
-                    <div class="flex w-[340px] h-5 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700"
-                        role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                        <div class="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap dark:bg-blue-500 transition duration-500"
-                            style="width: 50%">50%</div>
-                    </div>
+            <div class="flex justify-center mt-4 mb-2">
+                <div class="flex w-[340px] h-5 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700"
+                    role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                    <div class="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap dark:bg-blue-500 transition duration-500"
+                        style="width: 50%">50%</div>
                 </div>
             </div>
         </div>
-        <div class="flex justify-center mb-4">
-            <!-- Kelas selection -->
-            <div class="w-[360px] bg-white shadow-sm shadow-slate-600 justify-start rounded-lg">
-                <div class="flex">
-                    <img src="../static/img/ogo.jpg" alt="" width="90" class="border border-slate-600 rounded-xl m-2">
-                    <h1 class="m-2 ml-3 mr-7">Persamaan dan Pertidaksamaan Linear Satu Variabel</h1>
-                </div>
-                <h1 class="m-2 ml-3 mr-7 font-extralight">Progres </h1>
-                <div class="flex">
-                    <h1 class="ml-3 mr-7 mt-[-10px] font-semibold">10/30 sub-materi</h1>
-                </div>
-                <div class="flex justify-end mt-[-40px] mr-2">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-4 rounded">
-                        Belajar
-                    </button>
-                </div>
-                <div class="flex justify-center mt-4 mb-2">
-                    <div class="flex w-[340px] h-5 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700"
-                        role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                        <div class="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap dark:bg-blue-500 transition duration-500"
-                            style="width: 50%">50%</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="flex justify-center mb-4">
-            <!-- Kelas selection -->
-            <div class="w-[360px] bg-white shadow-sm shadow-slate-600 justify-start rounded-lg">
-                <div class="flex">
-                    <img src="../static/img/ogo.jpg" alt="" width="90" class="border border-slate-600 rounded-xl m-2">
-                    <h1 class="m-2 ml-3 mr-7">Persamaan dan Pertidaksamaan Linear Satu Variabel</h1>
-                </div>
-                <h1 class="m-2 ml-3 mr-7 font-extralight">Progres </h1>
-                <div class="flex">
-                    <h1 class="ml-3 mr-7 mt-[-10px] font-semibold">10/30 sub-materi</h1>
-                </div>
-                <div class="flex justify-end mt-[-40px] mr-2">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-4 rounded">
-                        Belajar
-                    </button>
-                </div>
-                <div class="flex justify-center mt-4 mb-2">
-                    <div class="flex w-[340px] h-5 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700"
-                        role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                        <div class="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap dark:bg-blue-500 transition duration-500"
-                            style="width: 50%">50%</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="flex justify-center mb-4">
-            <!-- Kelas selection -->
-            <div class="w-[360px] bg-white shadow-sm shadow-slate-600 justify-start rounded-lg">
-                <div class="flex">
-                    <img src="../static/img/ogo.jpg" alt="" width="90" class="border border-slate-600 rounded-xl m-2">
-                    <h1 class="m-2 ml-3 mr-7">Persamaan dan Pertidaksamaan Linear Satu Variabel</h1>
-                </div>
-                <h1 class="m-2 ml-3 mr-7 font-extralight">Progres </h1>
-                <div class="flex">
-                    <h1 class="ml-3 mr-7 mt-[-10px] font-semibold">10/30 sub-materi</h1>
-                </div>
-                <div class="flex justify-end mt-[-40px] mr-2">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-4 rounded">
-                        Belajar
-                    </button>
-                </div>
-                <div class="flex justify-center mt-4 mb-2">
-                    <div class="flex w-[340px] h-5 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700"
-                        role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                        <div class="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap dark:bg-blue-500 transition duration-500"
-                            style="width: 50%">50%</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="flex justify-center mb-4">
-            <!-- Kelas selection -->
-            <div class="w-[360px] bg-white shadow-sm shadow-slate-600 justify-start rounded-lg">
-                <div class="flex">
-                    <img src="../static/img/ogo.jpg" alt="" width="90" class="border border-slate-600 rounded-xl m-2">
-                    <h1 class="m-2 ml-3 mr-7">Persamaan dan Pertidaksamaan Linear Satu Variabel</h1>
-                </div>
-                <h1 class="m-2 ml-3 mr-7 font-extralight">Progres </h1>
-                <div class="flex">
-                    <h1 class="ml-3 mr-7 mt-[-10px] font-semibold">10/30 sub-materi</h1>
-                </div>
-                <div class="flex justify-end mt-[-40px] mr-2">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-4 rounded">
-                        Belajar
-                    </button>
-                </div>
-                <div class="flex justify-center mt-4 mb-2">
-                    <div class="flex w-[340px] h-5 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700"
-                        role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                        <div class="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap dark:bg-blue-500 transition duration-500"
-                            style="width: 50%">50%</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End sub materi display -->
-        <footer class="mt-20 flex justify-center">
-            <h1>ini footer</h1>
-        </footer>
     </div>
-    <!-- End Content -->
+    <div class="flex justify-center mb-4">
+        <!-- Kelas selection -->
+        <div class="w-[360px] bg-white shadow-sm shadow-slate-600 justify-start rounded-lg">
+            <div class="flex">
+                <img src="../static/img/ogo.jpg" alt="" width="90" class="border border-slate-600 rounded-xl m-2">
+                <h1 class="m-2 ml-3 mr-7">Persamaan dan Pertidaksamaan Linear Satu Variabel</h1>
+            </div>
+            <h1 class="m-2 ml-3 mr-7 font-extralight">Progres </h1>
+            <div class="flex">
+                <h1 class="ml-3 mr-7 mt-[-10px] font-semibold">10/30 sub-materi</h1>
+            </div>
+            <div class="flex justify-end mt-[-40px] mr-2">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-4 rounded">
+                    Belajar
+                </button>
+            </div>
+            <div class="flex justify-center mt-4 mb-2">
+                <div class="flex w-[340px] h-5 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700"
+                    role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                    <div class="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap dark:bg-blue-500 transition duration-500"
+                        style="width: 50%">50%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex justify-center mb-4">
+        <!-- Kelas selection -->
+        <div class="w-[360px] bg-white shadow-sm shadow-slate-600 justify-start rounded-lg">
+            <div class="flex">
+                <img src="../static/img/ogo.jpg" alt="" width="90" class="border border-slate-600 rounded-xl m-2">
+                <h1 class="m-2 ml-3 mr-7">Persamaan dan Pertidaksamaan Linear Satu Variabel</h1>
+            </div>
+            <h1 class="m-2 ml-3 mr-7 font-extralight">Progres </h1>
+            <div class="flex">
+                <h1 class="ml-3 mr-7 mt-[-10px] font-semibold">10/30 sub-materi</h1>
+            </div>
+            <div class="flex justify-end mt-[-40px] mr-2">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-4 rounded">
+                    Belajar
+                </button>
+            </div>
+            <div class="flex justify-center mt-4 mb-2">
+                <div class="flex w-[340px] h-5 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700"
+                    role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                    <div class="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap dark:bg-blue-500 transition duration-500"
+                        style="width: 50%">50%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex justify-center mb-4">
+        <!-- Kelas selection -->
+        <div class="w-[360px] bg-white shadow-sm shadow-slate-600 justify-start rounded-lg">
+            <div class="flex">
+                <img src="../static/img/ogo.jpg" alt="" width="90" class="border border-slate-600 rounded-xl m-2">
+                <h1 class="m-2 ml-3 mr-7">Persamaan dan Pertidaksamaan Linear Satu Variabel</h1>
+            </div>
+            <h1 class="m-2 ml-3 mr-7 font-extralight">Progres </h1>
+            <div class="flex">
+                <h1 class="ml-3 mr-7 mt-[-10px] font-semibold">10/30 sub-materi</h1>
+            </div>
+            <div class="flex justify-end mt-[-40px] mr-2">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-4 rounded">
+                    Belajar
+                </button>
+            </div>
+            <div class="flex justify-center mt-4 mb-2">
+                <div class="flex w-[340px] h-5 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700"
+                    role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                    <div class="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap dark:bg-blue-500 transition duration-500"
+                        style="width: 50%">50%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex justify-center mb-4">
+        <!-- Kelas selection -->
+        <div class="w-[360px] bg-white shadow-sm shadow-slate-600 justify-start rounded-lg">
+            <div class="flex">
+                <img src="../static/img/ogo.jpg" alt="" width="90" class="border border-slate-600 rounded-xl m-2">
+                <h1 class="m-2 ml-3 mr-7">Persamaan dan Pertidaksamaan Linear Satu Variabel</h1>
+            </div>
+            <h1 class="m-2 ml-3 mr-7 font-extralight">Progres </h1>
+            <div class="flex">
+                <h1 class="ml-3 mr-7 mt-[-10px] font-semibold">10/30 sub-materi</h1>
+            </div>
+            <div class="flex justify-end mt-[-40px] mr-2">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-4 rounded">
+                    Belajar
+                </button>
+            </div>
+            <div class="flex justify-center mt-4 mb-2">
+                <div class="flex w-[340px] h-5 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700"
+                    role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                    <div class="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap dark:bg-blue-500 transition duration-500"
+                        style="width: 50%">50%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End sub materi display -->
+    <footer class="mt-20 flex justify-center">
+        <h1>ini footer</h1>
+    </footer>
+</div>
+<!-- End Content -->
+{% endblock %}
 
-    <script src="../static/js/base/navbar.js"></script>
-    <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
-    <script>
-        // Mendapatkan referensi ke elemen tombol dropdown
-        var dropdownButton = document.querySelector('[data-dropdown-toggle]');
-        var selectedValue = document.getElementById("selectedValue");
+{% block style_script %}
+<script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
+<script>
+    // Mendapatkan referensi ke elemen tombol dropdown
+    var dropdownButton = document.querySelector('[data-dropdown-toggle]');
+    var selectedValue = document.getElementById("selectedValue");
 
-        // Fungsi untuk menangani pemilihan menu
-        function handleMenuSelection(menuText) {
-            // Menetapkan teks tombol dropdown ke teks menu yang dipilih
-            selectedValue.innerText = menuText;
+    // Fungsi untuk menangani pemilihan menu
+    function handleMenuSelection(menuText) {
+        // Menetapkan teks tombol dropdown ke teks menu yang dipilih
+        selectedValue.innerText = menuText;
 
-            // Menutup dropdown setelah memilih
-            toggleDropdown();
-        }
-    </script>
+        // Menutup dropdown setelah memilih
+        toggleDropdown();
+    }
+</script>
 
-</body>
-
-</html>
+{% endblock %}
