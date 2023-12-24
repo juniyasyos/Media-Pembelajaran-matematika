@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Page</title>
+    <link rel="stylesheet" href="../static/css/starting/style.css">
+    <link rel="stylesheet" href="../static/css/starting/androind.css">
+</head>
+
+<body class="justify-center text-center ">
+    <!-- Start carousel -->
+    <div class="max-w-2xl mx-auto shadow-lg">
+        <div id="default-carousel" class="relative" data-carousel="static">
+            <!-- Carousel wrapper -->
+            <div class="overflow-hidden relative h-56 rounded-lg sm:h-64 xl:h-80 2xl:h-96">
+                <div class="carousel-container">
+                    <!-- Item 1 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <span class="absolute top-1/2 left-1/2 text-2xl font-semibold text-white -translate-x-1/2 -translate-y-1/2 sm:text-3xl dark:text-gray-800">First Slide</span>
+                        <img src="https://flowbite.com/docs/images/carousel/carousel-1.svg" class="block w-full" alt="slide image 1">
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <span class="absolute top-1/2 left-1/2 text-2xl font-semibold text-white -translate-x-1/2 -translate-y-1/2 sm:text-3xl dark:text-gray-800">Second Slide</span>
+                        <img src="https://flowbite.com/docs/images/carousel/carousel-2.svg" class="block w-full" alt="slide image 1">
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <span class="absolute top-1/2 left-1/2 text-2xl font-semibold text-white -translate-x-1/2 -translate-y-1/2 sm:text-3xl dark:text-gray-800">Third Slide</span>
+                        <img src="https://flowbite.com/docs/images/carousel/carousel-3.svg" class="block w-full" alt="slide image 1">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End carousel -->
+
+    <div class="pt-10">
+        <h1 class="font-bold text-lg">Welcome to App</h1>
+        <p class="font-extralight p-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, et.</p>
+    </div>
+    
+    <!-- Login Button -->
+    <button class="bg-blue-500 text-slate-100 py-2 px-28 rounded-lg">Get Started</button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get all carousel items and buttons
+            const items = document.querySelectorAll('[data-carousel-item]');
+            const prevButton = document.querySelector('[data-carousel-prev]');
+            const nextButton = document.querySelector('[data-carousel-next]');
+
+            let currentIndex = 0;
+
+            // Show initial item
+            items[currentIndex].classList.remove('hidden');
+
+            // Function to show the next item
+            function showNextItem() {
+                items[currentIndex].classList.add('hidden');
+                currentIndex = (currentIndex + 1) % items.length;
+                items[currentIndex].classList.remove('hidden');
+            }
+
+            // Function to show the previous item
+            function showPrevItem() {
+                items[currentIndex].classList.add('hidden');
+                currentIndex = (currentIndex - 1 + items.length) % items.length;
+                items[currentIndex].classList.remove('hidden');
+            }
+
+            // Automatic carousel interval
+            const intervalId = setInterval(showNextItem, 3000); // Change 3000 to the desired interval in milliseconds
+
+            // Event listeners for manual navigation
+            nextButton.addEventListener('click', function () {
+                clearInterval(intervalId);
+                showNextItem();
+            });
+
+            prevButton.addEventListener('click', function () {
+                clearInterval(intervalId);
+                showPrevItem();
+            });
+        });
+    </script>
+</body>
+
+</html>
