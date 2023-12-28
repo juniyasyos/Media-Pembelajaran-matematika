@@ -49,7 +49,7 @@ class UserController:
                 login_user(user)
                 return redirect(url_for('dashboard'))
             elif user is None:
-                flash("Can't find this username. Please try again.", 'error')
+                flash("Can't find this username. Please try again or signup", 'error')
             else:
                 flash('Invalid username or password. Please try again.', 'error')
 
@@ -70,10 +70,10 @@ def dashboard():
     return render_template("dashboard.html", data_lesson=data_lesson, classmeet=get_all(Class))
 
 
-@app.route("/Learning/<id_lesson>", methods=["GET", "POST"])
+@app.route("/Learning/<lesson_name>", methods=["GET", "POST"])
 @login_required
-def lesson(id_lesson):
-    return render_template('topics.html', data_topics=get_topics_lesson(id_lesson), data_lesson=Lesson.query.filter_by(id=id_lesson).first())
+def lesson(lesson_name):
+    return render_template('topics.html', data_topics=get_topics_lesson(lesson_name), data_lesson=Lesson.query.filter_by(lesson_name=lesson_name).first())
     
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -94,10 +94,5 @@ def logout():
 @app.route('/topics')
 def topics():
     return get_topics_lesson(id_lesson=20)
-
-
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('404.html'), 404
 
 
