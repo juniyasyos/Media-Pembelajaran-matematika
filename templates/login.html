@@ -45,7 +45,7 @@
                         </div>
                         <div class="flex items-center space-x-2">
                             <span>Not a member?</span>
-                            <a href="url_for('register')" class="underline font-medium text-[#070eff]">
+                            <a href="{{ url_for('register') }}" class="underline font-medium text-[#070eff]">
                                 Sign up now
                             </a>
                         </div>
@@ -62,7 +62,11 @@
                             {% if messages %}
                             <div class="flashes">
                                 {% for message in messages %}
+                                {% if "successful" not in message %}
                                 <h1 class="text-red-500">{{ message }}</h1>
+                                {% else %}
+                                <h1 class="text-blue-500">{{ message }}</h1>
+                                {% endif %}
                                 {% endfor %}
                             </div>
                             {% endif %}

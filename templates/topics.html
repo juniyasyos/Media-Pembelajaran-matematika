@@ -63,7 +63,7 @@
                         <h1 class="font-bold">BAB 1</h1>
                     </div>
                     <div class="flex justify-center items-center w-full pt-4 ml-3">
-                        <h1 class="text-xl font-medium">Persamaan dan Pertidaksamaan Linear Satu Variabel</h1>
+                        <h1 class="text-xl font-medium">{{ data_lesson.lesson_name }}</h1>
                     </div>
                     <div class="flex justify-between items-center w-full py-3 ml-3">
                         <h1 class="text-sm font-medium">Progres: 10/30</h1>
@@ -81,42 +81,17 @@
                 
                 <!-- Subbab Materi -->
                 <div class="w-[390px] bg-blue-400 rounded-md mt-7">
+                    {% for topic in data_topics %}
                     <a class="flex bg-white m-2 rounded-md h-14 p-3 justify-between hover:bg-slate-200" href="#">
                         <div class="justify-start flex">
-                            <h1 class="m-1 font-bold">1. </h1>
-                            <h1 class="text-[1rem] m-1">Persamanaan Linier Satu Variable</h1>
+                            <h1 class="m-1 font-bold">{{ loop.index }}</h1>
+                            <h1 class="text-[1rem] m-1">{{ topic.topics_name }}</h1>
                         </div>
                         <div class="justify-start flex">
                             <img src="../static/img/right arrow.png" alt="image right arrow" width="30" height="10">
                         </div>
                     </a>
-                    <a class="flex bg-white m-2 rounded-md h-14 p-3 justify-between hover:bg-slate-200" href="#">
-                        <div class="justify-start flex">
-                            <h1 class="m-1 font-bold">2. </h1>
-                            <h1 class="text-[1rem] m-1">Persamanaan Linier Satu Variable</h1>
-                        </div>
-                        <div class="justify-start flex">
-                            <img src="../static/img/right arrow.png" alt="image right arrow" width="30" height="10">
-                        </div>
-                    </a>
-                    <a class="flex bg-white m-2 rounded-md h-14 p-3 justify-between hover:bg-slate-200" href="#">
-                        <div class="justify-start flex">
-                            <h1 class="m-1 font-bold">3. </h1>
-                            <h1 class="text-[1rem] m-1">Persamanaan Linier Satu Variable</h1>
-                        </div>
-                        <div class="justify-start flex">
-                            <img src="../static/img/right arrow.png" alt="image right arrow" width="30" height="10">
-                        </div>
-                    </a>
-                    <a class="flex bg-white m-2 rounded-md h-14 p-3 justify-between hover:bg-slate-200" href="#">
-                        <div class="justify-start flex">
-                            <h1 class="m-1 font-bold">4. </h1>
-                            <h1 class="text-[1rem] m-1">Persamanaan Linier Satu Variable</h1>
-                        </div>
-                        <div class="justify-start flex">
-                            <img src="../static/img/right arrow.png" alt="image right arrow" width="30" height="10">
-                        </div>
-                    </a>
+                    {% endfor %}
                 </div>
             </div>
         </div>

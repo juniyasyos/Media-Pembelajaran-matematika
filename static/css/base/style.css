@@ -34,6 +34,7 @@ body {
   padding: 0 2.85em;
   position: fixed;
   bottom: 0;
+  padding-top: 5px;
   align-items: center;
   justify-content: space-around;
   background-color: var(--bgColorMenu);
@@ -55,16 +56,12 @@ body {
 .menu__item::before {
   content: "";
   z-index: -1;
-  width: 4.2em;
-  height: 4.2em;
-  border-radius: 50%;
+  width: 3.5em;
+  height: 3.5em;
+  border-radius: 20%;
   position: absolute;
   transform: scale(0);
   transition: background-color var(--duration), transform var(--duration);
-}
-
-.menu__item.active {
-  transform: translate3d(0, -0.8em, 0);
 }
 
 .menu__item.active::before {
@@ -82,9 +79,6 @@ body {
 
 .menu__border {
   left: 0;
-  bottom: 99%;
-  width: 10.9em;
-  height: 2.4em;
   position: absolute;
   clip-path: url(#menu);
   will-change: transform;
@@ -92,13 +86,9 @@ body {
   transition: transform var(--timeOut, var(--duration));
 }
 
-.svg-container {
-  width: 0;
-  height: 0;
-}
 
 .menu {
-  font-size: 0.8em;
+  font-size: 0.7em;
 }
 
 /* End Style mobile bar battom */

@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-<!-- WELCOMING TO USER --> n
+<!-- WELCOMING TO USER -->
 <div class="bg-welcome text-center">
     <img src="../static/img/bg welcome 3.jpg" alt="background welcome" class="rounded-2xl">
     <div class="welcoming">
@@ -35,7 +35,7 @@
         <!-- Kelas selection -->
         <div
             class="flex w-[275px] h-[40px] bg-white shadow-sm shadow-slate-600 justify-start rounded-lg mt-[-20px] mr-2">
-            <h1 id="selectedValue" class="m-3 ml-2 mr-6 text-sm">Kelas 10: Semester 1</h1>
+            <h1 id="selectedValue" class="m-3 ml-2 mr-6 text-sm">Kelas 10: semester 1</h1>
             <button
                 class="w-[90px] h-[40px] bg-amber-500 shadow-sm shadow-slate-600 justify-center rounded-lg hover:bg-amber-400 cursor-pointer ml-6 flex"
                 type="button" data-dropdown-toggle="dropdown">
@@ -46,51 +46,42 @@
             <div class="hidden bg-white list-none divide-y divide-gray-300 rounded shadow my-4 text-sm" id="dropdown">
                 <ul class="py-1" aria-labelledby="dropdown">
                     <li>
-                        <a href="javascript:void(0);" onclick="handleMenuSelection('Kelas 10: Semester 1')"
-                            class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Kelas 10: Semester 1</a>
+                        <a href="javascript:void(0);" onclick="handleMenuSelection('Semua')"
+                            class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2 ">Semua</a>
                     </li>
+                    {% for kelas in classmeet %}
                     <li>
-                        <a href="javascript:void(0);" onclick="handleMenuSelection('Kelas 10: Semester 2')"
-                            class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Kelas 10: Semester 2</a>
+                        <a href="javascript:void(0);"
+                            onclick="handleMenuSelection('{{ kelas.class_name}}: {{kelas.semester.semester_name }}')"
+                            class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2 ">{{ kelas.class_name}}:
+                            {{kelas.semester.semester_name }}</a>
                     </li>
-                    <li>
-                        <a href="javascript:void(0);" onclick="handleMenuSelection('Kelas 11: Semester 1')"
-                            class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Kelas 11: Semester 1</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" onclick="handleMenuSelection('Kelas 11: Semester 2')"
-                            class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Kelas 11: Semester 2</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" onclick="handleMenuSelection('Kelas 12: Semester 1')"
-                            class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Kelas 12: Semester 1</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" onclick="handleMenuSelection('Kelas 12: Semester 2')"
-                            class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Kelas 12: Semester 2</a>
-                    </li>
+                    {% endfor %}
                 </ul>
             </div>
-
         </div>
     </div>
     <!-- Start sub materi display -->
     <div class="text-sm">
-        <div class="flex justify-center mb-4">
+        {% for lesson in data_lesson %}
+        <div class="flex justify-center mb-4 lesson-element"
+            data-class="{{ lesson.class_.class_name }}: {{ lesson.class_.semester.semester_name }}">
             <!-- Kelas selection -->
             <div class="w-[360px] bg-white shadow-sm shadow-slate-600 justify-start rounded-lg">
                 <div class="flex">
                     <img src="../static/img/ogo.jpg" alt="" width="50" class="border border-slate-600 rounded-xl m-2">
-                    <h1 class="m-2 ml-3 mr-7">Persamaan dan Pertidaksamaan Linear Satu Variabel</h1>
+                    <h1 class="m-2 ml-3 mr-7">{{ lesson.lesson_name }}</h1>
                 </div>
                 <h1 class="m-2 ml-3 mr-7 font-extralight">Progres </h1>
                 <div class="flex">
                     <h1 class="ml-3 mr-7 mt-[-10px] font-semibold">10/30 sub-materi</h1>
                 </div>
                 <div class="flex justify-end mt-[-40px] mr-2">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-4 rounded">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-4 rounded"
+                        id="btnLearning" data-learning="{{ lesson.id }}" onclick="handleLearningClick(this)">
                         Belajar
                     </button>
+
                 </div>
                 <div class="flex justify-center mt-4 mb-2">
                     <div class="flex w-[340px] h-5 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700"
@@ -101,131 +92,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex justify-center mb-4">
-            <!-- Kelas selection -->
-            <div class="w-[360px] bg-white shadow-sm shadow-slate-600 justify-start rounded-lg">
-                <div class="flex">
-                    <img src="../static/img/ogo.jpg" alt="" width="50" class="border border-slate-600 rounded-xl m-2">
-                    <h1 class="m-2 ml-3 mr-7">Persamaan dan Pertidaksamaan Linear Satu Variabel</h1>
-                </div>
-                <h1 class="m-2 ml-3 mr-7 font-extralight">Progres </h1>
-                <div class="flex">
-                    <h1 class="ml-3 mr-7 mt-[-10px] font-semibold">10/30 sub-materi</h1>
-                </div>
-                <div class="flex justify-end mt-[-40px] mr-2">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-4 rounded">
-                        Belajar
-                    </button>
-                </div>
-                <div class="flex justify-center mt-4 mb-2">
-                    <div class="flex w-[340px] h-5 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700"
-                        role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                        <div class="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap dark:bg-blue-500 transition duration-500"
-                            style="width: 50%">50%</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="flex justify-center mb-4">
-            <!-- Kelas selection -->
-            <div class="w-[360px] bg-white shadow-sm shadow-slate-600 justify-start rounded-lg">
-                <div class="flex">
-                    <img src="../static/img/ogo.jpg" alt="" width="50" class="border border-slate-600 rounded-xl m-2">
-                    <h1 class="m-2 ml-3 mr-7">Persamaan dan Pertidaksamaan Linear Satu Variabel</h1>
-                </div>
-                <h1 class="m-2 ml-3 mr-7 font-extralight">Progres </h1>
-                <div class="flex">
-                    <h1 class="ml-3 mr-7 mt-[-10px] font-semibold">10/30 sub-materi</h1>
-                </div>
-                <div class="flex justify-end mt-[-40px] mr-2">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-4 rounded">
-                        Belajar
-                    </button>
-                </div>
-                <div class="flex justify-center mt-4 mb-2">
-                    <div class="flex w-[340px] h-5 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700"
-                        role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                        <div class="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap dark:bg-blue-500 transition duration-500"
-                            style="width: 50%">50%</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="flex justify-center mb-4">
-            <!-- Kelas selection -->
-            <div class="w-[360px] bg-white shadow-sm shadow-slate-600 justify-start rounded-lg">
-                <div class="flex">
-                    <img src="../static/img/ogo.jpg" alt="" width="50" class="border border-slate-600 rounded-xl m-2">
-                    <h1 class="m-2 ml-3 mr-7">Persamaan dan Pertidaksamaan Linear Satu Variabel</h1>
-                </div>
-                <h1 class="m-2 ml-3 mr-7 font-extralight">Progres </h1>
-                <div class="flex">
-                    <h1 class="ml-3 mr-7 mt-[-10px] font-semibold">10/30 sub-materi</h1>
-                </div>
-                <div class="flex justify-end mt-[-40px] mr-2">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-4 rounded">
-                        Belajar
-                    </button>
-                </div>
-                <div class="flex justify-center mt-4 mb-2">
-                    <div class="flex w-[340px] h-5 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700"
-                        role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                        <div class="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap dark:bg-blue-500 transition duration-500"
-                            style="width: 50%">50%</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="flex justify-center mb-4">
-            <!-- Kelas selection -->
-            <div class="w-[360px] bg-white shadow-sm shadow-slate-600 justify-start rounded-lg">
-                <div class="flex">
-                    <img src="../static/img/ogo.jpg" alt="" width="50" class="border border-slate-600 rounded-xl m-2">
-                    <h1 class="m-2 ml-3 mr-7">Persamaan dan Pertidaksamaan Linear Satu Variabel</h1>
-                </div>
-                <h1 class="m-2 ml-3 mr-7 font-extralight">Progres </h1>
-                <div class="flex">
-                    <h1 class="ml-3 mr-7 mt-[-10px] font-semibold">10/30 sub-materi</h1>
-                </div>
-                <div class="flex justify-end mt-[-40px] mr-2">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-4 rounded">
-                        Belajar
-                    </button>
-                </div>
-                <div class="flex justify-center mt-4 mb-2">
-                    <div class="flex w-[340px] h-5 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700"
-                        role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                        <div class="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap dark:bg-blue-500 transition duration-500"
-                            style="width: 50%">50%</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="flex justify-center mb-4">
-            <!-- Kelas selection -->
-            <div class="w-[360px] bg-white shadow-sm shadow-slate-600 justify-start rounded-lg">
-                <div class="flex">
-                    <img src="../static/img/ogo.jpg" alt="" width="50" class="border border-slate-600 rounded-xl m-2">
-                    <h1 class="m-2 ml-3 mr-7">Persamaan dan Pertidaksamaan Linear Satu Variabel</h1>
-                </div>
-                <h1 class="m-2 ml-3 mr-7 font-extralight">Progres </h1>
-                <div class="flex">
-                    <h1 class="ml-3 mr-7 mt-[-10px] font-semibold">10/30 sub-materi</h1>
-                </div>
-                <div class="flex justify-end mt-[-40px] mr-2">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-4 rounded">
-                        Belajar
-                    </button>
-                </div>
-                <div class="flex justify-center mt-4 mb-2">
-                    <div class="flex w-[340px] h-5 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700"
-                        role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                        <div class="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap dark:bg-blue-500 transition duration-500"
-                            style="width: 50%">50%</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
     <!-- End sub materi display -->
     <footer class="mt-20 flex justify-center">
@@ -237,19 +104,44 @@
 
 {% block style_script %}
 <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
-    // Mendapatkan referensi ke elemen tombol dropdown
-    var dropdownButton = document.querySelector('[data-dropdown-toggle]');
-    var selectedValue = document.getElementById("selectedValue");
-
     // Fungsi untuk menangani pemilihan menu
     function handleMenuSelection(menuText) {
-        // Menetapkan teks tombol dropdown ke teks menu yang dipilih
+        var selectedValue = document.getElementById('selectedValue');
         selectedValue.innerText = menuText;
 
-        // Menutup dropdown setelah memilih
-        toggleDropdown();
+        filterLessons(menuText);
+    }
+
+    // Fungsi untuk menyaring elemen-elemen berdasarkan kelas
+    function filterLessons(menuText) {
+        var selectedClass = menuText;
+        var lessonElements = document.getElementsByClassName('lesson-element');
+
+        for (var i = 0; i < lessonElements.length; i++) {
+            var lessonElement = lessonElements[i];
+            var lessonClass = lessonElement.getAttribute('data-class');
+
+
+            // Jika kelas elemen sama dengan kelas yang dipilih, tampilkan elemen
+            if (lessonClass === selectedClass || selectedClass === 'Semua') {
+                lessonElement.style.display = 'flex';
+            } else {
+                // Jika tidak, sembunyikan elemen
+                lessonElement.style.display = 'none';
+            }
+        }
+    }
+
+    function handleLearningClick(button) {
+        // Mendapatkan nilai dari atribut data-learning
+        var lessonName = button.getAttribute("data-learning");
+
+        window.location.href = '/Learning/' + lessonName;
     }
 </script>
+
+
 
 {% endblock %}
