@@ -1,29 +1,43 @@
 {% extends 'base.html' %}
 
 {% block stylecss %}
+<link rel="stylesheet" href="../static/css/dashboard/base.css">
 <link rel="stylesheet" href="../static/css/dashboard/style.css">
 {% endblock %}
 
 {% block content %}
 <!-- WELCOMING TO USER -->
 <div class="bg-welcome text-center">
-    <img src="../static/img/bg welcome 3.jpg" alt="background welcome" class="rounded-2xl">
-    <div class="welcoming">
-        <h1 class="font-bold">Holla, Xyron</h1>
+    <img src="../static/img/bg welcome 4.jpg" alt="background welcome" class="rounded-2xl">
+    <div class="welcoming text-slate-300 ">
+        <h1 class="font-bold">Holla, {{ user.username }}</h1>
         <h1 class="font-normal">Siapkah kamu mempelajari hal baru?</h1>
     </div>
 </div>
 <!-- END WELCOMING TO USER -->
 
 <!-- Start Status User -->
-<div class="info-user flex py-2 bg-white shadow-sm shadow-slate-600 justify-center rounded-lg">
-    <div class="pl-12">
-        <h1 class="font-semibold m-2">Point</h1>
-        <!-- <h1>Rank 32</h1> -->
+<div class="info-user flex py-2 bg-white shadow-sm shadow-slate-600 justify-between items-center rounded-lg px-5">
+    <div class="text-left m-2">
+        <h1 class="font-semibold">{{ user.username }}</h1>
+        <div class="flex">
+            <h1 class="font-normal text-[12px] mr-1">3049</h1>
+            <img src="../static/img/point.png" alt="point image" width="20" height="20">
+        </div>
     </div>
-    <div class="px-20 mt-2 flex">
-        <h1 class="ml-4 mr-1">39081</h1>
-        <img src="../static/img/point.png" alt="point image" class="w-8 h-8">
+    <div class="mx-4 flex">
+        <img src="../static/img/learning.png" alt="learning icon" width="30" height="30">
+        <div class="ml1">
+            <h1 class="text-[11px] font-bold">Modul Selesai</h1>
+            <h1 class="text-[10px] text-center">{{ modul_user }} modul</h1>
+        </div>
+    </div>
+    <div class="flex">
+        <img src="../static/img/quiz.svg" alt="learning icon" width="25" height="30">
+        <div class="ml-1">
+            <h1 class="text-[11px] font-bold">Kuis Dikerjakan</h1>
+            <h1 class="text-[10px] text-center">10 Kuis</h1>
+        </div>
     </div>
 </div>
 <!-- End Status User -->
@@ -34,8 +48,9 @@
     <div class="flex justify-end mb-5">
         <!-- Kelas selection -->
         <div
-            class="flex w-[275px] h-[40px] bg-white shadow-sm shadow-slate-600 justify-start rounded-lg mt-[-20px] mr-2">
-            <h1 id="selectedValue" class="m-3 ml-2 mr-6 text-sm">Semua</h1>
+            class="flex justify-between w-[280px] h-[40px] bg-white shadow-sm shadow-slate-600 rounded-lg mt-[-20px] mr-2">
+            <h1 id="selectedValue" class="m-3 ml-2 mr-6 text-sm text-center flex items-center justify-center">Kelas 10:
+                Semester 1</h1>
             <button
                 class="w-[90px] h-[40px] bg-amber-500 shadow-sm shadow-slate-600 justify-center rounded-lg hover:bg-amber-400 cursor-pointer ml-6 flex"
                 type="button" data-dropdown-toggle="dropdown">
@@ -74,7 +89,8 @@
                 </div>
                 <h1 class="m-2 ml-3 mr-7 font-extralight">Progres </h1>
                 <div class="flex">
-                    <h1 class="ml-3 mr-7 mt-[-10px] font-semibold">10/30 sub-materi</h1>
+                    <h1 class="ml-3 mr-7 mt-[-10px] font-semibold">{{ post_test_user[lesson.id]|length }}/{{
+                        data_topics[lesson.id] + 1}} sub-materi</h1>
                 </div>
                 <div class="flex justify-end mt-[-40px] mr-2">
                     <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-4 rounded"
@@ -87,7 +103,8 @@
                     <div class="flex w-[340px] h-5 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700"
                         role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
                         <div class="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap dark:bg-blue-500 transition duration-500"
-                            style="width: 50%">50%</div>
+                            style="width: {{ post_test_user[lesson.id]|length / (data_topics[lesson.id]) * 100}}%">{{
+                            ((post_test_user[lesson.id]|length / (data_topics[lesson.id] + 1)) * 100)|int }}%</div>
                     </div>
                 </div>
             </div>
@@ -105,43 +122,5 @@
 {% block style_script %}
 <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-    // Fungsi untuk menangani pemilihan menu
-    function handleMenuSelection(menuText) {
-        var selectedValue = document.getElementById('selectedValue');
-        selectedValue.innerText = menuText;
-
-        filterLessons(menuText);
-    }
-
-    // Fungsi untuk menyaring elemen-elemen berdasarkan kelas
-    function filterLessons(menuText) {
-        var selectedClass = menuText;
-        var lessonElements = document.getElementsByClassName('lesson-element');
-
-        for (var i = 0; i < lessonElements.length; i++) {
-            var lessonElement = lessonElements[i];
-            var lessonClass = lessonElement.getAttribute('data-class');
-
-
-            // Jika kelas elemen sama dengan kelas yang dipilih, tampilkan elemen
-            if (lessonClass === selectedClass || selectedClass === 'Semua') {
-                lessonElement.style.display = 'flex';
-            } else {
-                // Jika tidak, sembunyikan elemen
-                lessonElement.style.display = 'none';
-            }
-        }
-    }
-
-    function handleLearningClick(button) {
-        // Mendapatkan nilai dari atribut data-learning
-        var lessonName = button.getAttribute("data-learning");
-
-        window.location.href = '/Learning/' + lessonName;
-    }
-</script>
-
-
-
+<script src="../static/js/dashboard/controlle.js"></script>
 {% endblock %}

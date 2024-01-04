@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block style %}
+    {% endblock %}
+</head>
+
+<body>
+    <div class="min-h-screen text-sm">
+
+        <!-- Container -->
+        <div class="flex flex-row w-full">
+            <div class="flex flex-1 flex-col items-center justify-center px-5 relative">
+                <div class="flex justify-between items-center w-full py-4">
+                    <div id="backButton" class="flex items-center justify-start space-x-3  cursor-pointer">
+                        <img src="../../static/img/back arrow.jpg" alt="image arrow back">
+                    </div>
+                </div>
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    {% block js %}
+    {% endblock %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const backButton = document.getElementById('backButton');
+
+            backButton.addEventListener('click', function () {
+                history.back();
+            });
+        });
+    </script>
+</body>
+
+</html>

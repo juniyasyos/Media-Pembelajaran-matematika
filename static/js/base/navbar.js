@@ -48,3 +48,11 @@ window.addEventListener("resize", () => {
     offsetMenuBorder(activeItem, menuBorder);
     menu.style.setProperty("--timeOut", "none");
 });
+
+function eventClickDashboard(){
+    window.location.href = '/Dashboard';
+}
+
+function eventClickProfile(){
+    window.location.href = '/Profile';
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/question/style.css">
+    <link rel="stylesheet" href="../static/css/question/base.css">
+</head>
+
+<body>
+    <div class="min-h-screen text-sm bg-blue-500">
+        <div class="flex flex-row w-full">
+            <div class="flex flex-1 flex-col items-center justify-center px-5 relative">
+                <div class="flex justify-between items-center w-full py-3">
+                    <div
+                        class="flex items-center justify-start space-y-3 mt-[-10px] cursor-pointer bg-slate-300 p-1 rounded-xl">
+                        <img src="../static/img/back arrow.jpg" alt="image arrow back">
+                    </div>
+                    <button
+                        class="mx-3 mr-[-3px] inline-flex items-center justify-center p-0.5 mb-2 overflow-hidden text-sm font-medium text-gray-900 rounded-full group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+                        <span
+                            class="px-3 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-full group-hover:bg-opacity-0">
+                            SUBMIT
+                        </span>
+                    </button>
+                </div>
+                <div class="text-center w-[390px]">
+                    <div class="flex justify-center items-center w-full mt-[-40px] countdown">
+                        <h1 id="timer" class="text-xl font-semibold"><span>05:00</span></h1>
+                    </div>
+                </div>
+
+                <div class="flex space-x-3">
+                    <div id="question-1"
+                        class="question-number bg-blue-50 rounded-full w-14 h-14 flex items-center justify-center font-semibold text-xl">
+                        1
+                    </div>
+                    <div id="question-2"
+                        class="question-number bg-blue-50 rounded-full w-14 h-14 flex items-center justify-center font-semibold text-xl">
+                        2
+                    </div>
+                    <div id="question-3"
+                        class="question-number bg-blue-50 rounded-full w-14 h-14 flex items-center justify-center font-semibold text-xl">
+                        3
+                    </div>
+                    <div id="question-4"
+                        class="question-number bg-blue-50 rounded-full w-14 h-14 flex items-center justify-center font-semibold text-xl">
+                        4
+                    </div>
+                    <div id="question-5"
+                        class="question-number bg-blue-50 rounded-full w-14 h-14 flex items-center justify-center font-semibold text-xl">
+                        5
+                    </div>
+                </div>
+
+
+                <div class="w-[400px] shadow-md rounded-xl mt-4 bg-white h-auto" data-question="">
+                    <div class="text-2xl m-5 font-semibold" id="number">1</div>
+                    <div class="text-xl m-5 font-medium" id="soal"></div>
+                    <div class="flex justify-center p-3">
+                        <div id="choice_a" class="w-[360px] border-2 border-slate-400 rounded-full text-lg font-semibold flex justify-start items-center 
+                            transition duration-300 ease-in-out transform hover:border-slate-500 hover:bg-blue-500 hover:scale-105
+                            active:scale-95 active:bg-blue-600 active:border-slate-600" onclick="selectAnswer('a')">
+                            <div class="flex">
+                                <h1 class="bg-orange-400 p-5 rounded-full py-3">A</h1>
+                            </div>
+                            <h1 class="pl-2" id="choice_a_text">Answer</h1>
+                        </div>
+                    </div>
+                    <div class="flex justify-center p-3">
+                        <div id="choice_b" class="w-[360px] border-2 border-slate-400 rounded-full text-lg font-semibold flex justify-start items-center 
+                            transition duration-300 ease-in-out transform hover:border-slate-500 hover:bg-blue-500 hover:scale-105
+                            active:scale-95 active:bg-blue-600 active:border-slate-600" onclick="selectAnswer('b')">
+                            <div class="flex">
+                                <h1 class="bg-orange-400 p-5 rounded-full py-3">B</h1>
+                            </div>
+                            <h1 class="pl-2" id="choice_b_text">Answer</h1>
+                        </div>
+                    </div>
+                    <div class="flex justify-center p-3">
+                        <div id="choice_c" class="w-[360px] border-2 border-slate-400 rounded-full text-lg font-semibold flex justify-start items-center 
+                        transition duration-300 ease-in-out transform hover:border-slate-500 hover:bg-blue-500 hover:scale-105
+                        active:scale-95 active:bg-blue-600 active:border-slate-600" onclick="selectAnswer('c')">
+                            <div class="flex">
+                                <h1 class="bg-orange-400 p-5 rounded-full py-3">C</h1>
+                            </div>
+                            <h1 class="pl-2" id="choice_c_text">Answer</h1>
+                        </div>
+                    </div>
+                    <div class="flex justify-center p-3">
+                        <div id="choice_d" class="w-[360px] border-2 border-slate-400 rounded-full text-lg font-semibold flex justify-start items-center 
+                            transition duration-300 ease-in-out transform hover:border-slate-500 hover:bg-blue-500 hover:scale-105
+                            active:scale-95 active:bg-blue-600 active:border-slate-600" onclick="selectAnswer('d')">
+                            <div class="flex">
+                                <h1 class="bg-orange-400 p-5 rounded-full py-3">D</h1>
+                            </div>
+                            <h1 class="pl-2" id="choice_d_text">Answer</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../static/js/question.js"></script>
+</body>
+
+</html>

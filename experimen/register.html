@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/register/style.css">
+    <link rel="stylesheet" href="../static/css/authentication/register_style.css">
 </head>
 
 <body>
@@ -30,7 +30,7 @@
         }
     </style>
 
-    <body class="bg-white">
+    <div class="bg-white">
         <div class="flex min-h-screen">
 
             <!-- Container -->
@@ -44,7 +44,8 @@
                         <a href="#" class="font-medium text-xl">Brand</a>
                     </div>
                     <div class='space-y-5'>
-                        <h1 class="lg:text-3xl xl:text-5xl xl:leading-snug font-extrabold">Learn anywhere, anytime, at your own pace.</h1>
+                        <h1 class="lg:text-3xl xl:text-5xl xl:leading-snug font-extrabold">Learn anywhere, anytime, at
+                            your own pace.</h1>
                         <p class="text-lg">You do have an account?</p>
                         <button
                             class="inline-block flex-none px-4 py-3 border-2 rounded-lg font-medium border-black bg-black text-white">Login
@@ -78,8 +79,23 @@
                                 class="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal hover:border-blue-500" />
                             <input type="password" placeholder="Password"
                                 class="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal hover:border-blue-500" />
+
+                            <select id="userType" name="userType"
+                                class="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal hover:border-blue-500">
+                                <option value="siswa">Siswa</option>
+                                <option value="guru">Guru</option>
+                            </select>
+
+                            <div id="tokenInput" class="hidden mt-4">
+                                <label for="token" class="block text-sm font-medium text-gray-700">Enter Token:</label>
+                                <input type="text" id="token" name="token"
+                                    class="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal hover:border-blue-500">
+                            </div>
+
+
                             <button
-                                class="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium bg-blue-600 border-slate-400 text-white hover:bg-blue-400 hover:border-blue-700">Login </button>
+                                class="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium bg-blue-600 border-slate-400 text-white hover:bg-blue-400 hover:border-blue-700">Login
+                            </button>
                             <div class="flex justify-center items-center">
                                 <span class="w-full border border-black"></span>
                                 <span class="px-4">Or</span>
@@ -106,9 +122,14 @@
                     </div>
                 </div>
             </div>
-
         </div>
-    </body>
+    </div>
+    <script>
+        document.getElementById('userType').addEventListener('change', function () {
+            var tokenInput = document.getElementById('tokenInput');
+            tokenInput.classList.toggle('hidden', this.value !== 'guru');
+        });
+    </script>
 </body>
 
 </html>

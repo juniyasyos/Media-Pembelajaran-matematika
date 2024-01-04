@@ -10,7 +10,7 @@
 
 <body>
 
-    <body class="bg-white">
+    <div class="bg-white">
         <div class="flex min-h-screen">
 
             <!-- Container -->
@@ -68,10 +68,10 @@
                                 class="flex flex-col max-w-md space-y-5">
                                 {{ form.hidden_tag() }}
 
-                                <input type="username" name="username" placeholder="Username"
+                                <input type="text" name="username" placeholder="Username"
                                     class="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal hover:border-blue-500" />
-                                
-                                    <input type="email" name="email" placeholder="Email"
+
+                                <input type="email" name="email" placeholder="Email"
                                     class="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal hover:border-blue-500" />
 
                                 <input type="password" name="password" placeholder="Password"
@@ -80,11 +80,25 @@
                                 <input type="password" name="confirm_password" placeholder="Confirm Password"
                                     class="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal hover:border-blue-500" />
 
+                                <select id="userType" name="user_type"
+                                    class="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal hover:border-blue-500">
+                                    <option value="siswa">Siswa</option>
+                                    <option value="guru">Guru</option>
+                                </select>
+
+                                <div id="tokenInput" class="hidden mt-4">
+                                    <label for="token" class="block text-sm font-medium text-gray-700">Enter
+                                        Token:</label>
+                                    <input type="text" id="token" name="token"
+                                        class="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal hover:border-blue-500">
+                                </div>
+
                                 <button type="submit"
                                     class="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium bg-blue-600 border-slate-400 text-white hover:bg-blue-400 hover:border-blue-700">
                                     Register
                                 </button>
                             </form>
+
 
 
                             <div class="flex justify-center items-center">
@@ -115,7 +129,13 @@
             </div>
 
         </div>
-    </body>
+    </div>
+    <script>
+        document.getElementById('userType').addEventListener('change', function () {
+            var tokenInput = document.getElementById('tokenInput');
+            tokenInput.classList.toggle('hidden', this.value !== 'guru');
+        });
+    </script>
 </body>
 
 </html>
