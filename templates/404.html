@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/404/style.css') }}">
+</head>
+
+<body class="h-screen overflow-hidden flex items-center justify-center" style="background: #edf2f7;">
+  <div class="bg-gray-100 h-screen justify-center">
+    <center class="mt-24 m-auto">
+      <img src="{{ url_for('static', filename='img/sad-figure.svg') }}" alt="" width="250">
+      <div class=" tracking-widest mt-4">
+        <span class="text-gray-500 text-6xl block"><span>4 0 4</span></span>
+        <span class="text-gray-500 text-xl">Sorry, We couldn't find what you are looking for!</span>
+      </div>
+    </center>
+    <div class="mt-6 flex justify-center space-x-3">
+      <button href="#" class="text-gray-500 font-mono text-xl bg-gray-200 p-3 rounded-md hover:shadow-md" id="backButton">Go
+        back</button>
+      <button href="#" class="text-gray-500 font-mono text-xl bg-gray-200 p-3 rounded-md hover:shadow-md" id="home">Go
+        home</button>
+    </div>
+  </div>
+  <script>
+    // Back Button
+    document.addEventListener("DOMContentLoaded", function () {
+      const backButton = document.getElementById('backButton');
+
+      backButton.addEventListener('click', function () {
+        history.back();
+      });
+    });
+   
+    document.addEventListener("DOMContentLoaded", function () {
+      const backButton = document.getElementById('home');
+    
+      backButton.addEventListener('click', function () {
+        // Gantilah URL sesuai dengan URL halaman utama Anda
+        window.location.href = '/Dashboard';
+      });
+    });
+    
+  </script>
+</body>
+
+</html>

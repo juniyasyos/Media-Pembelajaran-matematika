@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block stylecss %}
-<link rel="stylesheet" href="../static/css/dashboard/base.css">
-<link rel="stylesheet" href="../static/css/dashboard/style.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard/base.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard/style.css') }}">
 {% endblock %}
 
 {% block content %}
 <!-- WELCOMING TO USER -->
 <div class="bg-welcome text-center">
-    <img src="../static/img/bg welcome 4.jpg" alt="background welcome" class="rounded-2xl">
+    <img src="{{ url_for('static', filename='img/bg welcome 4.jpg') }}" alt="background welcome" class="rounded-2xl">
     <div class="welcoming text-slate-300 ">
         <h1 class="font-bold">Holla, {{ user.username }}</h1>
         <h1 class="font-normal">Siapkah kamu mempelajari hal baru?</h1>
@@ -20,23 +20,23 @@
 <div class="info-user flex py-2 bg-white shadow-sm shadow-slate-600 justify-between items-center rounded-lg px-5">
     <div class="text-left m-2">
         <h1 class="font-semibold">{{ user.username }}</h1>
-        <div class="flex">
-            <h1 class="font-normal text-[12px] mr-1">3049</h1>
-            <img src="../static/img/point.png" alt="point image" width="20" height="20">
+        <div class="flex justify-center">
+            <h1 class="font-normal text-[12px] mr-1">{{ user.point }}</h1>
+            <img src="{{ url_for('static', filename='img/point.png') }}" alt="point image" width="20" height="20">
         </div>
     </div>
     <div class="mx-4 flex">
-        <img src="../static/img/learning.png" alt="learning icon" width="30" height="30">
+        <img src="{{ url_for('static', filename='img/learning.png') }}" alt="learning icon" width="30" height="30">
         <div class="ml1">
             <h1 class="text-[11px] font-bold">Modul Selesai</h1>
             <h1 class="text-[10px] text-center">{{ modul_user }} modul</h1>
         </div>
     </div>
     <div class="flex">
-        <img src="../static/img/quiz.svg" alt="learning icon" width="25" height="30">
+        <img src="{{ url_for('static', filename='img/quiz.svg') }}" alt="learning icon" width="25" height="30">
         <div class="ml-1">
             <h1 class="text-[11px] font-bold">Kuis Dikerjakan</h1>
-            <h1 class="text-[10px] text-center">10 Kuis</h1>
+            <h1 class="text-[10px] text-center">{{ quiz_user }} Kuis</h1>
         </div>
     </div>
 </div>
@@ -49,12 +49,11 @@
         <!-- Kelas selection -->
         <div
             class="flex justify-between w-[280px] h-[40px] bg-white shadow-sm shadow-slate-600 rounded-lg mt-[-20px] mr-2">
-            <h1 id="selectedValue" class="m-3 ml-2 mr-6 text-sm text-center flex items-center justify-center">Kelas 10:
-                Semester 1</h1>
+            <h1 id="selectedValue" class="m-3 ml-2 mr-6 text-sm text-center flex items-center justify-center">Semua</h1>
             <button
                 class="w-[90px] h-[40px] bg-amber-500 shadow-sm shadow-slate-600 justify-center rounded-lg hover:bg-amber-400 cursor-pointer ml-6 flex"
                 type="button" data-dropdown-toggle="dropdown">
-                <img src="../static/img/down arrow.png" alt="arrow down image" class="mt-1">
+                <img src="{{ url_for('static', filename='img/down arrow.png') }}" alt="arrow down image" class="mt-1">
             </button>
 
             <!-- Dropdown pilih kelas -->
@@ -84,7 +83,7 @@
             <!-- Kelas selection -->
             <div class="w-[360px] bg-white shadow-sm shadow-slate-600 justify-start rounded-lg">
                 <div class="flex">
-                    <img src="../static/img/ogo.jpg" alt="" width="50" class="border border-slate-600 rounded-xl m-2">
+                    <img src="{{ url_for('static', filename='img/ogo.jpg') }}" alt="" width="50" class="border border-slate-600 rounded-xl m-2">
                     <h1 class="m-2 ml-3 mr-7">{{ lesson.lesson_name }}</h1>
                 </div>
                 <h1 class="m-2 ml-3 mr-7 font-extralight">Progres </h1>
@@ -122,5 +121,5 @@
 {% block style_script %}
 <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="../static/js/dashboard/controlle.js"></script>
+<script src="{{ url_for('static', filename='js/dashboard/controlle.js') }}"></script>
 {% endblock %}

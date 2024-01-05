@@ -1,0 +1,206 @@
+{% extends 'base_topics.html' %}
+
+{% block articles %}
+<!-- Subbab Materi -->
+<article class="w-[390px]" data-topicsId="{{ data_topics.id }}">
+    <div class="w-full pt-1">
+        <!-- <h1 class="text-2xl font-semibold">Definisi Eksponen</h1> -->
+        <h1 class="font-medium mt-1">Juniyasyos, <span class="font-normal">1 Jan 2024</span></h1>
+    </div>
+    <img src="{{ url_for('static', filename='img/algorithm.jpg') }}" alt="img algorithm" width="390" class="rounded-md">
+    <div class="container mx-auto p-8 bg-gray-100 rounded-lg shadow-lg">
+        <h2 class="text-3xl font-bold text-indigo-700 mb-6">Definisi Eksponen</h2>
+
+        <p class="mb-6 text-gray-800 leading-relaxed">
+            Eksponen adalah notasi atau cara penulisan yang digunakan untuk menyatakan perpangkatan
+            suatu bilangan.
+            Bilangan yang menjadi dasar perpangkatan disebut sebagai <span
+                class="font-bold text-green-500">basis</span>,
+            sedangkan bilangan yang menjadi pangkat disebut sebagai <span
+                class="font-bold text-blue-500">eksponen</span>.
+            Notasi umum untuk eksponen ditulis sebagai <span class="font-bold text-red-500">a<sup>n</sup></span>, di
+            mana <span class="font-bold text-red-500">a</span> adalah basis, dan <span
+                class="font-bold text-red-500">n</span> adalah eksponen.
+        </p>
+
+        <div class="mb-8">
+            <p class="font-bold text-lg mb-2">Contoh:</p>
+
+            <div class="mb-4">
+                <p class="text-gray-800">
+                    <span class="font-bold text-green-500">2<sup>3</sup></span>: Di sini, 2 adalah
+                    basis, dan 3 adalah eksponen.
+                    Artinya, kita mengalikan 2 dengan dirinya sendiri sebanyak 3 kali. Jadi,
+                    <span class="font-bold text-green-500">2<sup>3</sup></span> sama dengan <span class="font-bold">2 ×
+                        2 × 2</span>, yang hasilnya 8.
+                </p>
+            </div>
+
+            <div>
+                <p class="text-gray-800">
+                    <span class="font-bold text-green-500">5<sup>2</sup></span>: Dalam hal ini, 5 adalah
+                    basis, dan 2 adalah eksponen.
+                    Maka, <span class="font-bold text-green-500">5<sup>2</sup></span> berarti kita
+                    mengalikan 5 dengan dirinya sendiri sebanyak 2 kali, sehingga
+                    <span class="font-bold text-green-500">5<sup>2</sup></span> sama dengan <span class="font-bold">5 ×
+                        5</span>, yang hasilnya 25.
+                </p>
+            </div>
+        </div>
+
+        <p class="mb-6 text-gray-800">
+            Eksponen memiliki sifat khusus, seperti hukum perkalian eksponen, hukum pembagian eksponen,
+            dan sebagainya,
+            yang memudahkan kita dalam melakukan operasi matematika dengan eksponen.
+        </p>
+
+        <p class="mb-6 text-gray-800">
+            Penting untuk diingat bahwa eksponen tidak hanya terbatas pada bilangan bulat. Eksponen juga
+            bisa berupa bilangan pecahan atau bahkan bilangan negatif. Misalnya,
+            <span class="font-bold text-green-500">\(2^{-3}\)</span> dapat dituliskan sebagai
+            <span class="font-bold"> \(\frac{1}{2^{3}}\) </span>, yang sama dengan <span class="font-bold">
+                \(\frac{1}{8}\) </span>.
+        </p>
+
+        <p class="text-gray-800">
+            Dengan memahami konsep eksponen, kita dapat menyelesaikan berbagai masalah matematika dan
+            melibatkan eksponen dalam berbagai aplikasi di kehidupan sehari-hari,
+            seperti dalam ilmu pengetahuan, teknologi, dan ekonomi.
+        </p>
+    </div>
+    <!-- Post-test Pilihan Ganda -->
+    <div class="container mx-auto p-8 bg-gray-100 rounded-lg shadow-lg mt-8">
+        <h2 class="text-3xl font-bold text-indigo-700 mb-6">Post-Test</h2>
+
+        <div class="mb-4" id="question1">
+            <p class="text-gray-800"><strong>1. </strong>Apa yang dimaksud dengan eksponen?</p>
+            <label class="block text-gray-700 mt-2">
+                <input type="radio" class="mr-2" name="question1" value="a" id="q1-a">
+                <span class="text-gray-800">A. Bilangan yang menjadi hasil perpangkatan.</span>
+            </label>
+            <label class="block text-gray-700">
+                <input type="radio" class="mr-2" name="question1" value="b" id="q1-b">
+                <span class="text-gray-800">B. Bilangan yang menjadi dasar perpangkatan.</span>
+            </label>
+            <label class="block text-gray-700">
+                <input type="radio" class="mr-2" name="question1" value="c" id="q1-c">
+                <span class="text-gray-800">C. Notasi atau cara penulisan perpangkatan.</span>
+            </label>
+            <label class="block text-gray-700">
+                <input type="radio" class="mr-2" name="question1" value="d" id="q1-d">
+                <span class="text-gray-800">D. Bilangan yang menjadi pangkat dalam perpangkatan.</span>
+            </label>
+            <p id="feedback-question1" class="text-gray-800"></p>
+        </div>
+
+        <div class="mb-4" id="question2">
+            <p class="text-gray-800"><strong>2. </strong>Apa yang dimaksud dengan basis dalam eksponen?
+            </p>
+            <label class="block text-gray-700 mt-2">
+                <input type="radio" class="mr-2" name="question2" value="a" id="q2-a">
+                <span class="text-gray-800">A. Hasil perpangkatan.</span>
+            </label>
+            <label class="block text-gray-700">
+                <input type="radio" class="mr-2" name="question2" value="b" id="q2-b">
+                <span class="text-gray-800">B. Notasi atau cara penulisan perpangkatan.</span>
+            </label>
+            <label class="block text-gray-700">
+                <input type="radio" class="mr-2" name="question2" value="c" id="q2-c">
+                <span class="text-gray-800">C. Bilangan yang menjadi dasar perpangkatan.</span>
+            </label>
+            <label class="block text-gray-700">
+                <input type="radio" class="mr-2" name="question2" value="d" id="q2-d">
+                <span class="text-gray-800">D. Bilangan yang menjadi pangkat dalam perpangkatan.</span>
+            </label>
+            <p id="feedback-question2" class="text-gray-800"></p>
+        </div>
+
+        <div id="question3">
+            <p class="text-gray-800"><strong>3. </strong>Berapakah nilai dari \(3^2\)?</p>
+            <label class="block text-gray-700 mt-2">
+                <input type="radio" class="mr-2" name="question3" value="a" id="q3-a">
+                <span class="text-gray-800">A. 6</span>
+            </label>
+            <label class="block text-gray-700">
+                <input type="radio" class="mr-2" name="question3" value="b" id="q3-b">
+                <span class="text-gray-800">B. 9</span>
+            </label>
+            <label class="block text-gray-700">
+                <input type="radio" class="mr-2" name="question3" value="c" id="q3-c">
+                <span class="text-gray-800">C. 12</span>
+            </label>
+            <label class="block text-gray-700">
+                <input type="radio" class="mr-2" name="question3" value="d" id="q3-d">
+                <span class="text-gray-800">D. 15</span>
+            </label>
+            <p id="feedback-question3" class="text-gray-800"></p>
+        </div>
+
+        <button onclick="checkAnswers()" class="bg-blue-500 text-white py-2 px-4 rounded mt-4 hover:bg-blue-700">Cek
+            Jawaban</button>
+    </div>
+    <div class="my-6 flex justify-end">
+        <button class="px-4 py-2 bg-blue-500 text-white rounded-md
+            hover:bg-blue-600 transition duration-300 ease-in-out transform
+            active:scale-95 focus:outline-none focus:ring focus:border-blue-300" id="save-progress">
+            Save Progress
+        </button>
+    </div>
+</article>
+{% endblock %}
+
+{% block controllers %}
+<script>
+    let status_post_test = false;
+
+    // Fungsi untuk mengecek jawaban
+    function checkAnswers() {
+        const correctAnswers = {
+            question1: 'c',
+            question2: 'c',
+            question3: 'b'
+        };
+
+        const userAnswers = {
+            question1: document.querySelector('input[name="question1"]:checked').value,
+            question2: document.querySelector('input[name="question2"]:checked').value,
+            question3: document.querySelector('input[name="question3"]:checked').value
+        };
+
+        let allCorrect = true;
+
+        for (const question in correctAnswers) {
+            const userAnswer = userAnswers[question];
+            const correctAnswer = correctAnswers[question];
+
+            const feedbackElement = document.getElementById(`feedback-${question}`);
+
+            if (userAnswer === correctAnswer) {
+                feedbackElement.textContent = 'Jawaban Anda benar!';
+                feedbackElement.classList.remove('text-red-500');
+                feedbackElement.classList.add('text-green-500');
+            } else {
+                feedbackElement.textContent = 'Jawaban Anda salah. Silakan coba lagi.';
+                feedbackElement.classList.remove('text-green-500');
+                feedbackElement.classList.add('text-red-500');
+
+                allCorrect = false;
+            }
+        }
+
+        if (allCorrect) {
+            status_post_test = true;
+            // console.log('Semua jawaban benar! Status post test: ', status_post_test);
+        }
+    }
+
+    // Back Button
+    document.addEventListener("DOMContentLoaded", function () {
+        const backButton = document.getElementById('backButton');
+
+        backButton.addEventListener('click', function () {
+            history.back();
+        });
+    });
+</script>
+{% endblock %}

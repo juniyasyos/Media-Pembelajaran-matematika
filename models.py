@@ -1,8 +1,9 @@
 from app import db, login_manager
 from datetime import datetime
 from flask_login import UserMixin
-from sqlalchemy import func, Column, Integer, Text, ForeignKey, String, DateTime, Enum, Boolean
+from sqlalchemy import func, Column, Integer, Text, ForeignKey, String, DateTime, Enum, Boolean, Date
 from sqlalchemy.orm import relationship
+from sqlalchemy.ext.declarative import declarative_base
 import json
 
 
@@ -32,6 +33,8 @@ class User(db.Model, UserMixin):
     activation_code = db.Column(db.Boolean, default=False, nullable=False)
     role_id = db.Column(db.Integer, db.ForeignKey('role.id'), nullable=False)
     role = db.relationship('Role', backref='users')
+    point = db.Column(db.Integer, nullable=False)
+    
     
     def serialize(self):
         return {
@@ -40,7 +43,8 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'created_at': self.created_at.strftime('%Y-%m-%d %H:%M:%S'),
             'activation_code': self.activation_code,
-            'role': self.role.serialize() if self.role else None
+            'role': self.role.serialize() if self.role else None,
+            'point' : self.point
         }
 
 
@@ -114,6 +118,7 @@ class Topics(db.Model):
     lesson = db.relationship('Lesson', backref='topics')
     bab_id = db.Column(db.Integer)
     poin = db.Column(db.Integer)
+    src_topics = db.Column(db.String(255), nullable=False)
     
     def serialize(self):
         return {
@@ -122,34 +127,35 @@ class Topics(db.Model):
             'topics_name': self.topics_name,
             'lesson': self.lesson.serialize() if self.lesson else None,
             'bab_id': self.bab_id,
-            'poin' : self.poin
+            'poin' : self.poin,
+            'src_topics' : self.src_topics
         }
 
 
-class Explanation(db.Model):
-    __tablename__ = 'explanation'
-    id = db.Column(db.Integer, primary_key=True)
-    text = db.Column(db.Text, nullable=False)
-    image = db.Column(db.String(255))
-    video = db.Column(db.String(255))
-    priority = db.Column(db.Integer)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
-    created_by = db.Column(db.String(255), nullable=False)
-    topics_id = db.Column(db.Integer, db.ForeignKey('topics.id'), nullable=False)
-    topics = db.relationship('Topics', backref='explanations')
+# class Explanation(db.Model):
+#     __tablename__ = 'explanation'
+#     id = db.Column(db.Integer, primary_key=True)
+#     text = db.Column(db.Text, nullable=False)
+#     image = db.Column(db.String(255))
+#     video = db.Column(db.String(255))
+#     priority = db.Column(db.Integer)
+#     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+#     created_by = db.Column(db.String(255), nullable=False)
+#     topics_id = db.Column(db.Integer, db.ForeignKey('topics.id'), nullable=False)
+#     topics = db.relationship('Topics', backref='explanations')
     
-    def serialize(self):
-        return {
-            'id': self.id,
-            'text': self.text,
-            'image': self.image,
-            'video': self.video,
-            'priority': self.priority,
-            'created_at': self.created_at.strftime('%Y-%m-%d %H:%M:%S'),
-            'created_by': self.created_by,
-            'topics_id': self.topics_id,
-            'topics': self.topics.serialize() if self.topics else None
-        }
+#     def serialize(self):
+#         return {
+#             'id': self.id,
+#             'text': self.text,
+#             'image': self.image,
+#             'video': self.video,
+#             'priority': self.priority,
+#             'created_at': self.created_at.strftime('%Y-%m-%d %H:%M:%S'),
+#             'created_by': self.created_by,
+#             'topics_id': self.topics_id,
+#             'topics': self.topics.serialize() if self.topics else None
+#         }
 
 
 class UserPostTest(db.Model):
@@ -159,16 +165,28 @@ class UserPostTest(db.Model):
     topics_id = db.Column(db.Integer, db.ForeignKey('topics.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'),nullable=False)
     reading_duration = db.Column(db.Integer, nullable=False)
-    post_test_status = db.Column(db.Boolean)
 
     def serialize(self):
         return {
             'id': self.id,
             'topics_id': self.topics_id,
             'user_id': self.user_id,
-            'reading_duration': self.reading_duration,
-            'post_test_status': self.post_test_status
+            'reading_duration': self.reading_duration
         }
+
+
+class UserQuizStatus(db.Model):
+    __tablename__ = 'user_quiz_status'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
+    quiz_id = Column(Integer, ForeignKey('quiz.quiz_id'), nullable=False)
+    score = Column(Integer)
+    time = Column(Integer)
+    date = Column(Date)
+
+    user = relationship('User', backref='user_quiz_statuses')
+    quiz = relationship('Quiz', backref='user_quiz_statuses')
 
 
 class Quiz(db.Model):
@@ -329,6 +347,24 @@ def get_user_post_test_statuses(user_id):
 
             # Append the topics_id to the corresponding lesson_id in the dictionary
             filtered_topics_dict[lesson_id].append(topics_id)
+
+    return filtered_topics_dict
+
+
+def get_user_quiz_statuses(user_id):
+    data_user = UserQuizStatus.query.filter_by(user_id=user_id).all()
+
+    # Create a dictionary to store filtered topics for each lesson_id
+    filtered_topics_dict = {}
+
+    for data in data_user:
+        quiz_id = data.quiz_id
+        lesson_id = None
+
+        # Retrieve lesson_id based on quiz_id
+        lesson = Lesson.query.filter_by(quiz_id=quiz_id).first()
+        if quiz:
+            filtered_topics_dict[lesson.id] = lesson.quiz_id
 
     return filtered_topics_dict
 

@@ -11,11 +11,12 @@ module.exports = {
     "../../experimen/question.html",
     "../../experimen/lesson.html",
     "../../experimen/profil.html",
+    "../../experimen/404.html",
   ],
   theme: {
     extend: {
       "bg-arrow": "#F99437",
     },
   },
-  plugins: [],
+  plugins: [require("flowbite-typography")],
 };

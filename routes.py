@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for, flash
+from flask import render_template, request, redirect, url_for, flash, jsonify
 from flask_login import login_user, logout_user, login_required, current_user
 from app import app, db, bcrypt
 from forms import RegistrationForm, LoginForm
@@ -54,7 +54,6 @@ class UserController:
             flash('Registration successful! You can log in now.', 'success')
             return redirect(url_for('login'))
 
-
         return render_template('register.html', form=form)
 
 
@@ -66,13 +65,15 @@ class UserController:
             username = form.username.data
             password = form.password.data
             user = User.query.filter_by(username=username).first()
+            if user is None:
+                user = User.query.filter_by(email=username).first()
 
             if user and bcrypt.check_password_hash(user.password, password):
                 login_user(user)
                 LOGIN = True
                 return redirect(url_for('dashboard'))
             elif user is None:
-                flash("Can't find this username. Please try again or signup", 'error')
+                flash("Can't find this username or email. Please try again or signup", 'error')
             else:
                 flash('Invalid username or password. Please try again.', 'error')
 
@@ -91,7 +92,6 @@ class UserController:
 def dashboard():
     data_lesson = get_all(Lesson)
     all_modul_user = get_user_post_test_statuses(user_id=current_user.id)
-    print(all_modul_user)
     modul_user = sum(len(lesson) for lesson in all_modul_user.values())
     return render_template(
         "dashboard.html", 
@@ -100,7 +100,8 @@ def dashboard():
         post_test_user=all_modul_user, 
         data_topics=get_all_category_topics(), 
         user=current_user,
-        modul_user=modul_user)
+        modul_user=modul_user,
+        quiz_user=len(get_user_quiz_statuses(user_id=current_user.id)))
 
 @app.route("/Learning/get='<lesson_id>'", methods=["GET", "POST"])
 @login_required
@@ -113,24 +114,55 @@ def lesson(lesson_id):
         post_test_user=all_modul_user, 
         data_lesson_user=get_all_category_topics())
 
-@app.route("/question")
-def exercise():
-    # return get_questions_data_by_quiz_id(1)
-    return render_template('exercise.html', data_question=get_questions_data_by_quiz_id(1))
 
-
-@app.route("/Learning/get=<lesson_id>/topics=<topics_name>", methods=["GET", "POST"])
+@app.route("/Learning/get=<lesson_id>/quizz=<quiz_id>", methods=["GET", "POST"])
 @login_required
-def topics(lesson_id, topics_name):
-    data_topics = Topics.query.filter_by(topics_name=topics_name).first()
-    return render_template('topics.html', data_explanation=get_explanation_topics(data_topics.id), data_topics=data_topics)
+def quiz(lesson_id, quiz_id):
+    return render_template('exercise.html', data_question=get_questions_data_by_quiz_id(quiz_id=quiz_id))
+
+
+@app.route("/Learning/get='<lesson_id>'/topics=<src_topics>", methods=["GET", "POST"])
+@login_required
+def topics(lesson_id, src_topics):
+    data_topics = Topics.query.filter_by(src_topics=src_topics).first()
+    return render_template(f'topics/{src_topics}', data_topics=data_topics)
+
+
+@app.route('/save_progress', methods=['POST'])
+@login_required
+def save_progress():
+    try:
+        topics_id = int(request.form.get('topics_id'))
+        user_id = int(current_user.id)
+        reading_duration = int(request.form.get('reading_duration'))
+
+        # Check if data already exists
+        existing_data = UserPostTest.query.filter_by(topics_id=topics_id, user_id=user_id).first()
+
+        if existing_data:
+            # Update reading_duration
+            existing_data.reading_duration += reading_duration
+            db.session.commit()
+            response = {'status': 'success', 'message': 'Data berhasil diupdate.'}
+        else:
+            # Save new data
+            new_data = UserPostTest(topics_id=topics_id, user_id=user_id, reading_duration=reading_duration)
+            db.session.add(new_data)
+            db.session.commit()
+
+            response = {'status': 'success', 'message': 'Data berhasil disimpan.'}
+
+        return jsonify(response), 200
+
+    except Exception as e:
+        response = {'status': 'error', 'message': 'Gagal menyimpan progress.'}
+        return jsonify(response), 500
 
 
 @app.route("/Profile", methods=["GET", "POST"])
 @login_required
 def profile():
     return render_template('profil.html', user=current_user)
-
     
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -146,3 +178,8 @@ def login():
 @app.route('/logout')
 def logout():
     return UserController.logout()
+
+# Handler untuk error 404
+@app.errorhandler(404)
+def not_found_error(error):
+    return render_template('404.html'), 404
