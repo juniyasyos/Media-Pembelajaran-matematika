@@ -1,0 +1,215 @@
+{% extends 'base_topics.html' %}
+
+{% block articles %}
+<article class="w-[390px]" data-topicsId="{{ data_topics.id }}">
+    <!-- Materi -->
+    <div class="w-full pt-1">
+        <h1 class="font-medium mt-1">Juniyasyos, <span class="font-normal">1 Jan 2024</span></h1>
+    </div>
+    <img src="{{ url_for('static', filename='img/algorithm.jpg') }}" alt="img algorithm" width="390" class="rounded-md">
+    <div class="container mx-auto p-8 bg-gray-100 rounded-lg shadow-lg">
+        <h2 class="text-3xl font-bold text-indigo-700 mb-6">Sifat-Sifat Eksponen</h2>
+
+        <div class="mb-4">
+            Sifat-sifat eksponen merupakan aturan-aturan matematika yang menggambarkan perilaku operasi
+            eksponen. Berikut adalah delapan sifat eksponen yang umum digunakan.
+        </div>
+        <!-- Sifat 1 -->
+        <div class="mb-8">
+            <h3 class="font-bold text-lg mb-2">Sifat 1: Perkalian Eksponen dengan Dasar yang Sama</h3>
+            <p class="text-gray-800">
+                \[a^m \cdot a^n = a^{m+n}\]
+                Artinya, jika kita memiliki dua pangkat eksponen dengan dasar yang sama, kita dapat
+                menggabungkannya dengan menambahkan eksponennya.
+            </p>
+        </div>
+
+        <!-- Sifat 2 -->
+        <div class="mb-8">
+            <h3 class="font-bold text-lg mb-2">Sifat 2: Pembagian Eksponen dengan Dasar yang Sama</h3>
+            <p class="text-gray-800">
+                \[\frac{a^m}{a^n} = a^{m-n}\]
+                Jika kita memiliki dua pangkat eksponen dengan dasar yang sama, kita dapat membaginya
+                dengan mengurangkan eksponennya.
+            </p>
+        </div>
+
+        <!-- Sifat 3 -->
+        <div class="mb-8">
+            <h3 class="font-bold text-lg mb-2">Sifat 3: Eksponen Pangkat Eksponen</h3>
+            <p class="text-gray-800">
+                \[(a^m)^n = a^{m \cdot n}\]
+                Jika kita memiliki eksponen yang dinaikkan ke pangkat lain, kita dapat mengalikan
+                eksponennya.
+            </p>
+        </div>
+
+        <!-- Sifat 4 -->
+        <div class="mb-8">
+            <h3 class="font-bold text-lg mb-2">Sifat 4: Eksponen dengan Pangkat 1</h3>
+            <p class="text-gray-800">
+                \[a^1 = a\]
+                Setiap bilangan yang dipangkatkan dengan 1 adalah bilangan itu sendiri.
+            </p>
+        </div>
+
+        <!-- Sifat 5 -->
+        <div class="mb-8">
+            <h3 class="font-bold text-lg mb-2">Sifat 5: Eksponen dengan Pangkat 0</h3>
+            <p class="text-gray-800">
+                \[a^0 = 1\]
+                Setiap bilangan (kecuali 0) yang dipangkatkan dengan 0 adalah 1.
+            </p>
+        </div>
+
+        <!-- Sifat 6 -->
+        <div class="mb-8">
+            <h3 class="font-bold text-lg mb-2">Sifat 6: Eksponen dengan Pangkat Negatif</h3>
+            <p class="text-gray-800">
+                \[a^{-n} = \frac{1}{a^n}\]
+                Bilangan dengan pangkat negatif dapat diubah menjadi bentuk pecahan dengan
+                menempatkannya di denominator.
+            </p>
+        </div>
+
+        <!-- Sifat 7 -->
+        <div class="mb-8">
+            <h3 class="font-bold text-lg mb-2">Sifat 7: Eksponen dengan Hasil Perkalian yang Sama</h3>
+            <p class="text-gray-800">
+                \[a^m \cdot b^m = (a \cdot b)^m\]
+                Jika kita memiliki dua eksponen dengan hasil perkalian yang sama, kita dapat
+                menggabungkannya dengan mengalikan dasarnya.
+            </p>
+        </div>
+
+        <!-- Sifat 8 -->
+        <div class="mb-8">
+            <h3 class="font-bold text-lg mb-2">Sifat 8: Eksponen dengan Hasil Pembagian yang Sama</h3>
+            <p class="text-gray-800">
+                \[\frac{a^m}{b^m} = \left(\frac{a}{b}\right)^m\]
+                Jika kita memiliki dua eksponen dengan hasil pembagian yang sama, kita dapat
+                menggabungkannya dengan membagi dasarnya.
+            </p>
+        </div>
+
+        <p class="mb-6 text-gray-800">
+            Eksponen memiliki sifat khusus yang memudahkan kita dalam melakukan operasi matematika
+            dengan eksponen.
+        </p>
+
+        <p class="mb-6 text-gray-800">
+            Penting untuk diingat bahwa eksponen tidak hanya terbatas pada bilangan bulat. Eksponen juga
+            bisa berupa bilangan pecahan atau bahkan bilangan negatif. Misalnya,
+            <span class="font-bold text-green-500">\(2^{-3}\)</span> dapat dituliskan sebagai
+            <span class="font-bold"> \(\frac{1}{2^{3}}\) </span>, yang sama dengan <span class="font-bold">
+                \(\frac{1}{8}\) </span>.
+        </p>
+
+        <p class="text-gray-800">
+            Dengan memahami konsep eksponen, kita dapat menyelesaikan berbagai masalah matematika dan
+            melibatkan eksponen dalam berbagai aplikasi di kehidupan sehari-hari,
+            seperti dalam ilmu pengetahuan, teknologi, dan ekonomi.
+        </p>
+    </div>
+
+
+
+    <!-- Post-test Pilihan Ganda -->
+    <div class="container mx-auto p-8 bg-gray-100 rounded-lg shadow-lg mt-8">
+        <h2 class="text-3xl font-bold text-indigo-700 mb-6">Post-Test</h2>
+
+        <div class="mb-4" id="question1">
+            <p class="text-gray-800"><strong>1. </strong>Apa rumus dari sifat perkalian eksponen dengan
+                dasar yang sama?</p>
+
+            <label class="block text-gray-700 mt-2">
+                <input type="radio" class="mr-2" name="question1" value="a" id="q1-a">
+                <span class="text-gray-800">A. \(a^m \cdot a^n = a^{m+n}\)</span>
+            </label>
+
+            <label class="block text-gray-700">
+                <input type="radio" class="mr-2" name="question1" value="b" id="q1-b">
+                <span class="text-gray-800">B. \(a^m \cdot a^n = a^{mn}\)</span>
+            </label>
+
+            <label class="block text-gray-700">
+                <input type="radio" class="mr-2" name="question1" value="c" id="q1-c">
+                <span class="text-gray-800">C. \(\frac{a^m}{a^n} = a^{m+n}\)</span>
+            </label>
+
+            <label class="block text-gray-700">
+                <input type="radio" class="mr-2" name="question1" value="d" id="q1-d">
+                <span class="text-gray-800">D. \(\frac{a^m}{a^n} = a^{mn}\)</span>
+            </label>
+
+            <p id="feedback-question1" class="text-gray-800"></p>
+
+        </div>
+
+        <div class="mb-4" id="question2">
+            <p class="text-gray-800"><strong>2. </strong>Bagaimana hubungan antara \(a^{-n}\) dengan
+                \(\frac{1}{a^n}\)?</p>
+
+            <label class="block text-gray-700 mt-2">
+                <input type="radio" class="mr-2" name="question2" value="a" id="q3-a">
+                <span class="text-gray-800">A. \(a^{-n} = \frac{1}{a^n}\)</span>
+            </label>
+
+            <label class="block text-gray-700">
+                <input type="radio" class="mr-2" name="question2" value="b" id="q3-b">
+                <span class="text-gray-800">B. \(a^{-n} = a^n\)</span>
+            </label>
+
+            <label class="block text-gray-700">
+                <input type="radio" class="mr-2" name="question2" value="c" id="q3-c">
+                <span class="text-gray-800">C. \(a^{-n} = -a^n\)</span>
+            </label>
+
+            <label class="block text-gray-700">
+                <input type="radio" class="mr-2" name="question2" value="d" id="q3-d">
+                <span class="text-gray-800">D. \(a^{-n} = \frac{1}{n^a}\)</span>
+            </label>
+
+            <p id="feedback-question2" class="text-gray-800"></p>
+        </div>
+
+        <div id="question3">
+            <p class="text-gray-800"><strong>3. </strong>Berapakah nilai dari \(a^0\)?</p>
+
+            <label class="block text-gray-700 mt-2">
+                <input type="radio" class="mr-2" name="question3" value="a" id="q5-a">
+                <span class="text-gray-800">A. 0</span>
+            </label>
+
+            <label class="block text-gray-700">
+                <input type="radio" class="mr-2" name="question3" value="b" id="q5-b">
+                <span class="text-gray-800">B. 1</span>
+            </label>
+
+            <label class="block text-gray-700">
+                <input type="radio" class="mr-2" name="question3" value="c" id="q5-c">
+                <span class="text-gray-800">C. \(a\)</span>
+            </label>
+
+            <label class="block text-gray-700">
+                <input type="radio" class="mr-2" name="question3" value="d" id="q5-d">
+                <span class="text-gray-800">D. \(\infty\)</span>
+            </label>
+
+            <p id="feedback-question3" class="text-gray-800"></p>
+        </div>
+
+        <button onclick="checkAnswers()" class="bg-blue-500 text-white py-2 px-4 rounded mt-4 hover:bg-blue-700">Cek
+            Jawaban</button>
+    </div>
+{% endblock %}
+
+{% block controllers %}
+<script>
+    const correctAnswers = {
+        question1: 'a', // Sifat Perkalian Eksponen dengan Dasar yang Sama
+        question2: 'a', // Sifat Eksponen Pangkat Eksponen
+        question3: 'b'  // Sifat Eksponen dengan Pangkat Negatif
+    };
+</script>
+{% endblock %}

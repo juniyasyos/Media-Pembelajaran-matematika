@@ -4,7 +4,6 @@
 <!-- Subbab Materi -->
 <article class="w-[390px]" data-topicsId="{{ data_topics.id }}">
     <div class="w-full pt-1">
-        <!-- <h1 class="text-2xl font-semibold">Definisi Eksponen</h1> -->
         <h1 class="font-medium mt-1">Juniyasyos, <span class="font-normal">1 Jan 2024</span></h1>
     </div>
     <img src="{{ url_for('static', filename='img/algorithm.jpg') }}" alt="img algorithm" width="390" class="rounded-md">
@@ -139,68 +138,14 @@
         <button onclick="checkAnswers()" class="bg-blue-500 text-white py-2 px-4 rounded mt-4 hover:bg-blue-700">Cek
             Jawaban</button>
     </div>
-    <div class="my-6 flex justify-end">
-        <button class="px-4 py-2 bg-blue-500 text-white rounded-md
-            hover:bg-blue-600 transition duration-300 ease-in-out transform
-            active:scale-95 focus:outline-none focus:ring focus:border-blue-300" id="save-progress">
-            Save Progress
-        </button>
-    </div>
-</article>
 {% endblock %}
 
 {% block controllers %}
 <script>
-    let status_post_test = false;
-
-    // Fungsi untuk mengecek jawaban
-    function checkAnswers() {
-        const correctAnswers = {
-            question1: 'c',
-            question2: 'c',
-            question3: 'b'
-        };
-
-        const userAnswers = {
-            question1: document.querySelector('input[name="question1"]:checked').value,
-            question2: document.querySelector('input[name="question2"]:checked').value,
-            question3: document.querySelector('input[name="question3"]:checked').value
-        };
-
-        let allCorrect = true;
-
-        for (const question in correctAnswers) {
-            const userAnswer = userAnswers[question];
-            const correctAnswer = correctAnswers[question];
-
-            const feedbackElement = document.getElementById(`feedback-${question}`);
-
-            if (userAnswer === correctAnswer) {
-                feedbackElement.textContent = 'Jawaban Anda benar!';
-                feedbackElement.classList.remove('text-red-500');
-                feedbackElement.classList.add('text-green-500');
-            } else {
-                feedbackElement.textContent = 'Jawaban Anda salah. Silakan coba lagi.';
-                feedbackElement.classList.remove('text-green-500');
-                feedbackElement.classList.add('text-red-500');
-
-                allCorrect = false;
-            }
-        }
-
-        if (allCorrect) {
-            status_post_test = true;
-            // console.log('Semua jawaban benar! Status post test: ', status_post_test);
-        }
-    }
-
-    // Back Button
-    document.addEventListener("DOMContentLoaded", function () {
-        const backButton = document.getElementById('backButton');
-
-        backButton.addEventListener('click', function () {
-            history.back();
-        });
-    });
+    const correctAnswers = {
+        question1: 'c',
+        question2: 'c',
+        question3: 'b'
+    };
 </script>
 {% endblock %}

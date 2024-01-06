@@ -51,7 +51,7 @@
                         <h1 class="text-[15px] font-medium">Contoh Soal</h1>
                         <img src="{{ url_for('static', filename='img/ex.svg') }}" alt="" width="35">
                     </div>
-                    {% if (post_test_user[data_lesson.id]|length) != (data_lesson_user[data_lesson.id]) %}
+                    {% if (post_test_user[data_lesson.id]|length) != (data_lesson_user[data_lesson.id] + 1) %}
                     <div
                         class="bg-slate-600 m-2 py-2 px-5 w-[180px] shadow-xl rounded-lg border border-3 border-slate-600 flex justify-between items-center mr-3">
                         <h1 class="text-[15px] font-medium text-white opacity-45">Kuis</h1>

@@ -1,0 +1,156 @@
+{% extends 'base_topics.html' %}
+
+{% block articles %}
+<article class="w-[390px]" data-topicsId="{{ data_topics.id }}">
+    <div class="w-full pt-1">
+        <h1 class="font-medium mt-1">Juniyasyos, <span class="font-normal">1 Jan 2024</span></h1>
+    </div>
+    <img src="{{ url_for('static', filename='img/exponential-function.jpg') }}" alt="Exponential Function" width="390"
+        class="rounded-md">
+    <div class="container mx-auto p-8 bg-gray-100 rounded-lg shadow-lg">
+        <h2 class="text-3xl font-bold text-indigo-700 mb-6">Fungsi Eksponen</h2>
+
+        <p class="mb-6 text-gray-800 leading-relaxed">
+            Fungsi eksponen adalah salah satu konsep fundamental dalam matematika yang melibatkan operasi perpangkatan.
+            Fungsi ini sering dituliskan dalam bentuk \(f(x) = a^x\), di mana \(a\) disebut sebagai dasar (basis)
+            eksponen,
+            dan \(x\) adalah variabel eksponen.
+        </p>
+
+        <p class="mb-6 text-gray-800">
+            <strong>Rumus Dasar:</strong> Fungsi eksponen umumnya dinyatakan dalam bentuk \(f(x) = a^x\), di mana:
+        <ul class="list-disc ml-6">
+            <li>\(f(x)\) adalah nilai fungsi pada titik \(x\)</li>
+            <li>\(a\) adalah dasar eksponen</li>
+            <li>\(x\) adalah variabel eksponen</li>
+        </ul>
+        </p>
+
+        <p class="mb-6 text-gray-800">
+            <strong>Sifat-Sifat Fungsi Eksponen:</strong>
+        <ul class="list-disc ml-6">
+            <li><em>Pertumbuhan Eksponensial:</em> Jika \(a > 1\), maka \(f(x) = a^x\) mengalami pertumbuhan
+                eksponensial saat \(x\) meningkat.</li>
+            <li><em>Penurunan Eksponensial:</em> Jika \(0 < a < 1\), maka \(f(x)=a^x\) mengalami penurunan eksponensial
+                    saat \(x\) meningkat.</li>
+            <li><em>Sifat Nol:</em> \(f(0) = 1\) untuk semua \(a\).</li>
+            <li><em>Sifat Identitas:</em> \(a^0 = 1\) untuk setiap \(a\).</li>
+            <li><em>Operasi Eksponen:</em> Fungsi eksponen memiliki sifat seperti hukum perkalian eksponen dan hukum
+                pembagian eksponen.</li>
+        </ul>
+        </p>
+
+        <p class="mb-6 text-gray-800">
+            <strong>Penerapan Fungsi Eksponen:</strong>
+        <ul class="list-disc ml-6">
+            <li><em>Pertumbuhan Populasi:</em> Model pertumbuhan populasi di bidang demografi.</li>
+            <li><em>Radioaktivitas:</em> Hukum peluruhan radioaktif dapat dimodelkan menggunakan fungsi eksponen.</li>
+            <li><em>Keuangan:</em> Dalam keuangan, fungsi eksponen digunakan untuk menghitung pertumbuhan investasi.
+            </li>
+        </ul>
+        </p>
+
+        <p class="text-gray-800">
+            Fungsi eksponen memiliki peran penting dalam memahami berbagai fenomena matematika dan ilmu pengetahuan.
+            Kemampuannya untuk menggambarkan pertumbuhan atau penurunan yang cepat menjadikannya alat yang sangat
+            berguna
+            dalam memodelkan berbagai situasi dalam kehidupan sehari-hari.
+        </p>
+    </div>
+
+    <div class="container mx-auto p-8 bg-gray-100 rounded-lg shadow-lg mt-8">
+        <h2 class="text-3xl font-bold text-indigo-700 mb-6">Post-Test</h2>
+
+        <div class="mb-4" id="question1">
+            <p class="text-gray-800"><strong>1. </strong>Apa rumus umum dari fungsi eksponen?</p>
+
+            <label class="block text-gray-700 mt-2">
+                <input type="radio" class="mr-2" name="question1" value="a" id="q1-a">
+                <span class="text-gray-800">A. \(f(x) = x^a\)</span>
+            </label>
+
+            <label class="block text-gray-700">
+                <input type="radio" class="mr-2" name="question1" value="b" id="q1-b">
+                <span class="text-gray-800">B. \(f(x) = a^x\)</span>
+            </label>
+
+            <label class="block text-gray-700">
+                <input type="radio" class="mr-2" name="question1" value="c" id="q1-c">
+                <span class="text-gray-800">C. \(f(x) = ax\)</span>
+            </label>
+
+            <label class="block text-gray-700">
+                <input type="radio" class="mr-2" name="question1" value="d" id="q1-d">
+                <span class="text-gray-800">D. \(f(x) = x + a\)</span>
+            </label>
+
+            <p id="feedback-question1" class="text-gray-800"></p>
+        </div>
+
+        <div class="mb-4" id="question2">
+            <p class="text-gray-800"><strong>2. </strong>Jika \(f(x) = 3^x\), apa nilai \(f(2)\)?</p>
+
+            <label class="block text-gray-700 mt-2">
+                <input type="radio" class="mr-2" name="question2" value="a" id="q2-a">
+                <span class="text-gray-800">A. 6</span>
+            </label>
+
+            <label class="block text-gray-700">
+                <input type="radio" class="mr-2" name="question2" value="b" id="q2-b">
+                <span class="text-gray-800">B. 9</span>
+            </label>
+
+            <label class="block text-gray-700">
+                <input type="radio" class="mr-2" name="question2" value="c" id="q2-c">
+                <span class="text-gray-800">C. 3</span>
+            </label>
+
+            <label class="block text-gray-700">
+                <input type="radio" class="mr-2" name="question2" value="d" id="q2-d">
+                <span class="text-gray-800">D. 12</span>
+            </label>
+
+            <p id="feedback-question2" class="text-gray-800"></p>
+        </div>
+
+        <div id="question3">
+            <p class="text-gray-800"><strong>3. </strong>Apa sifat dari fungsi eksponen jika \(a > 1\)?</p>
+
+            <label class="block text-gray-700 mt-2">
+                <input type="radio" class="mr-2" name="question3" value="a" id="q3-a">
+                <span class="text-gray-800">A. Pertumbuhan eksponensial</span>
+            </label>
+
+            <label class="block text-gray-700">
+                <input type="radio" class="mr-2" name="question3" value="b" id="q3-b">
+                <span class="text-gray-800">B. Penurunan eksponensial</span>
+            </label>
+
+            <label class="block text-gray-700">
+                <input type="radio" class="mr-2" name="question3" value="c" id="q3-c">
+                <span class="text-gray-800">C. Linear</span>
+            </label>
+
+            <label class="block text-gray-700">
+                <input type="radio" class="mr-2" name="question3" value="d" id="q3-d">
+                <span class="text-gray-800">D. Konstan</span>
+            </label>
+
+            <p id="feedback-question3" class="text-gray-800"></p>
+        </div>
+
+        <button onclick="checkAnswers()" class="bg-blue-500 text-white py-2 px-4 rounded mt-4 hover:bg-blue-700">Cek
+            Jawaban</button>
+    </div>
+
+    {% endblock %}
+
+    {% block controllers %}
+    <script>
+        const correctAnswers = {
+            question1: 'b',
+            question2: 'b',
+            question3: 'a'
+        };
+    </script>
+    {% endblock %}
