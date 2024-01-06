@@ -379,6 +379,17 @@ def get_all_category_topics():
         else:
             category_topics[topic.lesson_id] += 1
     return category_topics
+
+def get_count_category_lesson():
+    data_lesson = Lesson.query.all()
+    
+    category_lesson = {}
+    for lesson in data_lesson:
+        if lesson.class_id not in category_lesson:
+            category_lesson[lesson.class_id] = 0
+        else:
+            category_lesson[lesson.class_id] += 1
+    return category_lesson
         
 
 def get_questions_data_by_quiz_id(quiz_id):

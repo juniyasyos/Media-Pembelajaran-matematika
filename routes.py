@@ -101,6 +101,7 @@ def dashboard():
         data_topics=get_all_category_topics(), 
         user=current_user,
         modul_user=modul_user,
+        data_quiz=get_count_category_lesson(),
         quiz_user=len(get_user_quiz_statuses(user_id=current_user.id)))
 
 @app.route("/Learning/get='<lesson_id>'", methods=["GET", "POST"])
