@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href=".{{ url_for('static', filename='./../static/css/question/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/question/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/question/base.css') }}">
 </head>
 
@@ -103,6 +103,8 @@
         </div>
     </div>
     <script src="{{ url_for('static', filename='js/question.js') }}"></script>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
 </body>
-
 </html>

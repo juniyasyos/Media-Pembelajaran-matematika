@@ -12,13 +12,19 @@
     <img src="{{ url_for('static', filename='img/bg welcome 4.jpg') }}" alt="background welcome" class="rounded-2xl">
     <div class="welcoming text-slate-300 ">
         <h1 class="font-bold">Holla, {{ user.username }}</h1>
+        {% if user.role_id == 2 %}
         <h1 class="font-normal">Siapkah kamu mempelajari hal baru?</h1>
+        {% else %}
+        <h1 class="font-normal">Mari Semangat Menuntun Penerus Bangsa</h1>
+        {% endif %}
     </div>
 </div>
 <!-- END WELCOMING TO USER -->
 
 <!-- Start Status User -->
+
 <div class="info-user flex py-2 bg-white shadow-sm shadow-slate-600 justify-between items-center rounded-lg px-5">
+    {% if user.role_id == 2 %}
     <div class="text-left m-2">
         <h1 class="font-semibold">{{ user.username }}</h1>
         <div class="flex justify-center">
@@ -40,6 +46,21 @@
             <h1 class="text-[10px] text-center">{{ quiz_user }} Kuis</h1>
         </div>
     </div>
+    {% else %}
+    <div class="text-left m-2 mx-4">
+        <h1 class="font-semibold">Guru</h1>
+        <div class="flex">
+            <h1 class="font-normal text-[12px] mr-1">Ahmad Ilyas</h1>
+        </div>
+    </div>
+    <div class="flex mx-4">
+        <img src="../static/img/students.png" alt="learning icon" width="30">
+        <div class="ml-1">
+            <h1 class="text-[11px] font-bold">Jumlah Siswa</h1>
+            <h1 class="text-[10px] text-center">{{ all_user }}</h1>
+        </div>
+    </div>
+    {% endif %}
 </div>
 <!-- End Status User -->
 
@@ -79,6 +100,7 @@
     <!-- Start sub materi display -->
     <div class="text-sm">
         {% for lesson in data_lesson %}
+        {% if user.role_id == 2 %}
         <div class="flex justify-center mb-4 lesson-element"
             data-class="{{ lesson.class_.class_name }}: {{ lesson.class_.semester.semester_name }}">
             <!-- Kelas selection -->
@@ -116,6 +138,48 @@
                 </div>
             </div>
         </div>
+        {% else %}
+        <div class="flex justify-center mb-4 lesson-element"
+            data-class="{{ lesson.class_.class_name }}: {{ lesson.class_.semester.semester_name }}">
+            <!-- Kelas selection -->
+            <div class="w-[360px] bg-white shadow-sm shadow-slate-600 justify-start rounded-lg">
+                <div class="flex">
+                    <img src="{{ url_for('static', filename='img/ogo.jpg') }}" alt="" width="50"
+                        class="border border-slate-600 rounded-xl m-2">
+                    <h1 class="m-2 ml-3 mr-7">{{ lesson.lesson_name }}</h1>
+                </div>
+                <div class="flex justify-between w-[340px] ml-2">
+                    <div class="flex-none bg-slate-200 rounded-md pb-1">
+                        <h1 class="m-2 ml-3 mr-7 font-extralight">Materi</h1>
+                        <div class="flex">
+                            <h1 class="ml-3 mr-7 mt-[-10px] font-semibold">{{ data_topics[lesson.id] + 1}} modul</h1>
+                        </div>
+                    </div>
+                    <div class="flex-none bg-slate-200 rounded-md pb-1">
+                        <h1 class="m-2 ml-3 mr-7 font-extralight">Track Modul</h1>
+                        <div class="flex">
+                            <h1 class="ml-3 mr-7 mt-[-10px] font-semibold">{{ all_modul_user[lesson.id] | length }}
+                                siswa</h1>
+                        </div>
+                    </div>
+                    <div class="flex-none bg-slate-200 rounded-md pb-1">
+                        <h1 class="m-2 ml-3 mr-7 font-extralight">Track Quiz</h1>
+                        <div class="flex">
+                            <h1 class="ml-3 mr-7 mt-[-10px] font-semibold">{{ all_user_quiz_status[lesson.id] | length
+                                }} siswa
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-end mr-4 mt-3 mb-2 space-x-3">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-5 rounded"
+                        id="btnLearning" data-learning="{{ lesson.id }}" onclick="handleLearningClick(this)">
+                        Materi
+                    </button>
+                </div>
+            </div>
+        </div>
+        {% endif%}
         {% endfor %}
     </div>
     <!-- End sub materi display -->

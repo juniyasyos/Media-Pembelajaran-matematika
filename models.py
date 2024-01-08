@@ -35,7 +35,6 @@ class User(db.Model, UserMixin):
     role = db.relationship('Role', backref='users')
     point = db.Column(db.Integer, nullable=False)
     
-    
     def serialize(self):
         return {
             'id': self.id,
@@ -58,8 +57,7 @@ class Semester(db.Model):
             'id': self.id,
             'semester_name': self.semester_name
         }
-
-
+        
 
 class Bab(db.Model):
     __tablename__ = 'bab'
@@ -97,7 +95,7 @@ class Lesson(db.Model):
     quiz_id = db.Column(db.Integer, db.ForeignKey('questions.id'), nullable=False)
     lesson_name = db.Column(db.String(255), nullable=False)
     class_ = db.relationship('Class', backref='lessons')
-    # quiz = db.relationship('Question', backref='lessons')
+    # quiz = db.relationship('quiz', backref='lessons')
     
     def serialize(self):
         return {
@@ -130,32 +128,6 @@ class Topics(db.Model):
             'poin' : self.poin,
             'src_topics' : self.src_topics
         }
-
-
-# class Explanation(db.Model):
-#     __tablename__ = 'explanation'
-#     id = db.Column(db.Integer, primary_key=True)
-#     text = db.Column(db.Text, nullable=False)
-#     image = db.Column(db.String(255))
-#     video = db.Column(db.String(255))
-#     priority = db.Column(db.Integer)
-#     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
-#     created_by = db.Column(db.String(255), nullable=False)
-#     topics_id = db.Column(db.Integer, db.ForeignKey('topics.id'), nullable=False)
-#     topics = db.relationship('Topics', backref='explanations')
-    
-#     def serialize(self):
-#         return {
-#             'id': self.id,
-#             'text': self.text,
-#             'image': self.image,
-#             'video': self.video,
-#             'priority': self.priority,
-#             'created_at': self.created_at.strftime('%Y-%m-%d %H:%M:%S'),
-#             'created_by': self.created_by,
-#             'topics_id': self.topics_id,
-#             'topics': self.topics.serialize() if self.topics else None
-#         }
 
 
 class UserPostTest(db.Model):
@@ -251,60 +223,6 @@ class AnswerOption(db.Model):
         }
 
 
-# class UserLesson(db.Model):
-#     __tablename__ = 'user_lesson'
-#     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
-#     lesson_id = db.Column(db.Integer, db.ForeignKey('lesson.id'), primary_key=True)
-#     progress = db.Column(db.Integer)
-#     user = db.relationship('User', backref='user_lessons')
-#     lesson = db.relationship('Lesson', backref='user_lessons')
-    
-#     def serialize(self):
-#         return {
-#             'user_id': self.user_id,
-#             'lesson_id': self.lesson_id,
-#             'progress': self.progress,
-#             'user': self.user.serialize() if self.user else None,
-#             'lesson': self.lesson.serialize() if self.lesson else None
-#         }
-
-
-# class UserTopics(db.Model):
-#     __tablename__ = 'user_topics'
-#     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
-#     topics_id = db.Column(db.Integer, db.ForeignKey('topics.id'), primary_key=True)
-#     status_read = db.Column(db.String(255))
-#     user = db.relationship('User', backref='user_topics')
-#     topics = db.relationship('Topics', backref='user_topics')
-    
-#     def serialize(self):
-#         return {
-#             'user_id': self.user_id,
-#             'topics_id': self.topics_id,
-#             'status_read': self.status_read,
-#             'user': self.user.serialize() if self.user else None,
-#             'topics': self.topics.serialize() if self.topics else None
-#         }
-
-
-# class UserQuestion(db.Model):
-#     __tablename__ = 'user_question'
-#     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
-#     question_id = db.Column(db.Integer, db.ForeignKey('questions.id'), primary_key=True)
-#     score = db.Column(db.Integer)
-#     user = db.relationship('User', backref='user_questions')
-#     question = db.relationship('Question', backref='user_questions')
-    
-#     def serialize(self):
-#         return {
-#             'user_id': self.user_id,
-#             'question_id': self.question_id,
-#             'score': self.score,
-#             'user': self.user.serialize() if self.user else None,
-#             'question': self.question.serialize() if self.question else None
-#         }
-
-
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -323,6 +241,7 @@ def get_topics_lesson(id_lesson):
 def get_explanation_topics(id_topics):
     explanation_topics = Explanation.query.filter_by(topics_id=id_topics).all()
     return [explanation.serialize() for explanation in explanation_topics]
+
 
 def get_user_post_test_statuses(user_id):
     data_user = UserPostTest.query.filter_by(user_id=user_id).all()
@@ -351,10 +270,53 @@ def get_user_post_test_statuses(user_id):
     return filtered_topics_dict
 
 
+def get_all_user_post_test_statuses():
+    data_user = UserPostTest.query.all()
+    data_topics = get_all_category_topics()
+
+    # Create a dictionary to store filtered topics for each lesson_id
+    filtered_topics_dict = {}
+
+    for data in data_user:
+        data_posttest_user = get_user_post_test_statuses(data.user_id)
+        data_user_spec = User.query.filter_by(id=data.user_id).first()
+        topics_id = data.topics_id
+        lesson_id = None
+
+        topics = Topics.query.filter_by(id=topics_id).first()
+        if topics:
+            lesson_id = topics.lesson_id
+
+        if lesson_id is not None:
+            if lesson_id not in filtered_topics_dict:
+                filtered_topics_dict[lesson_id] = []
+            if (len(data_posttest_user[lesson_id]) == data_topics[lesson_id]+1) and data.user_id not in filtered_topics_dict[lesson_id] and data_user_spec.role_id == 2:
+                filtered_topics_dict[lesson_id].append(data.user_id)
+
+    return filtered_topics_dict
+
+
 def get_user_quiz_statuses(user_id):
     data_user = UserQuizStatus.query.filter_by(user_id=user_id).all()
 
     # Create a dictionary to store filtered topics for each lesson_id
+    filtered_topics_dict = {}
+
+    for data in data_user:
+        quiz_id = data.quiz_id
+        lesson_id = None
+
+        # Retrieve lesson_id based on quiz_id
+        lesson = Lesson.query.filter_by(quiz_id=quiz_id).first()
+        if quiz:
+            filtered_topics_dict[lesson.id] = lesson.quiz_id
+
+    return filtered_topics_dict
+
+
+def get_all_user_quiz_statuses():
+    data_user = UserQuizStatus.query.all()
+
     filtered_topics_dict = {}
 
     for data in data_user:
@@ -379,6 +341,7 @@ def get_all_category_topics():
         else:
             category_topics[topic.lesson_id] += 1
     return category_topics
+
 
 def get_count_category_lesson():
     data_lesson = Lesson.query.all()

@@ -1,6 +1,7 @@
 from flask import render_template, request, redirect, url_for, flash, jsonify
 from flask_login import login_user, logout_user, login_required, current_user
 from app import app, db, bcrypt
+from datetime import datetime, timedelta
 from forms import RegistrationForm, LoginForm
 from models import *
 from functools import reduce
@@ -47,7 +48,7 @@ class UserController:
                 role = Role.query.filter_by(role_name='siswa').first()
 
             # Create a new user with the obtained role
-            new_user = User(username=username, email=email, password=hashed_password, role=role)
+            new_user = User(username=username, email=email, password=hashed_password, role=role, point=0)
             db.session.add(new_user)
             db.session.commit()
 
@@ -102,18 +103,28 @@ def dashboard():
         user=current_user,
         modul_user=modul_user,
         data_quiz=get_count_category_lesson(),
-        quiz_user=len(get_user_quiz_statuses(user_id=current_user.id)))
+        quiz_user=len(get_user_quiz_statuses(user_id=current_user.id)),
+        all_modul_user=get_all_user_post_test_statuses(),
+        all_user_quiz_status=get_all_user_quiz_statuses(),
+        all_user=User.query.filter_by(role_id=2).count())
+
 
 @app.route("/Learning/get='<lesson_id>'", methods=["GET", "POST"])
 @login_required
 def lesson(lesson_id):
     all_modul_user = get_user_post_test_statuses(user_id=current_user.id)
+    data_lesson = Lesson.query.filter_by(id=lesson_id).first()
+    data_quiz = Quiz.query.filter_by(quiz_id=data_lesson.quiz_id).first()
     return render_template(
         'lesson.html', 
         data_topics=get_topics_lesson(lesson_id), 
-        data_lesson=Lesson.query.filter_by(id=lesson_id).first(),
+        data_lesson=data_lesson,
         post_test_user=all_modul_user, 
-        data_lesson_user=get_all_category_topics())
+        data_lesson_user=get_all_category_topics(),
+        all_modul_user=get_all_user_post_test_statuses(),
+        all_user_quiz_status=get_all_user_quiz_statuses(),
+        user=current_user,
+        data_quiz=data_quiz)
 
 
 @app.route("/Learning/get=<lesson_id>/quizz=<quiz_id>", methods=["GET", "POST"])
@@ -164,6 +175,37 @@ def save_progress():
         # print("gagal = ", e)
         response = {'status': 'error', 'message': 'Gagal menyimpan progress.'}
         return jsonify(response), 500
+
+
+@app.route('/update_quiz/<quiz_id>', methods=['POST'])
+@login_required
+def handle_form_submission(quiz_id):
+    try:
+        data = request.json
+        quiz = Quiz.query.filter_by(quiz_id=quiz_id).first()
+
+        if not quiz:
+            return jsonify({'error': 'Quiz not found'}), 404  # Return 404 Not Found if the quiz is not found
+
+        # Mendapatkan data tanggal dan waktu yang dikirimkan dari client
+        client_start_datetime_utc = datetime.fromisoformat(data.get('startDateTime'))
+        client_end_datetime_utc = datetime.fromisoformat(data.get('endDateTime'))
+
+        # Konversi waktu dari UTC ke zona waktu lokal (Western Indonesia Time)
+        client_start_datetime_local = client_start_datetime_utc + timedelta(hours=7)
+        client_end_datetime_local = client_end_datetime_utc + timedelta(hours=7)
+
+        # Assign waktu lokal ke objek quiz
+        quiz.waktu_mulai = client_start_datetime_local
+        quiz.waktu_selesai = client_end_datetime_local
+        db.session.commit()
+
+        return jsonify({'message': 'Update Berhasil'})
+
+    except Exception as e:
+        # Tangkap kesalahan umum jika terjadi
+        db.session.rollback()  # Rollback the changes in case of an error
+        return jsonify({'error': str(e)}), 500  # Return 500 Internal Server Error
 
 
 @app.route("/Profile", methods=["GET", "POST"])

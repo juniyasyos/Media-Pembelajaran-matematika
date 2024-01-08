@@ -25,10 +25,120 @@
                     <div class="flex justify-center items-center w-full pt-4 mx-3">
                         <h1 class="text-xl font-medium">Persamaan dan Pertidaksamaan Linear Satu Variabel</h1>
                     </div>
-                    <div class="flex justify-between items-center w-full py-3 ml-3">
-                        <h1 class="text-sm font-medium">progres: 10/30</h1>
+                    <div class="w-full py-3 px-3 space-y-1 bg-gray-300 rounded-lg mt-2">
+                        <h1 class="text-lg text-center font-medium bg-slate-400 rounded-md">Status Kelas</h1>
+                        <div class="ml-1 flex justify-start">
+                            <h1 class="text-sm font-medium">Terdaftar</h1>
+                            <h1 class="ml-7">: 10 siswa</h1>
+                        </div>
+                        <div class="ml-1 flex justify-start">
+                            <h1 class="text-sm font-medium">Tuntas</h1>
+                            <h1 class="ml-[42px]">: 10 siswa</h1>
+                        </div>
+                        <div class="mt-2 ml-1 flex items-center">
+                            <h1 class="text-sm font-medium">Mulai Kuis</h1>
+                            <div class="ml-3 flex items-center">
+                                <span class="mr-1 ml-[8px]">:</span>
+                                <div class="flex items-center">
+                                    <span class="mr-1">10 Jan 2024</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-2 ml-1 flex items-center">
+                            <h1 class="text-sm font-medium">Akhir Kuis</h1>
+                            <div class="ml-3 flex items-center">
+                                <span class="mr-1 ml-[9px]">:</span>
+                                <div class="flex items-center">
+                                    <span class="mr-1">10 Jan 2024</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-end space-x-3">
+                            <button
+                                class="bg-blue-500 hover:bg-blue-700 text-white px-4 rounded mt-2 py-2 flex justify-center items-center"
+                                data-modal-target="crud-modal" data-modal-toggle="crud-modal" type="button">
+                                Update
+                            </button>
+                            <div id="crud-modal" tabindex="-1" aria-hidden="true"
+                                class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                <div class="relative p-4 w-full max-w-md max-h-full">
+                                    <!-- Modal content -->
+                                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                        <!-- Modal header -->
+                                        <div
+                                            class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                                                Update Tanggal Kuis
+                                            </h3>
+                                            <button type="button"
+                                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                                data-modal-toggle="crud-modal">
+                                                <svg class="w-3 h-3" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2"
+                                                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                </svg>
+                                                <span class="sr-only">Close modal</span>
+                                            </button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <form id="quizForm" class="p-4 md:p-5">
+                                            <div class="grid gap-4 mb-4 grid-cols-2">
+                                                <div class="col-span-2">
+                                                    <label for="start-date"
+                                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                                        Tanggal Kuis Mulai
+                                                    </label>
+                                                    <input type="date" name="start-date" id="start-date"
+                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                                        required="">
+                                                </div>
+                                                <div class="col-span-2 sm:col-span-1">
+                                                    <label for="start-time"
+                                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                                        Pukul
+                                                    </label>
+                                                    <input type="time" name="start-time" id="start-time"
+                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                                        required="">
+                                                </div>
+                                                <div class="col-span-2">
+                                                    <label for="end-date"
+                                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                                        Tanggal Kuis Selesai
+                                                    </label>
+                                                    <input type="date" name="end-date" id="end-date"
+                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                                        required="">
+                                                </div>
+                                                <div class="col-span-2 sm:col-span-1">
+                                                    <label for="end-time"
+                                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                                        Pukul
+                                                    </label>
+                                                    <input type="time" name="end-time" id="end-time"
+                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                                        required="">
+                                                </div>
+                                            </div>
+                                            <button type="button" id="submitBtn"
+                                                class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                                        clip-rule="evenodd"></path>
+                                                </svg>
+                                                Apply Updated
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="flex justify-center items-center w-full py-4 mt-[-40px] ml-[-8px]">
+                    <!-- <div class="flex justify-center items-center w-full py-4 mt-[-40px] ml-[-8px]">
                         <div class="flex justify-center mt-5">
                             <div class="flex w-[340px] h-5 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700"
                                 role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
@@ -36,7 +146,7 @@
                                     style="width: 50%">50%</div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="w-full flex mt-2 justify-center">
                     <div
@@ -74,13 +184,17 @@
                                 <div class="w-[300px]">
                                     <h1 class="m-2 ml-3 mr-7 font-medium">Persamaan dan P</h1>
                                     <div class="flex justify-between m-3">
-                                        <div class="justify-start flex">
-                                            <img src="../static/img/point.png" alt="point image">
-                                            <h1 class="font-extralight text-sm">10</h1>
+                                        <div class="flex-none">
+                                            <h1 class="text-[12px]">create by</h1>
+                                            <h1 class="text-[14px] font-medium">Ahmad Ilyas</h1>
                                         </div>
                                         <div class="justify-start flex">
-                                            <h1 class="font-normal mr-1">Status:</h1>
-                                            <h1 class="font-medium text-green-500">Selesai</h1>
+                                            <div class="flex justify-end space-x-3">
+                                                <button
+                                                    class="bg-blue-500 hover:bg-blue-700 text-white font-semibold px-5 rounded mt-2">
+                                                    Edit Materi
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -91,6 +205,49 @@
             </div>
         </div>
     </div>
+    <script>
+        const modalButton = document.querySelector('[data-modal-toggle="crud-modal"]');
+        const modal = document.getElementById('crud-modal');
+
+        // Fungsi untuk menampilkan modal
+        const showModal = () => {
+            modal.classList.remove('hidden');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('overflow-hidden');
+        };
+
+        // Fungsi untuk menyembunyikan modal
+        const hideModal = () => {
+            modal.classList.add('hidden');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('overflow-hidden');
+        };
+
+        // Tambahkan event listener untuk tombol modal
+        modalButton.addEventListener('click', () => {
+            showModal();
+        });
+
+        // Tambahkan event listener untuk tombol close modal
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                hideModal();
+            }
+        });
+
+        // Tambahkan event listener untuk tombol close modal di dalam modal
+        const closeButton = modal.querySelector('[data-modal-toggle="crud-modal"]');
+        closeButton.addEventListener('click', () => {
+            hideModal();
+        });
+
+        // Tambahkan event listener untuk menutup modal dengan tombol Escape
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+                hideModal();
+            }
+        });
+    </script>
 </body>
 
 </html>

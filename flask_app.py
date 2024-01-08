@@ -6,7 +6,13 @@ from flask_login import LoginManager
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:@localhost/medpem_mtk'
+db_username = 'MathVerse'
+db_password = '!Rsx_FqXFUD5N@_'
+db_name = 'test'
+
+# Konfigurasi SQLAlchemy
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{db_username}:{db_password}@<your_mysql_host>/{db_name}'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:@localhost/test'
 
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
@@ -15,6 +21,3 @@ login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 
 from routes import *
-
-if __name__ == '__main__':
-    app.run(debug=True)
