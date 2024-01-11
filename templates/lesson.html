@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/lesson/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/lesson/base.css') }}">
+    <script id="MathJax-script" async src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </head>
 
 <body class="bg-[#A9D6E5]">
@@ -46,7 +49,7 @@
                     </div>
                     {% else %}
                     <div class="w-full py-3 px-3 space-y-1 bg-gray-300 rounded-lg mt-2">
-                        <h1 class="text-lg text-center font-medium bg-slate-400 rounded-md">Status Kelas</h1>
+                        <h1 class="text-lg text-center font-medium bg-slate-400 rounded-md">Status Kelas ilyas</h1>
                         <div class="ml-1 flex justify-start">
                             <h1 class="text-sm font-medium">Terdaftar</h1>
                             <h1 class="ml-7">: {{ all_modul_user[data_lesson.id] | length }} siswa</h1>

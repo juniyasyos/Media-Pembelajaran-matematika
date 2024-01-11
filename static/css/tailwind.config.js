@@ -8,10 +8,11 @@ module.exports = {
     "../../templates/login.html",
     "../../experimen/register.html",
     "../../experimen/topics.html",
-    "../../experimen/question.html",
+    "../../experimen/exercise.html",
     "../../experimen/lesson.html",
     "../../experimen/profil.html",
     "../../experimen/404.html",
+    "../../experimen/leaderboard.html",
   ],
   theme: {
     extend: {

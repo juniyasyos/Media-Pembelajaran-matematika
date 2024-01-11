@@ -191,6 +191,7 @@ class Question(db.Model):
     quiz_id = Column(Integer, ForeignKey('quiz.quiz_id'))
     teks_pertanyaan = Column(Text)
     tipe_pertanyaan = Column(Enum('pilihan_ganda', 'essai'))
+    point = Column(Integer, nullable=False)
 
     quiz = relationship('Quiz', back_populates='questions', primaryjoin="Question.quiz_id==Quiz.quiz_id")
     options = relationship('AnswerOption', back_populates='question')
@@ -299,34 +300,43 @@ def get_all_user_post_test_statuses():
 def get_user_quiz_statuses(user_id):
     data_user = UserQuizStatus.query.filter_by(user_id=user_id).all()
 
-    # Create a dictionary to store filtered topics for each lesson_id
-    filtered_topics_dict = {}
+    # Create a dictionary to store filtered quiz for each lesson_id
+    filtered_quiz_dict = {}
 
     for data in data_user:
         quiz_id = data.quiz_id
         lesson_id = None
 
-        # Retrieve lesson_id based on quiz_id
         lesson = Lesson.query.filter_by(quiz_id=quiz_id).first()
-        if quiz:
-            filtered_topics_dict[lesson.id] = lesson.quiz_id
+        if lesson:
+            lesson_id = lesson.id
 
-    return filtered_topics_dict
+        if lesson_id is not None:
+            # Check if the lesson_id is already in the dictionary
+            if lesson_id not in filtered_quiz_dict:
+                # If not, add an empty list for that lesson_id
+                filtered_quiz_dict[lesson_id] = []
+
+            # Append the quiz_id to the corresponding lesson_id in the dictionary
+            filtered_quiz_dict[lesson_id].append(quiz_id)
+
+    return filtered_quiz_dict
 
 
 def get_all_user_quiz_statuses():
-    data_user = UserQuizStatus.query.all()
-
+    data_all_user = UserQuizStatus.query.all()
+    
     filtered_topics_dict = {}
 
-    for data in data_user:
-        quiz_id = data.quiz_id
-        lesson_id = None
+    for data in data_all_user:
+        data_user_spec = User.query.filter_by(id=data.user_id).first()
+        data_lesson = Lesson.query.filter_by(quiz_id=data.quiz_id).first()
 
-        # Retrieve lesson_id based on quiz_id
-        lesson = Lesson.query.filter_by(quiz_id=quiz_id).first()
-        if quiz:
-            filtered_topics_dict[lesson.id] = lesson.quiz_id
+        if data_lesson is not None:
+            if data_lesson.id not in filtered_topics_dict:
+                filtered_topics_dict[data_lesson.id] = []
+            if data_user_spec.role_id == 2:
+                filtered_topics_dict[data_lesson.id].append(data.user_id)
 
     return filtered_topics_dict
 
@@ -365,7 +375,7 @@ def get_questions_data_by_quiz_id(quiz_id):
 
     questions_data = []
     for question in questions:
-        choices = [f"{chr(65 + idx)}. {option.teks_opsi}" for idx, option in enumerate(question.options)]
+        choices = [f"{option.teks_opsi}" for idx, option in enumerate(question.options)]
         questions_data.append({
             "number": question.question_id,
             "text": question.teks_pertanyaan,

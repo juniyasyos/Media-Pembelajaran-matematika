@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block stylecss %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/leaderboard/style.css') }}">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+    html,
+    body {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .break-inside {
+        -moz-column-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    /* Background dan Border */
+    .bg-gold-200 {
+        background-color: #f6dc72;
+    }
+
+    .bg-silver-200 {
+        background-color: #bebebe;
+    }
+
+    .bg-bronze-200 {
+        background-color: #D2B48C;
+    }
+</style>
+<title>MathVerse | Leaderboard</title>
+{% endblock %}
+
+{% block content %}
+<div class="flex flex-row w-full absolute top-0">
+    <div class="flex flex-1 flex-col items-center px-5 relative">
+        <div class="flex justify-between items-center w-full py-4" id="backButton">
+            <div class="flex items-center justify-start space-x-3 cursor-pointer">
+                <img src="{{ url_for('static', filename='img/back arrow.jpg') }}" alt="image arrow back"
+                    class="w-6 h-6">
+            </div>
+        </div>
+        <!-- Header Leaderboard -->
+        <div class="font-semibold text-2xl mt-[-20px] mb-10">Leaderboard MathVerse</div>
+        <!-- lint Rank User -->
+        <div class="space-y-1 top-0">
+            {% for rank in all_user %}
+            <div
+                class="flex w-[390px] {{ 'bg-gold-200' if loop.index == 1 else 'bg-silver-200' if loop.index == 2 else 'bg-bronze-200' if loop.index == 3 else '' }} rounded-lg border border-1 border-slate-400 mt-4">
+                <div class="flex p-3 justify-between w-full items-center">
+                    <div class="flex">
+                        <span
+                            class="text-xl font-bold font-mono {{ 'text-gold-800' if rank == 1 else 'text-silver-800' if rank == 2 else 'text-bronze-800' if rank == 3 else 'text-bronze-800' }}">
+                            {{ loop.index }} </span>
+                        <h1 class="text-xl font-bold ml-3">{{rank.username}}</h1>
+                    </div>
+                    <div class="flex space-x-2 justify-center items-center">
+                        <h1 class="font-medium">{{rank.point}}</h1>
+                        <img src="{{ url_for('static', filename='img/point.png') }}" alt="point image" width="25">
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block style_script %}
+{% endblock %}

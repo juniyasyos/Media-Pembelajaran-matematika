@@ -56,3 +56,7 @@ function eventClickDashboard(){
 function eventClickProfile(){
     window.location.href = '/Profile';
 }
+
+function eventClickLeaderboard(){
+    window.location.href = '/Leaderboard';
+}
