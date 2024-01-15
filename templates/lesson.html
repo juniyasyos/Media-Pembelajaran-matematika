@@ -49,7 +49,7 @@
                     </div>
                     {% else %}
                     <div class="w-full py-3 px-3 space-y-1 bg-gray-300 rounded-lg mt-2">
-                        <h1 class="text-lg text-center font-medium bg-slate-400 rounded-md">Status Kelas ilyas</h1>
+                        <h1 class="text-lg text-center font-medium bg-slate-400 rounded-md">Status Kelas</h1>
                         <div class="ml-1 flex justify-start">
                             <h1 class="text-sm font-medium">Terdaftar</h1>
                             <h1 class="ml-7">: {{ all_modul_user[data_lesson.id] | length }} siswa</h1>
@@ -105,6 +105,7 @@
                                                 <span class="sr-only">Close modal</span>
                                             </button>
                                         </div>
+                                        {% if data_quiz is not none %}
                                         <!-- Modal body -->
                                         <form id="quizForm" class="p-4 md:p-5">
                                             <div class="grid gap-4 mb-4 grid-cols-2">
@@ -160,6 +161,11 @@
                                                 Apply Updated
                                             </button>
                                         </form>
+                                        {% else %}
+                                        <form id="quizForm" class="p-4 md:p-5 flex justify-center items-center">
+                                            <h1 class="text-white">Kuis belum dibuat</h1>
+                                        </form>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
@@ -169,8 +175,9 @@
                 </div>
 
                 <div class="w-full flex mt-2 justify-center">
-                    <div
-                        class="bg-white m-2 py-2 px-5 w-[180px] shadow-xl rounded-lg border border-3 border-slate-600 flex justify-between items-center ml-3 hover:bg-blue-200">
+                    <div class="bg-white m-2 py-2 px-5 w-[180px] shadow-xl rounded-lg border border-3 border-slate-600 flex justify-between items-center ml-3 hover:bg-blue-200"
+                        onclick="handleCsoalClick(this)" data-lesson="{{ data_lesson.id }}"
+                        data-src="{{ data_lesson.src }}">
                         <h1 class="text-[15px] font-medium">Contoh Soal</h1>
                         <img src="{{ url_for('static', filename='img/ex.svg') }}" alt="" width="35">
                     </div>
@@ -194,8 +201,9 @@
                     </div>
                     {% endif %}
                 </div>
-                <div
-                    class="bg-orange-300 m-2 py-2 px-5 mx-3 w-[376px] shadow-xl rounded-lg border border-3 border-slate-600 flex justify-between items-center mr-3 hover:bg-orange-400">
+                <div class="bg-orange-300 m-2 py-2 px-5 mx-3 w-[376px] shadow-xl rounded-lg border border-3 border-slate-600 flex justify-between items-center mr-3 hover:bg-orange-400"
+                    onclick="handleStudiKasusClick(this)" data-lesson="{{ data_lesson.id }}"
+                    data-src="{{ data_lesson.src }}">
                     <h1 class="text-[15px] font-medium">Studi Kasus</h1>
                     <img src="{{ url_for('static', filename='img/homework (1).svg') }}" alt="" width="45">
                 </div>
@@ -271,6 +279,22 @@
             var quizId = button.getAttribute("data-quiz");
 
             window.location.href = '/Learning/get=' + lessonId + '/quizz=' + quizId;
+        }
+
+        function handleStudiKasusClick(button) {
+            // Mendapatkan nilai dari atribut data-learning
+            var lessonId = button.getAttribute("data-lesson");
+            var src = button.getAttribute("data-src");
+            
+            window.location.href = '/Learning/' + "get='" + lessonId + "'/studikasus=" + src;
+        }
+        
+        function handleCsoalClick(button) {
+            // Mendapatkan nilai dari atribut data-learning
+            var lessonId = button.getAttribute("data-lesson");
+            var src = button.getAttribute("data-src");
+            
+            window.location.href = '/Learning/' + "get='" + lessonId + "'/csoal=" + src;
         }
 
         document.addEventListener("DOMContentLoaded", function () {

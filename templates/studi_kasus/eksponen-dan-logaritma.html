@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="../../static/css/studi_kasus/style.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contoh_soal/style.css') }}">
+</head>
+
+<body class="font-sans">
+    <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-8 lg:py-12">
+        <div class="w-full flex justify-between m-3">
+            <div
+                class="flex items-center justify-start space-y-3 mt-[-10px] cursor-pointer bg-slate-300 p-1 rounded-xl">
+                <img src="{{ url_for('static', filename='/img/back arrow.jpg') }}" alt="image arrow back">
+            </div>
+        </div>
+        <div
+            class="relative w-full bg-white px-6 py-12 shadow-xl shadow-slate-700/10 ring-1 ring-gray-900/5 md:mx-auto md:max-w-3xl lg:max-w-4xl lg:pb-28 lg:pt-16">
+            <div class="prose prose-slate mx-auto mt-8 -mb-44 lg:prose-lg">
+                <h2 class="text-3xl font-bold text-indigo-700">Hubungan Investasi dengan materi Eksponen dan Logaritma</h2>
+
+                <div class="prose">
+                    <p><strong>Penjelasan Investasi</strong></p>
+                    <p>
+                        Investasi adalah tindakan menempatkan dana atau aset ke dalam suatu bentuk dengan harapan
+                        mendapatkan
+                        keuntungan di masa depan. Tujuan umum dari investasi adalah untuk meningkatkan nilai aset atau
+                        menghasilkan pendapatan pasif. Jenis investasi dapat mencakup saham, obligasi, properti, dan
+                        instrumen
+                        keuangan lainnya.
+                    </p>
+
+                    <p><strong>Hubungan dengan Eksponen dan Logaritma</strong></p>
+                    <p>
+                        Eksponen dan logaritma digunakan dalam konteks investasi untuk mengukur pertumbuhan nilai
+                        investasi
+                        dari waktu ke waktu, menghitung tingkat pengembalian, dan merencanakan strategi investasi.
+                        Pertumbuhan
+                        investasi sering kali dapat dijelaskan dengan fungsi eksponensial, dan logaritma digunakan untuk
+                        memahami waktu penggandaan atau mengukur tingkat pengembalian.
+                    </p>
+
+                    <p><strong class="font-bold text-indigo-700 text-xl">Contoh Kasus Nyata </strong><br>
+                        <strong>Pertumbuhan
+                            Investasi dan Waktu Penggandaan Investasi</strong></p>
+
+                    <p><strong>Asumsi:</strong></p>
+                    <ul>
+                        <li>Anda memiliki investasi awal sebesar $10,000.</li>
+                        <li>Investasi tumbuh dengan tingkat pertumbuhan tetap sebesar 8% per tahun.</li>
+                    </ul>
+
+                    <p><strong>Pertumbuhan Investasi:</strong></p>
+                    <p>
+                        Rumus pertumbuhan investasi adalah
+                        \(V_t = V_0 \times (1+r)^t\), di mana:
+                    </p>
+                    <p class="text-[15px] mt-4">
+                        \(V_t\) adalah nilai investasi pada waktu \(t\),
+                        <br>
+                        \(V_0\) adalah nilai investasi awal,
+                        <br>
+                        \(r\) adalah tingkat pertumbuhan, dan
+                        <br>
+                        \(t\) adalah waktu.
+                    </p>
+                    <p><strong>Contoh Penggunaan Eksponen:</strong></p>
+                    <p class="mt-4">
+                        Jika Anda ingin mengetahui nilai investasi setelah 5 tahun, Anda dapat menghitungnya dengan:
+                        <br><br>
+                        \(V_5 = 10,000 \times (1+0.08)^5 \approx 14,693.28\)
+                    </p>
+
+                    <p class="mt-8"><strong>Waktu Penggandaan Investasi:</strong></p>
+                    <p>
+                        Rumus waktu penggandaan (\(t_{\text{double}}\)) adalah
+                        \(t_{\text{double}} = \frac{\log(2)}{\log(1+r)}\).
+                    </p>
+                    <p><strong>Contoh Penggunaan Logaritma:</strong></p>
+                    <p class="mt-4">
+                        Jika Anda ingin mengetahui berapa lama diperlukan agar investasi menjadi dua kali lipat (\(V_0
+                        \times 2\)),
+                        Anda dapat menghitung waktu penggandaannya:
+                        <br>
+                    <p class="text-[15px] ">
+                        \(t_{\text{double}} \approx \frac{\log(2)}{\log(1+0.08)} \approx 8.66\) tahun
+                    </p>
+                    </p>
+
+                    <p><strong>Penjelasan:</strong></p>
+                    <ul>
+                        <li>Eksponen digunakan untuk menghitung pertumbuhan nilai investasi dari tahun ke tahun.</li>
+                        <li>Logaritma digunakan untuk menghitung waktu yang diperlukan agar investasi mencapai dua kali
+                            lipat nilai awalnya.</li>
+                    </ul>
+                    <p>
+                        Dengan pemahaman tentang eksponen dan logaritma, investor dapat membuat proyeksi pertumbuhan
+                        investasi dan
+                        merencanakan tujuan finansial dengan lebih akurat. Namun, perlu diingat bahwa ini hanya contoh
+                        sederhana,
+                        dan faktor lain seperti perubahan tingkat pertumbuhan atau risiko investasi juga perlu
+                        dipertimbangkan dalam
+                        analisis sebenarnya.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex justify-center items-center w-full mb-2 mt-1">
+        <button type="button"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Kasus
+            Nyata</button>
+    </div>
+    <footer class="text-center py-4 bg-gray-300">
+        <p class="text-sm text-gray-600">&copy Ditulis oleh Ahmad Ilyas | 10 Januari 2024</p>
+    </footer>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+</body>
+
+</html>

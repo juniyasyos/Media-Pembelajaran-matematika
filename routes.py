@@ -156,6 +156,20 @@ def topics(lesson_id, src_topics):
     return render_template(f'topics/{src_topics}', data_topics=data_topics)
 
 
+@app.route("/Learning/get='<lesson_id>'/csoal=<src>", methods=["GET", "POST"])
+@login_required
+def csoal(lesson_id, src):
+    data_lesson = Lesson.query.filter_by(src=src).first()
+    return render_template(f'contoh_soal/{src}')
+
+
+@app.route("/Learning/get='<lesson_id>'/studikasus=<src>", methods=["GET", "POST"])
+@login_required
+def studi_kasus(lesson_id, src):
+    data_lesson = Lesson.query.filter_by(src=src).first()
+    return render_template(f'studi_kasus/{src}')
+
+
 @app.route('/save_progress', methods=['POST'])
 @login_required
 def save_progress():
@@ -317,7 +331,6 @@ def submit_answers(quiz_id):
 @login_required
 def rank():
     return render_template('leaderboard.html', all_user=User.query.filter_by(role_id=2).order_by(User.point.desc()).all())
-
 
 
 @app.route("/Profile", methods=["GET", "POST"])

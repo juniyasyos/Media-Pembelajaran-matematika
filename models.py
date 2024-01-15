@@ -94,8 +94,8 @@ class Lesson(db.Model):
     class_id = db.Column(db.Integer, db.ForeignKey('class.id'), nullable=False)
     quiz_id = db.Column(db.Integer, db.ForeignKey('questions.id'), nullable=False)
     lesson_name = db.Column(db.String(255), nullable=False)
+    src = db.Column(db.String(100), nullable=False)
     class_ = db.relationship('Class', backref='lessons')
-    # quiz = db.relationship('quiz', backref='lessons')
     
     def serialize(self):
         return {
@@ -103,8 +103,8 @@ class Lesson(db.Model):
             'class_id': self.class_id,
             'quiz_id': self.quiz_id,
             'lesson_name': self.lesson_name,
+            'src': self.src,
             'class_': self.class_.serialize() if self.class_ else None,
-            # 'quiz': self.quiz.serialize() if self.quiz else None
         }
 
 

@@ -13,11 +13,16 @@ module.exports = {
     "../../experimen/profil.html",
     "../../experimen/404.html",
     "../../experimen/leaderboard.html",
+    "../../experimen/contoh_soal.html",
+    "../../experimen/eskponen-dan-logaritma.html",
   ],
   theme: {
     extend: {
       "bg-arrow": "#F99437",
     },
   },
-  plugins: [require("flowbite-typography")],
+  plugins: [
+    require('@tailwindcss/typography'),
+    // ...
+  ],
 };

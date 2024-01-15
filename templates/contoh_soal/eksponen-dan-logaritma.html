@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contoh_soal/style.css') }}">
+</head>
+
+<body class="font-sans">
+    <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-8 lg:py-12">
+        <div
+            class="absolute inset-0 bg-[url(/img/grid.svg)] bg-top [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]">
+        </div>
+        <div
+            class="relative w-full bg-white px-6 shadow-xl shadow-slate-700/10 ring-1 ring-gray-900/5 md:mx-auto md:max-w-3xl lg:max-w-4xl lg:pb-28 lg:pt-16">
+            <div class="prose prose-slate mx-auto mt-8 lg:prose-lg">
+                <h2 class="text-3xl font-bold text-indigo-700 mb-6">Contoh Soal Eksponen dan Logaritma</h2>
+
+                <div class="prose">
+
+                    <strong class="text-lg">Contoh soal 1</strong><br>
+                    <p class="bg-slate-200 p-2 rounded-md">
+                        Pada suatu hari, sebuah populasi bakteri berkembang biak dengan laju pertumbuhan eksponensial.
+                        Pada pukul 10 pagi, jumlah bakteri sebanyak 500. Setiap jamnya, populasi bakteri meningkat 20%.
+                        Tentukan jumlah bakteri pada pukul 2 siang.
+                    </p>
+
+                    <p><strong>Penjelasan Soal 1:</strong></p>
+                    Kita menggunakan rumus eksponensial: <br>
+                    <p class="text-[13px] mt-4">
+                        \( \text{Jumlah Bakteri} = \text{Jumlah Awal} \times (1 + \text{Laju Pertumbuhan})^{\text{t}} \)
+                        <br>
+                        \( \text{Jumlah Bakteri} = 500 \times (1 + 0.20)^{4} \) <br>
+                        \( \text{Jumlah Bakteri} \approx 500 \times 1.6384 \) <br>
+                        \( \text{Jumlah Bakteri} \approx 819.2 \) <br>
+                        <br>
+                    </p>
+                    Jadi, pada pukul 2 siang, jumlah bakteri sekitar 819.
+                </div>
+
+                <div class="prose mt-8">
+                    <strong class="text-lg">Contoh soal 2</strong><br>
+                    <p class="bg-slate-200 p-2 rounded-md">
+                        Sebuah investasi tumbuh dengan tingkat bunga tahunan sebesar 8%. Jika seseorang menginvestasikan
+                        $10,000 pada awal tahun, berapa jumlah uang yang dimilikinya setelah 5 tahun?
+                    </p>
+
+                    <p><strong>Penjelasan Soal 2:</strong></p>
+                    Kita gunakan rumus pertumbuhan eksponensial: <br>
+                    <p class="text-[13px] mt-4">
+                        \( \text{Jumlah Akhir} = \text{Jumlah Awal} \times (1 + \text{Rata-rata Pertumbuhan})^{\text{Waktu}} \)
+                        <br>
+                        \( \text{Jumlah Akhir} = 10000 \times (1 + 0.08)^5 \) <br>
+                        \( \text{Jumlah Akhir} \approx 10000 \times 1.477455 \) <br>
+                        \( \text{Jumlah Akhir} \approx 14774.55 \) <br>
+                        <br>
+                    </p>
+                    Jadi, setelah 5 tahun, jumlah uang yang dimilikinya sekitar $14,774.55.
+                </div>
+
+                <div class="prose mt-8">
+                    <strong class="text-lg">Contoh soal 3</strong><br>
+                    <p class="bg-slate-200 p-2 rounded-md">
+                        Suatu planet mengalami pendinginan setiap malam dengan laju kehilangan panas sebesar 10%. Jika
+                        pada
+                        pukul 8 malam suhu planet adalah 30 derajat Celsius, berapa suhu planet pada pukul 2 pagi?
+                    </p>
+
+                    <p><strong>Penjelasan Soal 3:</strong></p>
+                    Kita gunakan rumus eksponensial: <br>
+                    <p class="text-[13px] mt-4">
+                        \( \text{Suhu Akhir} = \text{Suhu Awal} \times (1 - \text{Laju Kehilangan Panas})^{\text{Waktu}}
+                        \)
+                        <br>
+                        \( \text{Suhu Akhir} = 30 \times (1 - 0.10)^{6} \) <br>
+                        \( \text{Suhu Akhir} \approx 30 \times 0.531441 \) <br>
+                        \( \text{Suhu Akhir} \approx 15.943 \) <br>
+                        <br>
+                    </p>
+                    Jadi, pada pukul 2 pagi, suhu planet sekitar 15.94 derajat Celsius.
+                </div>
+
+                <div class="prose mt-8">
+                    <strong class="text-lg">Soal 4</strong><br>
+                    <p class="bg-slate-200 p-2 rounded-md">
+                        Seorang peneliti mengukur tingkat pH dalam sebuah kolam ikan setiap jam. Jika pada pukul 10
+                        malam
+                        tingkat pH kolam adalah 7, dan setiap jamnya mengalami penurunan sebesar 0.2, tentukan tingkat
+                        pH
+                        pada pukul 4 pagi.
+                    </p>
+
+                    <p><strong>Penjelasan Soal 4:</strong></p>
+                    Kita dapat menggunakan rumus logaritma untuk menentukan tingkat pH pada pukul 4 pagi. <br>
+                    <p class="text-[13px] mt-4">
+                        \( \text{tingkat pH} = \text{tingkat pH awal} - (\text{laju penurunan} \times \text{waktu}) \)
+                        <br>
+                        \( \text{tingkat pH} = 7 - (0.2 \times 6) \) <br>
+                        \( \text{tingkat pH} = 7 - 1.2 \) <br>
+                        \( \text{tingkat pH} = 5.8 \) <br>
+                        <br>
+                    </p>
+                    Jadi, pada pukul 4 pagi, tingkat pH kolam ikan diperkirakan sekitar 5.8.
+                </div>
+                <br>
+                <div class="prose">
+                    <h3 class="text-xl font-semibold">Kesimpulan:</h3>
+                    <ol class="list-decimal pl-6 mt-4">
+                        <li>Eksponen digunakan untuk menggambarkan pertumbuhan eksponensial, sedangkan logaritma
+                            digunakan
+                            untuk menyusun model penurunan atau kehilangan.</li>
+                        <li>Eksponen dan logaritma digunakan dalam ilmu pengetahuan alam, rekayasa, keuangan, dan
+                            matematika
+                            untuk menganalisis pertumbuhan dan penurunan.</li>
+                        <li>Konsep ini memiliki aplikasi luas di berbagai bidang, termasuk biologi, fisika, ekonomi, dan
+                            sains data.</li>
+                    </ol>
+
+                    <h3 class="text-xl font-semibold mt-6">Aplikasi di Berbagai Bidang:</h3>
+                    <ul class="list-disc pl-6 mt-4">
+                        <li>Ilmu Biologi: Memodelkan pertumbuhan populasi organisme.</li>
+                        <li>Ekonomi: Menganalisis pertumbuhan ekonomi dan investasi.</li>
+                        <li>Fisika: Memodelkan peluruhan radioaktif dan hukum Hukum Ohm dalam elektronika.</li>
+                        <li>Kimia: Menghitung tingkat reaksi kimia.</li>
+                        <li>Kedokteran: Dalam farmakokinetika untuk mengukur penyerapan obat dalam tubuh.</li>
+                        <li>Sains Data: Dalam analisis data untuk menyesuaikan model dan memprediksi tren.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <footer class="text-center py-4 bg-gray-300">
+            <p class="text-sm text-gray-600">&copy Ditulis oleh Ahmad Ilyas |  10 Januari 2024</p>
+        </footer>
+    </div>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+</body>
+
+</html>
