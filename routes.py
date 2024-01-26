@@ -177,7 +177,6 @@ def save_progress():
         topics_id = int(request.form.get('topics_id'))
         user_id = int(current_user.id)
         reading_duration = int(request.form.get('reading_duration'))
-        # print("masuk")
 
         # Check if data already exists
         existing_data = UserPostTest.query.filter_by(topics_id=topics_id, user_id=user_id).first()
@@ -187,7 +186,7 @@ def save_progress():
             # Update reading_duration
             existing_data.reading_duration += reading_duration
             response = {'status': 'success', 'message': 'Data berhasil diupdate.'}
-        else:
+        elif current_user.role_id == 2:
             # Save new data
             new_data = UserPostTest(topics_id=topics_id, user_id=user_id, reading_duration=reading_duration)
             topics = Topics.query.filter_by(id=topics_id).first()
@@ -198,12 +197,14 @@ def save_progress():
             db.session.commit()
 
             response = {'status': 'success', 'message': 'Data berhasil disimpan.'}
-
+            
         return jsonify(response), 200
 
     except Exception as e:
-        # print("gagal = ", e)
         response = {'status': 'error', 'message': 'Gagal menyimpan progress.'}
+        
+        if current_user.role_id != 2:
+            response = {'status': 'error', 'message': 'Data anda tidak disimpan. Anda adalah guru'}
         return jsonify(response), 500
 
 

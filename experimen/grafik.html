@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi Perpangkatan</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 h-screen flex items-center justify-center">
+
+    <div class="max-w-md p-8 bg-white rounded-md shadow-md">
+        <h2 class="text-2xl font-semibold mb-4">Simulasi Perpangkatan</h2>
+        <div class="flex">
+            <div class="mb-4">
+                <input type="number" id="baseNumber" class="mt-1 p-2 w-36 h-32 border rounded-md text-6xl text-center">
+            </div>
+
+            <div class="mb-4">
+                <input type="number" id="exponent" class="mt-1 p-2 w-24 border rounded-md" placeholder="Pangkat">
+            </div>
+
+        </div>
+        <div class="mb-6">
+            <label for="result" class="block font-medium text-gray-600 text-center pt-3">Hasil</label>
+            <p id="result" class="mt-1 p-2 w-full border rounded-md bg-gray-100 text-center">0</p>
+        </div>
+
+    </div>
+    <script>
+        document.getElementById('baseNumber').addEventListener('input', updateResult);
+        document.getElementById('exponent').addEventListener('input', updateResult);
+
+        function updateResult() {
+            const baseNumber = parseFloat(document.getElementById('baseNumber').value) || 0;
+            const exponent = parseInt(document.getElementById('exponent').value) || 0;
+
+            const result = Math.pow(baseNumber, exponent);
+
+            document.getElementById('result').innerText = result;
+        }
+    </script>
+</body>
+
+</html>

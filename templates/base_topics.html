@@ -124,7 +124,7 @@
                                 // Additional logic if needed
                             });
                         } else {
-                            modalText.textContent = 'Gagal menyimpan progress: ' + data.message;
+                            modalText.textContent = 'Update Error: ' + data.message;
                         }
 
                         modal.classList.remove('hidden');
@@ -138,7 +138,7 @@
                         var modal = document.getElementById('popup-modal');
                         var modalText = document.getElementById('modal-text');
 
-                        modalText.textContent = 'Gagal menyimpan progress. Error: ' + error.message;
+                        modalText.textContent = error.message;
                         modal.classList.remove('hidden');
 
                         // Remove modal after a certain time (e.g., 5 seconds)
@@ -172,7 +172,6 @@
             let allCorrect = true;
 
             for (const question in correctAnswers) {
-                console.log("masuk")
                 const userAnswer = userAnswers[question];
                 const correctAnswer = correctAnswers[question];
 

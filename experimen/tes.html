@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Sederhana</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.2.0/math.js"></script>
+    <script id="MathJax-script" async src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .calculator {
+            text-align: center;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        input,
+        button {
+            margin: 5px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .operator-buttons {
+            margin-top: 10px;
+        }
+
+        .operator-buttons button {
+            margin: 0 5px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .operator-buttons button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="calculator">
+        <p id="result"></p>
+        <input type="text" id="inputExpression" placeholder="Masukkan ekspresi matematika">
+        <div class="operator-buttons">
+            <button onclick="appendOperator('+')">+</button>
+            <button onclick="appendOperator('-')">-</button>
+            <button onclick="appendOperator('*')">*</button>
+            <button onclick="appendOperator('/')">/</button>
+        </div>
+    </div>
+    <script>
+        document.getElementById('inputExpression').addEventListener('input', updateResult);
+
+        function appendOperator(operator) {
+            var inputExpression = document.getElementById('inputExpression');
+            inputExpression.value += operator;
+            updateResult();
+        }
+
+        function updateResult() {
+            var inputExpression = document.getElementById('inputExpression').value;
+            var resultElement = document.getElementById('result');
+
+            try {
+                // Mengganti simbol * dan /
+                var inputExpressionTex = inputExpression.replace(/\*/g, "\\times");
+                inputExpressionTex = inputExpressionTex.replace(/\//g, "\\div");
+
+                // Parsing ekspresi matematika
+                var parsedExpression = math.parse(inputExpression);
+
+                // Evaluasi ekspresi matematika
+                var result = parsedExpression.compile().evaluate();
+
+                if (!isNaN(result)) {
+                    resultElement.textContent = `\\[${inputExpressionTex} = ${result}\\]`;
+
+                    // Menunggu MathJax selesai merender dan mengonversi LaTeX ke HTML
+                    MathJax.startup.promise.then(() => {
+                        MathJax.typeset();
+                    });
+                } else {
+                    resultElement.textContent = 'Ekspresi tidak valid';
+                }
+            } catch (error) {
+                resultElement.textContent = 'Ekspresi tidak valid';
+                // resultElement.textContent = error;
+            }
+        }
+    </script>
+</body>
+
+</html>
