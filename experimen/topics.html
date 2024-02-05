@@ -54,156 +54,175 @@
                 <!-- Subbab Materi -->
                 <article class="w-[390px]" data-topicsId="{{ data_topics.id }}">
                     <div class="w-full pt-1">
-                        <!-- <h1 class="text-2xl font-semibold">Sifat-sifat Logaritma</h1> -->
                         <h1 class="font-medium mt-1">Juniyasyos, <span class="font-normal">1 Jan 2024</span></h1>
                     </div>
-                    <img src="{{ url_for('static', filename='img/mysterious-math.jpg') }}" alt="img mysterious math"
-                        width="390" class="rounded-md">
+                    <img src="{{ url_for('static', filename='img/algorithm.jpg') }}" alt="img algorithm" width="390"
+                        class="rounded-md">
                     <div class="container mx-auto p-8 bg-gray-100 rounded-lg shadow-lg">
-                        <h2 class="text-3xl font-bold text-indigo-700 mb-6">Sifat-sifat Logaritma yang Misterius!</h2>
+                        <h2 class="text-3xl font-bold text-indigo-700 mb-6">Definisi Eksponen</h2>
 
-                        <div class="mb-6">
-                            <p class="text-gray-800"><strong>1. Sifat Identitas:</strong> \( \color{green}{\log_b(b) =
-                                1} \)</p>
-                            <p class="text-gray-800 ml-4">Ini seperti menyelidiki rahasia eksponen yang bilang, "Jika
-                                kamu
-                                mencari jawaban misterius untuk basis yang sama, hasilnya pasti \( \color{green}{1} \)"
+                        <div class="mb-6 text-gray-800 leading-relaxed">
+                            <p class="mb-2">Eksponen adalah semacam "superpower" dalam matematika yang digunakan untuk
+                                mengekspresikan perpangkatan suatu bilangan.</p>
+
+                            <p class="mb-2">Bilangan yang menjadi "dasar perpangkatan" disebut sebagai <span
+                                    class="font-bold text-green-500">basis</span>,
+                                sedangkan bilangan yang menjadi "pangkat" disebut sebagai <span
+                                    class="font-bold text-blue-500">eksponen</span>.
+                            </p>
+
+                            <p class="mb-2">Notasi eksponen ditulis seperti <span
+                                    class="font-bold text-red-500">a<sup>n</sup></span>,
+                                di mana <span class="font-bold text-red-500">a</span> adalah basis,
+                                dan <span class="font-bold text-red-500">n</span> adalah eksponen.
                             </p>
                         </div>
 
-                        <div class="mb-6">
-                            <p class="text-gray-800"><strong>2. Sifat Nol:</strong> \( \color{green}{\log_b(1) = 0} \)
-                            </p>
-                            <p class="text-gray-800 ml-4">Misteri ini membocorkan rahasia bahwa untuk mendapatkan \(
-                                \color{green}{1} \), eksponennya selalu \( \color{green}{0} \). Jadi, kalau kita ingin
-                                "nol" ke \( \color{green}{1} \), tinggal pakai logaritma!</p>
-                        </div>
 
-                        <div class="mb-6">
-                            <p class="text-gray-800"><strong>3. Sifat Invers:</strong> \( \color{green}{b^{\log_b(x)} =
-                                x} \)</p>
-                            <p class="text-gray-800 ml-4">Trik sulap matematika ini bilang, "Jika kita menemukan
-                                eksponen
-                                menggunakan logaritma, kita bisa balik ke angka awalnya!"</p>
-                        </div>
+                        <div class="mb-8">
+                            <p class="font-bold text-lg mb-2">Contoh:</p>
 
-                        <div class="mb-6">
-                            <p class="text-gray-800"><strong>4. Sifat Perkalian:</strong> \( \color{green}{\log_b(xy) =
-                                \log_b(x) + \log_b(y)} \)</p>
-                            <p class="text-gray-800 ml-4">Misteri ini seperti menyelipkan kode rahasia untuk
-                                menjumlahkan eksponen masing-masing angka saat kita mengalikan mereka.
-                                Wah, matematika bisa menyenangkan!</p>
-                        </div>
-
-                        <div class="mb-6">
-                            <p class="text-gray-800"><strong>5. Sifat Pembagian:</strong> \(
-                                \color{green}{\log_b\left(\frac{x}{y}\right) = \log_b(x) - \log_b(y)} \)</p>
-                            <p class="text-gray-800 ml-4">Di sini, kita menemukan trik untuk mengurangkan
-                                rahasia eksponen saat kita membagi dua angka. Semakin dalam kita masuk, semakin
-                                menarik!</p>
-                        </div>
-
-                        <div class="mb-6">
-                            <p class="text-gray-800"><strong>6. Sifat Pangkat:</strong> \( \color{green}{\log_b(x^n) = n
-                                \cdot \log_b(x)} \)</p>
-                            <p class="text-gray-800 ml-4">Sifat ini seakan memberitahu kita bahwa mencari eksponen untuk
-                                suatu pangkat angka itu seru, karena tinggal kaliin eksponennya dengan
-                                pangkatnya!</p>
-                        </div>
-
-                        <p class="mb-6 text-gray-800 leading-relaxed">
-                            Semoga dengan sifat-sifat logaritma yang seru ini, matematika jadi lebih asyik dan gampang
-                            dipahami! 😊
-                        </p>
-
-
-                        <div class="container mx-auto p-8 bg-gray-100 rounded-lg shadow-lg mt-8">
-                            <h2 class="text-3xl font-bold text-indigo-700 mb-6">Post-Test</h2>
-
-                            <div class="mb-4" id="question1">
-                                <p class="text-gray-800"><strong>1. </strong>Apa sifat dasar logaritma \(\log_b 1\)?</p>
-
-                                <label class="block text-gray-700 mt-2">
-                                    <input type="radio" class="mr-2" name="question1" value="a" id="q4-a">
-                                    <span class="text-gray-800">A. \(\log_b 1 = 0\)</span>
-                                </label>
-
-                                <label class="block text-gray-700">
-                                    <input type="radio" class="mr-2" name="question1" value="b" id="q4-b">
-                                    <span class="text-gray-800">B. \(\log_b 1 = 1\)</span>
-                                </label>
-
-                                <label class="block text-gray-700">
-                                    <input type="radio" class="mr-2" name="question1" value="c" id="q4-c">
-                                    <span class="text-gray-800">C. \(\log_b 1 = -1\)</span>
-                                </label>
-
-                                <label class="block text-gray-700">
-                                    <input type="radio" class="mr-2" name="question1" value="d" id="q4-d">
-                                    <span class="text-gray-800">D. \(\log_b 1 = \infty\)</span>
-                                </label>
-
-                                <p id="feedback-question1" class="text-gray-800"></p>
-                            </div>
-
-                            <div class="mb-4" id="question2">
-                                <p class="text-gray-800"><strong>2. </strong>Apa sifat logaritma \(\log_b b\)?</p>
-
-                                <label class="block text-gray-700 mt-2">
-                                    <input type="radio" class="mr-2" name="question2" value="a" id="q5-a">
-                                    <span class="text-gray-800">A. \(\log_b b = 1\)</span>
-                                </label>
-
-                                <label class="block text-gray-700">
-                                    <input type="radio" class="mr-2" name="question2" value="b" id="q5-b">
-                                    <span class="text-gray-800">B. \(\log_b b = 0\)</span>
-                                </label>
-
-                                <label class="block text-gray-700">
-                                    <input type="radio" class="mr-2" name="question2" value="c" id="q5-c">
-                                    <span class="text-gray-800">C. \(\log_b b = -1\)</span>
-                                </label>
-
-                                <label class="block text-gray-700">
-                                    <input type="radio" class="mr-2" name="question2" value="d" id="q5-d">
-                                    <span class="text-gray-800">D. \(\log_b b = \infty\)</span>
-                                </label>
-
-                                <p id="feedback-question2" class="text-gray-800"></p>
-                            </div>
-
-                            <div class="mb-4" id="question3">
-                                <p class="text-gray-800"><strong>3. </strong>Apa sifat logaritma \(\log_b (a \cdot c)\)?
+                            <div class="mb-4">
+                                <p class="text-gray-800">
+                                    <span class="font-bold text-green-500 text-5xl">2<sup>3</sup></span><br><br> Di
+                                    sini, 2 adalah
+                                    basis, dan 3 adalah eksponen.
+                                    Ini berarti kita mengalikan 2 dengan dirinya sendiri sebanyak 3 kali. Jadi,
+                                    <span class="font-bold text-green-500">2<sup>3</sup></span> sama dengan <span
+                                        class="font-bold text-purple-500">2 × 2 × 2</span>, yang hasilnya <span
+                                        class="font-bold text-blue-500">8</span>.
                                 </p>
-
-                                <label class="block text-gray-700 mt-2">
-                                    <input type="radio" class="mr-2" name="question3" value="a" id="q6-a">
-                                    <span class="text-gray-800">A. \(\log_b (a \cdot c) = \log_b a + \log_b c\)</span>
-                                </label>
-
-                                <label class="block text-gray-700">
-                                    <input type="radio" class="mr-2" name="question3" value="b" id="q6-b">
-                                    <span class="text-gray-800">B. \(\log_b (a \cdot c) = \log_b a - \log_b c\)</span>
-                                </label>
-
-                                <label class="block text-gray-700">
-                                    <input type="radio" class="mr-2" name="question3" value="c" id="q6-c">
-                                    <span class="text-gray-800">C. \(\log_b (a \cdot c) = \log_b a \cdot \log_b
-                                        c\)</span>
-                                </label>
-
-                                <label class="block text-gray-700">
-                                    <input type="radio" class="mr-2" name="question3" value="d" id="q6-d">
-                                    <span class="text-gray-800">D. \(\log_b (a \cdot c) = \log_b a / \log_b c\)</span>
-                                </label>
-
-                                <p id="feedback-question3" class="text-gray-800"></p>
                             </div>
 
-                            <button onclick="checkAnswers()"
-                                class="bg-blue-500 text-white py-2 px-4 rounded mt-4 hover:bg-blue-700">Cek
-                                Jawaban</button>
+                            <div>
+                                <p class="text-gray-800">
+                                    <span class="font-bold text-green-500 text-5xl">5<sup>2</sup></span><br><br> Dalam
+                                    hal ini, 5 adalah
+                                    basis, dan 2 adalah eksponen.
+                                    Jadi, <span class="font-bold text-green-500">5<sup>2</sup></span> berarti kita
+                                    mengalikan 5 dengan dirinya sendiri sebanyak 2 kali, sehingga
+                                    <span class="font-bold text-green-500">5<sup>2</sup></span> sama dengan <span
+                                        class="font-bold text-purple-500">5 × 5</span>, yang hasilnya <span
+                                        class="font-bold text-blue-500">25</span>.
+                                </p>
+                            </div>
                         </div>
+
+                        <div class="mb-6 text-gray-800">
+                            <p class="mb-4">Eksponen memberikan kita kemampuan untuk menyederhanakan operasi matematika
+                                yang melibatkan perpangkatan dengan bantuan sifat-sifat khusus, seperti hukum perkalian
+                                dan pembagian eksponen.</p>
+                        </div>
+
+                        <div class="mb-6 text-gray-800">
+                            <p class="mb-4">Perlu diingat, eksponen tidak hanya berlaku untuk bilangan bulat; mereka
+                                juga dapat berupa bilangan pecahan atau bahkan negatif.</p>
+                            <p>Misalnya, <span class="font-bold text-green-500">\(2^{-3}\)</span> dapat ditulis sebagai
+                                <span class="font-bold"> \(\frac{1}{2^{3}}\) </span>, yang setara dengan <span
+                                    class="font-bold">
+                                    \(\frac{1}{8}\) </span>.
+                            </p>
+                        </div>
+
+                        <div class="text-gray-800">
+                            <p>Dengan memahami konsep eksponen, kita dapat mengatasi berbagai tantangan matematika dan
+                                mengaplikasikannya dalam kehidupan sehari-hari, seperti dalam ilmu pengetahuan,
+                                teknologi, dan ekonomi.</p>
+                        </div>
+
+                    </div>
+                    <div class="max-w-md p-8 bg-white rounded-md shadow-md mt-2">
+                        <h2 class="text-2xl font-semibold mb-4">Simulasi Perpangkatan</h2>
+                        <div class="flex">
+                            <div class="mb-4">
+                                <input type="number" id="baseNumber"
+                                    class="mt-1 p-2 w-36 h-32 border rounded-md text-6xl text-center">
+                            </div>
+
+                            <div class="mb-4">
+                                <input type="number" id="exponent" class="mt-1 p-2 w-24 border rounded-md"
+                                    placeholder="Pangkat">
+                            </div>
+
+                        </div>
+                        <div class="mb-6">
+                            <label for="result" class="block font-medium text-gray-600 text-center pt-3">Hasil</label>
+                            <p id="result" class="mt-1 p-2 w-full border rounded-md bg-gray-100 text-center">0</p>
+                        </div>
+
+                    </div>
+                    <!-- Post-test Pilihan Ganda -->
+                    <div class="container mx-auto p-8 bg-gray-100 rounded-lg shadow-lg mt-8">
+                        <h2 class="text-3xl font-bold text-indigo-700 mb-6">Post-Test</h2>
+
+                        <div class="mb-4" id="question1">
+                            <p class="text-gray-800"><strong>1. </strong>Apa yang dimaksud dengan eksponen?</p>
+                            <label class="block text-gray-700 mt-2">
+                                <input type="radio" class="mr-2" name="question1" value="a" id="q1-a">
+                                <span class="text-gray-800">A. Bilangan yang menjadi hasil perpangkatan.</span>
+                            </label>
+                            <label class="block text-gray-700">
+                                <input type="radio" class="mr-2" name="question1" value="b" id="q1-b">
+                                <span class="text-gray-800">B. Bilangan yang menjadi dasar perpangkatan.</span>
+                            </label>
+                            <label class="block text-gray-700">
+                                <input type="radio" class="mr-2" name="question1" value="c" id="q1-c">
+                                <span class="text-gray-800">C. Notasi atau cara penulisan perpangkatan.</span>
+                            </label>
+                            <label class="block text-gray-700">
+                                <input type="radio" class="mr-2" name="question1" value="d" id="q1-d">
+                                <span class="text-gray-800">D. Bilangan yang menjadi pangkat dalam perpangkatan.</span>
+                            </label>
+                            <p id="feedback-question1" class="text-gray-800"></p>
+                        </div>
+
+                        <div class="mb-4" id="question2">
+                            <p class="text-gray-800"><strong>2. </strong>Apa yang dimaksud dengan basis dalam eksponen?
+                            </p>
+                            <label class="block text-gray-700 mt-2">
+                                <input type="radio" class="mr-2" name="question2" value="a" id="q2-a">
+                                <span class="text-gray-800">A. Hasil perpangkatan.</span>
+                            </label>
+                            <label class="block text-gray-700">
+                                <input type="radio" class="mr-2" name="question2" value="b" id="q2-b">
+                                <span class="text-gray-800">B. Notasi atau cara penulisan perpangkatan.</span>
+                            </label>
+                            <label class="block text-gray-700">
+                                <input type="radio" class="mr-2" name="question2" value="c" id="q2-c">
+                                <span class="text-gray-800">C. Bilangan yang menjadi dasar perpangkatan.</span>
+                            </label>
+                            <label class="block text-gray-700">
+                                <input type="radio" class="mr-2" name="question2" value="d" id="q2-d">
+                                <span class="text-gray-800">D. Bilangan yang menjadi pangkat dalam perpangkatan.</span>
+                            </label>
+                            <p id="feedback-question2" class="text-gray-800"></p>
+                        </div>
+
+                        <div id="question3">
+                            <p class="text-gray-800"><strong>3. </strong>Berapakah nilai dari \(3^2\)?</p>
+                            <label class="block text-gray-700 mt-2">
+                                <input type="radio" class="mr-2" name="question3" value="a" id="q3-a">
+                                <span class="text-gray-800">A. 6</span>
+                            </label>
+                            <label class="block text-gray-700">
+                                <input type="radio" class="mr-2" name="question3" value="b" id="q3-b">
+                                <span class="text-gray-800">B. 9</span>
+                            </label>
+                            <label class="block text-gray-700">
+                                <input type="radio" class="mr-2" name="question3" value="c" id="q3-c">
+                                <span class="text-gray-800">C. 12</span>
+                            </label>
+                            <label class="block text-gray-700">
+                                <input type="radio" class="mr-2" name="question3" value="d" id="q3-d">
+                                <span class="text-gray-800">D. 15</span>
+                            </label>
+                            <p id="feedback-question3" class="text-gray-800"></p>
+                        </div>
+
+                        <button onclick="checkAnswers()"
+                            class="bg-blue-500 text-white py-2 px-4 rounded mt-4 hover:bg-blue-700">Cek
+                            Jawaban</button>
+                    </div>
                 </article>
             </div>
         </div>
@@ -212,12 +231,34 @@
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
         </script>
     <script>
+        const baseInput = document.getElementById('base');
+        const numberInput = document.getElementById('number');
+        const resultElement = document.getElementById('result');
+
+        baseInput.addEventListener('input', calculateLog);
+        numberInput.addEventListener('input', calculateLog);
+
+        function calculateLog() {
+            const base = parseFloat(baseInput.value);
+            const number = parseFloat(numberInput.value);
+
+            if (!isNaN(base) && !isNaN(number) && base > 0 && base !== 1 && number > 0) {
+                const result = Math.log(number) / Math.log(base);
+
+                if (Number.isInteger(result)) {
+                    resultElement.value = `${base}`;
+                } else {
+                    resultElement.value = `${number}`;
+                }
+            }
+        }
         function checkAnswers() {
             const correctAnswers = {
                 question1: 'a', // 
                 question2: 'a',
                 question3: 'b'
             };
+
 
             const userAnswers = {
                 question1: document.querySelector('input[name="question1"]:checked').value,

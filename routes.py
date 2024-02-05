@@ -354,6 +354,10 @@ def login():
 def logout():
     return UserController.logout()
 
+@app.route('/')
+def landing():
+    return render_template('landing-page.html')
+
 # Handler untuk error 404
 @app.errorhandler(404)
 def not_found_error(error):

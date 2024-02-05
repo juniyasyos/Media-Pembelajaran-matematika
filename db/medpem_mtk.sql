@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 06 Jan 2024 pada 12.30
+-- Waktu pembuatan: 30 Jan 2024 pada 15.58
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -26,22 +26,13 @@ SET time_zone = "+00:00";
 --
 -- Struktur dari tabel `answeroption`
 --
--- Pembuatan: 02 Jan 2024 pada 12.57
---
 
-DROP TABLE IF EXISTS `answeroption`;
 CREATE TABLE `answeroption` (
   `option_id` int(11) NOT NULL,
   `question_id` int(11) DEFAULT NULL,
   `teks_opsi` text DEFAULT NULL,
   `jawaban_benar` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- RELATIONSHIPS FOR TABLE `answeroption`:
---   `question_id`
---       `question` -> `question_id`
---
 
 --
 -- Dumping data untuk tabel `answeroption`
@@ -56,36 +47,29 @@ INSERT INTO `answeroption` (`option_id`, `question_id`, `teks_opsi`, `jawaban_be
 (6, 2, 'Algoritma tersebut memiliki kompleksitas waktu kuadratik.', 1),
 (7, 2, 'Algoritma tersebut memiliki kompleksitas waktu logaritmik.', 0),
 (8, 2, 'Algoritma tersebut tidak efisien.', 0),
-(9, 3, 'a^(m+n)', 1),
-(10, 3, 'a^(m-n)', 0),
-(11, 3, 'a^(mn)', 0),
-(12, 3, 'a^(m/n)', 0),
+(9, 3, '\\(a^{m+n}\\)', 1),
+(10, 3, '\\(a^{m-n}\\)', 0),
+(11, 3, '\\(a^{mn}\\)', 0),
+(12, 3, '\\(a^{m/n}\\)', 0),
 (13, 4, 'O(n log n)', 1),
-(14, 4, 'O(n^2)', 0),
+(14, 4, '\\(O(n^2)\\)', 0),
 (15, 4, 'Keduanya sama efisien', 0),
 (16, 4, 'Tidak dapat ditentukan', 0),
 (17, 5, 'x', 0),
 (18, 5, '-x', 0),
-(19, 5, '1/x', 1),
-(20, 5, '-1/x', 0);
+(19, 5, '\\(x^{-1}\\)', 1),
+(20, 5, '\\(-\\frac{1}{x}\\)', 0);
 
 -- --------------------------------------------------------
 
 --
 -- Struktur dari tabel `bab`
 --
--- Pembuatan: 31 Des 2023 pada 04.40
---
 
-DROP TABLE IF EXISTS `bab`;
 CREATE TABLE `bab` (
   `id` int(11) NOT NULL,
   `chapter_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- RELATIONSHIPS FOR TABLE `bab`:
---
 
 --
 -- Dumping data untuk tabel `bab`
@@ -108,21 +92,12 @@ INSERT INTO `bab` (`id`, `chapter_name`) VALUES
 --
 -- Struktur dari tabel `class`
 --
--- Pembuatan: 26 Des 2023 pada 04.44
---
 
-DROP TABLE IF EXISTS `class`;
 CREATE TABLE `class` (
   `id` int(11) NOT NULL,
   `class_name` varchar(255) DEFAULT NULL,
   `semester_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- RELATIONSHIPS FOR TABLE `class`:
---   `semester_id`
---       `semester` -> `id`
---
 
 --
 -- Dumping data untuk tabel `class`
@@ -141,10 +116,7 @@ INSERT INTO `class` (`id`, `class_name`, `semester_id`) VALUES
 --
 -- Struktur dari tabel `explanation`
 --
--- Pembuatan: 31 Des 2023 pada 04.50
---
 
-DROP TABLE IF EXISTS `explanation`;
 CREATE TABLE `explanation` (
   `id` int(11) NOT NULL,
   `text` text NOT NULL,
@@ -156,108 +128,81 @@ CREATE TABLE `explanation` (
   `topics_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- RELATIONSHIPS FOR TABLE `explanation`:
---   `topics_id`
---       `topics` -> `id`
---
-
 -- --------------------------------------------------------
 
 --
 -- Struktur dari tabel `lesson`
 --
--- Pembuatan: 02 Jan 2024 pada 11.35
---
 
-DROP TABLE IF EXISTS `lesson`;
 CREATE TABLE `lesson` (
   `id` int(11) NOT NULL,
   `class_id` int(11) DEFAULT NULL,
   `quiz_id` int(11) DEFAULT NULL,
-  `lesson_name` varchar(255) DEFAULT NULL
+  `lesson_name` varchar(255) DEFAULT NULL,
+  `src` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- RELATIONSHIPS FOR TABLE `lesson`:
---   `class_id`
---       `class` -> `id`
---   `quiz_id`
---       `questions` -> `id`
---
 
 --
 -- Dumping data untuk tabel `lesson`
 --
 
-INSERT INTO `lesson` (`id`, `class_id`, `quiz_id`, `lesson_name`) VALUES
-(204501, 1, 1, 'Eksponen Dan Algoritma'),
-(204502, 1, NULL, 'Barisan dan Deret'),
-(204503, 1, NULL, 'Vektor dan Operasinya'),
-(204504, 1, NULL, 'Trigonometri'),
-(204505, 2, NULL, 'Sistem Persamaan dan Pertidaksamaan Linear'),
-(204506, 2, NULL, 'Fungsi Kuadrat'),
-(204507, 2, NULL, 'Statistika'),
-(204508, 2, NULL, 'Peluang'),
-(204509, 3, NULL, 'Komposisi Fungsi dan Fungsi Invers'),
-(204510, 3, NULL, 'Lingkaran'),
-(204511, 3, NULL, 'Statistika'),
-(204512, 4, NULL, 'Bilangan Kompleks'),
-(204513, 4, NULL, 'Polinomial'),
-(204514, 4, NULL, 'Matrix'),
-(204515, 4, NULL, 'Transformasi Geometri'),
-(204516, 4, NULL, 'Fungsi dan Pemodelannya'),
-(204517, 5, NULL, 'Tarformasi Fungsi'),
-(204518, 5, NULL, 'Busur Dan Juring Lingkaran'),
-(204519, 5, NULL, 'Kombintorik'),
-(204520, 6, NULL, 'Geometri Analitik'),
-(204521, 6, NULL, 'Limit'),
-(204522, 6, NULL, 'Turunan Fungsi'),
-(204523, 6, NULL, 'Integral'),
-(204524, 6, NULL, 'Analisis Data dan Peluang');
+INSERT INTO `lesson` (`id`, `class_id`, `quiz_id`, `lesson_name`, `src`) VALUES
+(204501, 1, 1, 'Eksponen Dan Logaritma', 'eksponen-dan-logaritma.html'),
+(204502, 1, NULL, 'Barisan dan Deret', ''),
+(204503, 1, NULL, 'Vektor dan Operasinya', ''),
+(204504, 1, NULL, 'Trigonometri', ''),
+(204505, 2, NULL, 'Sistem Persamaan dan Pertidaksamaan Linear', ''),
+(204506, 2, NULL, 'Fungsi Kuadrat', ''),
+(204507, 2, NULL, 'Statistika', ''),
+(204508, 2, NULL, 'Peluang', ''),
+(204509, 3, NULL, 'Komposisi Fungsi dan Fungsi Invers', ''),
+(204510, 3, NULL, 'Lingkaran', ''),
+(204511, 3, NULL, 'Statistika', ''),
+(204512, 4, NULL, 'Bilangan Kompleks', ''),
+(204513, 4, NULL, 'Polinomial', ''),
+(204514, 4, NULL, 'Matrix', ''),
+(204515, 4, NULL, 'Transformasi Geometri', ''),
+(204516, 4, NULL, 'Fungsi dan Pemodelannya', ''),
+(204517, 5, NULL, 'Tarformasi Fungsi', ''),
+(204518, 5, NULL, 'Busur Dan Juring Lingkaran', ''),
+(204519, 5, NULL, 'Kombintorik', ''),
+(204520, 6, NULL, 'Geometri Analitik', ''),
+(204521, 6, NULL, 'Limit', ''),
+(204522, 6, NULL, 'Turunan Fungsi', ''),
+(204523, 6, NULL, 'Integral', ''),
+(204524, 6, NULL, 'Analisis Data dan Peluang', '');
 
 -- --------------------------------------------------------
 
 --
 -- Struktur dari tabel `question`
 --
--- Pembuatan: 02 Jan 2024 pada 12.57
---
 
-DROP TABLE IF EXISTS `question`;
 CREATE TABLE `question` (
   `question_id` int(11) NOT NULL,
   `quiz_id` int(11) DEFAULT NULL,
   `teks_pertanyaan` text DEFAULT NULL,
-  `tipe_pertanyaan` enum('pilihan_ganda','essai') DEFAULT NULL
+  `tipe_pertanyaan` enum('pilihan_ganda','essai') DEFAULT NULL,
+  `point` int(6) NOT NULL DEFAULT 100
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- RELATIONSHIPS FOR TABLE `question`:
---   `quiz_id`
---       `quiz` -> `quiz_id`
---
 
 --
 -- Dumping data untuk tabel `question`
 --
 
-INSERT INTO `question` (`question_id`, `quiz_id`, `teks_pertanyaan`, `tipe_pertanyaan`) VALUES
-(1, 1, 'Apa hasil dari 2^0?', 'pilihan_ganda'),
-(2, 1, 'Jika sebuah algoritma memiliki kompleksitas waktu O(n^2), apa artinya hal tersebut?', 'pilihan_ganda'),
-(3, 1, 'Menurut hukum eksponen, apa hasil dari a^m * a^n?', 'pilihan_ganda'),
-(4, 1, 'Dua algoritma memiliki kompleksitas waktu O(n log n) dan O(n^2), masing-masing. Mana yang lebih efisien untuk masalah skala besar?', 'pilihan_ganda'),
-(5, 1, 'Jika x adalah bilangan bulat positif, apa nilai dari x^(-1)?', 'pilihan_ganda');
+INSERT INTO `question` (`question_id`, `quiz_id`, `teks_pertanyaan`, `tipe_pertanyaan`, `point`) VALUES
+(1, 1, 'Apa hasil dari \\(2^0\\)?', 'pilihan_ganda', 100),
+(2, 1, 'Jika sebuah algoritma memiliki kompleksitas waktu O(n^2), apa artinya hal tersebut?', 'pilihan_ganda', 100),
+(3, 1, 'Menurut hukum eksponen, apa hasil dari \\(a^m \\cdot a^n\\)?', 'pilihan_ganda', 100),
+(4, 1, 'Dua algoritma memiliki kompleksitas waktu \\(O(n \\log n)\\) dan \\(O(n^2)\\)  masing-masing. Mana yang lebih efisien untuk masalah skala besar?', 'pilihan_ganda', 100),
+(5, 1, 'Jika \\(x\\) adalah bilangan bulat positif, apa nilai dari \\(x^{-1}\\)?', 'pilihan_ganda', 100);
 
 -- --------------------------------------------------------
 
 --
 -- Struktur dari tabel `quiz`
 --
--- Pembuatan: 02 Jan 2024 pada 12.57
---
 
-DROP TABLE IF EXISTS `quiz`;
 CREATE TABLE `quiz` (
   `quiz_id` int(11) NOT NULL,
   `judul` varchar(255) DEFAULT NULL,
@@ -268,25 +213,18 @@ CREATE TABLE `quiz` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- RELATIONSHIPS FOR TABLE `quiz`:
---
-
---
 -- Dumping data untuk tabel `quiz`
 --
 
 INSERT INTO `quiz` (`quiz_id`, `judul`, `deskripsi`, `waktu_mulai`, `waktu_selesai`, `tipe`) VALUES
-(1, 'Quiz Eksponen dan Algoritma', 'Deskripsi quiz tentang eksponen dan algoritma', '2024-01-02 19:58:14', '2024-01-02 19:58:14', 'kuis');
+(1, 'Quiz Eksponen dan Algoritma', 'Deskripsi quiz tentang eksponen dan algoritma', '2023-12-26 05:00:00', '2024-01-30 11:00:00', 'kuis');
 
 -- --------------------------------------------------------
 
 --
 -- Struktur dari tabel `role`
 --
--- Pembuatan: 03 Jan 2024 pada 02.05
---
 
-DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role` (
   `id` int(11) NOT NULL,
   `role_name` varchar(255) DEFAULT NULL,
@@ -295,10 +233,6 @@ CREATE TABLE `role` (
   `created_by` int(11) DEFAULT NULL,
   `deskripsi` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- RELATIONSHIPS FOR TABLE `role`:
---
 
 --
 -- Dumping data untuk tabel `role`
@@ -314,18 +248,11 @@ INSERT INTO `role` (`id`, `role_name`, `token`, `created_at`, `created_by`, `des
 --
 -- Struktur dari tabel `semester`
 --
--- Pembuatan: 26 Des 2023 pada 04.44
---
 
-DROP TABLE IF EXISTS `semester`;
 CREATE TABLE `semester` (
   `id` int(11) NOT NULL,
   `semester_name` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- RELATIONSHIPS FOR TABLE `semester`:
---
 
 --
 -- Dumping data untuk tabel `semester`
@@ -340,10 +267,7 @@ INSERT INTO `semester` (`id`, `semester_name`) VALUES
 --
 -- Struktur dari tabel `topics`
 --
--- Pembuatan: 05 Jan 2024 pada 02.37
---
 
-DROP TABLE IF EXISTS `topics`;
 CREATE TABLE `topics` (
   `id` int(11) NOT NULL,
   `lesson_id` int(11) NOT NULL,
@@ -352,14 +276,6 @@ CREATE TABLE `topics` (
   `poin` int(11) NOT NULL DEFAULT 10,
   `src_topics` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- RELATIONSHIPS FOR TABLE `topics`:
---   `bab_id`
---       `bab` -> `id`
---   `lesson_id`
---       `lesson` -> `id`
---
 
 --
 -- Dumping data untuk tabel `topics`
@@ -527,10 +443,7 @@ INSERT INTO `topics` (`id`, `lesson_id`, `topics_name`, `bab_id`, `poin`, `src_t
 --
 -- Struktur dari tabel `user`
 --
--- Pembuatan: 04 Jan 2024 pada 02.08
---
 
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `username` varchar(255) DEFAULT NULL,
@@ -543,28 +456,23 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- RELATIONSHIPS FOR TABLE `user`:
---   `role_id`
---       `role` -> `id`
---
-
---
 -- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `point`, `created_at`, `activation_code`, `role_id`) VALUES
 (1, 'juniyasyos', 'juniyasyos@gmail.com', '$2b$12$66mMLH6jGRiynOTZnlmi4erAVp3cYF92mp64nCLZLWBheH.OD4ica', 110, '2024-01-06 02:43:31', '0000', 3),
-(2, 'dahlan', '222410103049@mail.unej.ac.id', '$2b$12$JuI9yI3MRU5T4tKBxTOfwuELqmXjHAHwqDGSDMMGJD99MMW5bqTdm', 0, '2024-01-02 19:07:25', '0', 1);
+(2, 'dahlan', '222410103049@mail.unej.ac.id', '$2b$12$JuI9yI3MRU5T4tKBxTOfwuELqmXjHAHwqDGSDMMGJD99MMW5bqTdm', 0, '2024-01-02 19:07:25', '0', 1),
+(3, 'Ahmad Ilyas', 'AhmadIlyasD7@gmail.com', '$2b$12$rrGwmqxECCrSet3bmvi1A.yvxdVm.3thCvNMxW6Q7h6b4S4dgOIzO', 0, '2024-01-06 20:02:24', '0', 2),
+(4, 'juni', 'arek@gmail.com', '$2b$12$PPl7.hT6FHmjPPaNj0Zgre8A.YnT9yTmOq2fVURlZllkJq12mN6iy', 600, '2024-01-11 09:19:42', '0', 2),
+(5, 'hanifa', 'hanifa@gmail.com', '$2b$12$k.r4AuQQ54/bOD4K1AxMBuPvPnIqmZ9OxBp.lFGPcagG0Pa1EgYIO', 600, '2024-01-10 15:25:32', '0', 2),
+(6, 'kayla', 'ilyas@gmail.com', '$2b$12$S.hXUiVH9IFXg8A6nYEmt.jVPJp2kCC1qkRdlgA5IlmbV8plVzQWm', 10, '2024-01-13 10:49:46', '0', 2);
 
 -- --------------------------------------------------------
 
 --
 -- Struktur dari tabel `user_quiz_status`
 --
--- Pembuatan: 04 Jan 2024 pada 04.13
---
 
-DROP TABLE IF EXISTS `user_quiz_status`;
 CREATE TABLE `user_quiz_status` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -575,36 +483,26 @@ CREATE TABLE `user_quiz_status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- RELATIONSHIPS FOR TABLE `user_quiz_status`:
---   `quiz_id`
---       `quiz` -> `quiz_id`
---   `user_id`
---       `user` -> `id`
+-- Dumping data untuk tabel `user_quiz_status`
 --
+
+INSERT INTO `user_quiz_status` (`id`, `user_id`, `quiz_id`, `score`, `time`, `date`) VALUES
+(2, 1, 1, 400, 9854, '2024-01-10'),
+(7, 5, 1, 500, 12376, '2024-01-10'),
+(8, 4, 1, 500, 16163, '2024-01-11');
 
 -- --------------------------------------------------------
 
 --
 -- Struktur dari tabel `user_topic_status`
 --
--- Pembuatan: 04 Jan 2024 pada 04.01
---
 
-DROP TABLE IF EXISTS `user_topic_status`;
 CREATE TABLE `user_topic_status` (
   `id` int(11) NOT NULL,
   `topics_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `reading_duration` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- RELATIONSHIPS FOR TABLE `user_topic_status`:
---   `topics_id`
---       `topics` -> `id`
---   `user_id`
---       `user` -> `id`
---
 
 --
 -- Dumping data untuk tabel `user_topic_status`
@@ -621,7 +519,28 @@ INSERT INTO `user_topic_status` (`id`, `topics_id`, `user_id`, `reading_duration
 (8, 9, 1, 31),
 (9, 8, 1, 7),
 (10, 6, 1, 662),
-(11, 7, 1, 26);
+(11, 7, 1, 26),
+(12, 1, 4, 37),
+(13, 1, 5, 43),
+(14, 2, 5, 42),
+(15, 3, 5, 33),
+(16, 4, 5, 68),
+(17, 5, 5, 27),
+(18, 6, 5, 22),
+(19, 7, 5, 21),
+(20, 8, 5, 39),
+(21, 9, 5, 15),
+(22, 10, 5, 21),
+(23, 2, 4, 12),
+(24, 3, 4, 36),
+(25, 4, 4, 108),
+(26, 5, 4, 11),
+(27, 6, 4, 17),
+(28, 7, 4, 20),
+(29, 8, 4, 12),
+(30, 9, 4, 11),
+(31, 10, 4, 13),
+(32, 1, 6, 73);
 
 --
 -- Indexes for dumped tables
@@ -762,19 +681,19 @@ ALTER TABLE `topics`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_quiz_status`
 --
 ALTER TABLE `user_quiz_status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_topic_status`
 --
 ALTER TABLE `user_topic_status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

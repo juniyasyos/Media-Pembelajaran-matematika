@@ -4,58 +4,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulasi Pertumbuhan Investasi</title>
-    <link rel="stylesheet" href="../static/css/studi_kasus/contoh/style_1.css">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/contoh_soal/main_eksponen.css') }}"> -->
+    <link rel="stylesheet" href="../static/css/contoh_soal/main_eksponen.css">
+    <title>Mathsip - contoh soal | eksponen dan logaritma </title>
 </head>
 
-<body class="bg-gray-100 text-gray-800 font-sans">
-    <div class="container mx-auto my-8 p-8 bg-white rounded shadow-md">
-        <h1 class="text-3xl font-bold mb-8">Simulasi Pertumbuhan Investasi</h1>
+<body class="font-sans">
+    <div class="relative flex min-h-screen flex-col overflow-hidden bg-gray-50">
+        <div
+            class="absolute inset-0 bg-[url(/img/grid.svg)] bg-top [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]">
+        </div>
+        <div
+            class="relative w-full bg-white px-6 shadow-xl shadow-slate-700/10 ring-1 ring-gray-900/5 md:mx-auto md:max-w-3xl lg:max-w-4xl lg:pb-28 lg:pt-16">
+            <div class="prose prose-slate mx-auto mt-8 lg:prose-lg mb-10">
+                <h2 class="text-3xl font-bold text-indigo-700 mb-6">Contoh Soal Eksponen dan Logaritma</h2>
 
-        <form id="investment-form">
-            <div class="mb-4">
-                <label for="initial-investment" class="block text-sm font-semibold">Investasi Awal:</label>
-                <input type="number" id="initial-investment" name="initial-investment"
-                    class="w-full p-2 border rounded focus:outline-none focus:border-blue-500">
+                <p class="mb-6">Mari kita mulai petualangan matematika kita dengan membahas konsep eksponen. Dalam
+                    soal-soal berikut, kita
+                    akan menjelajahi berbagai situasi yang melibatkan pemahaman tentang eksponen. Siapkan diri Anda
+                    untuk mengasah
+                    kemampuan matematika dan nikmati setiap tantangan yang kami hadirkan. <br><strong>Selamat
+                        belajar!</strong></p>
+
+                <!-- Contoh soal 1 -->
+                <div class="mb-8" id="c1">
+                    <h2 class="pt-3 text-indigo-700">Contoh soal 1</h2>
+                    <div class="bg-gray-300 rounded-md" id="contoh_1">
+                        <p class="p-3">Jika \(x\) memenuhi persamaan \(3^{(x+2)} - 3^x = 16\), maka nilai
+                            \(\frac{6^{2x}}{4^{(x-1)}}\) adalah.....</p>
+                    </div>
+
+                    <div class="bg-gray-200 rounded-md pb-5" id="contoh_1">
+                        <h3 class="p-3">Pembahasan</h3>
+                        <h4 class="px-3 pb-2">Langkah 1: Menyelesaikan Persamaan</h4>
+                        <p class="px-3">\(3^{(x+2)} - 3^x = 16\)</p>
+                        <p class="px-3">\({(3^x \times 3^2)} - 3^x = 16\)</p>
+                        <p class="px-3">\({(9 \times 3^x)} - 3^x = 16\)</p>
+                        <p class="px-3">\({(8 \times 3^x)} = 16\)</p>
+                        <p class="px-3">\(3^x = 2\)</p>
+                        <h4 class="px-3 pb-2">Langkah 2: Mencari Nilai \(x\)</h4>
+                        <p class="px-3">Ubah kedua ruas menjadi logaritma bentuk logaritma, maka :</p>
+                        <p class="px-3">\(log(3^x) = log(2)\)</p>
+                        <p class="px-3">\(x \times log(3) = log(2)\)</p>
+                        <p class="px-3">\(x = \frac{log(2)}{log(3)}\)</p>
+                        <p class="px-3">\(x = log_3(2)\)</p>
+                        <p class="px-3">Sehingga :</p>
+                        <p class="px-3">\(\frac{6^{2x}}{4^{(x-1)}} = \frac{36^x}{4^{(x-1)}}\)</p>
+                        <p class="px-3 ml-10">\( = \frac{(4 \times 9)^x}{4^{(x-1)}}\)</p>
+                        <p class="px-3 ml-10">\( = \frac{4^x \times 3^{2x}}{4^x \times 4^{-1}}\)</p>
+                        <p class="px-3 ml-10">\( = 4 \times 3^{2x} \)</p>
+                        <p class="px-3 ml-10">\( = 4 \times 3^{2 \times log_3(2)} \)</p>
+                        <p class="px-3 ml-10">\( = 4 \times 3^{log_3(2^2)} \)</p>
+                        <p class="px-3 ml-10">\( = 4 \times 2^2 \)</p>
+                        <p class="px-3 ml-10">\( = 16 \)</p>
+                    </div>
+
+                    <h4 class="pt-3">Coba kerjakan soal yg serupa</h4>
+                    <div class="bg-gray-300 rounded-md" id="contoh_1">
+                        <p class="p-3">Jika \(a\) memenuhi persamaan \(2^{(a+2)} - 2^a = 96\), maka nilai
+                            \(a\) adalah ....</p>
+                    </div>
+                    <div class="answer-container">
+                        <div id="result-container" class="mt-4"></div>
+                        <input type="number" id="coba_1" name="coba_1" placeholder="Masukkan jawaban Anda"
+                            class="p-2 border rounded-md w-full" />
+                        <button onclick="cekJawaban_c1()" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded-md">Cek
+                            Jawaban</button>
+                        <button class="showAnswerButton bg-blue-500 text-white p-2 rounded-md mt-3"
+                            data-answer-id="answer_1">Lihat Pembahasan</button>
+                    </div>
+                    <div class="bg-gray-300 rounded-md pb-5 hidden" id="answer_1">
+                        <h3 class="p-3">Pembahasan</h3>
+                        <h4 class="px-3 pb-2">Langkah 1: Menyelesaikan Persamaan</h4>
+                        <p class="px-3">\(2^{(a+2)} - 2^a = 96\)</p>
+                        <p class="px-3">\({(2^a \times 2^2)} - 2^a = 96\)</p>
+                        <p class="px-3">\({(4 \times 2^a)} - 2^a = 96\)</p>
+                        <p class="px-3">\({(3 \times 2^a)} = 96\)</p>
+                        <p class="px-3">\(2^a = 32\)</p>
+
+                        <h4 class="px-3 pb-2">Langkah 2: Mencari Nilai \(a\) menggunakan \(log\)</h4>
+                        <p class="px-3">Ubah kedua ruas menjadi logaritma bentuk logaritma, maka :</p>
+                        <p class="px-3">\(log_2(2^a) = log_2(32)\)</p>
+                        <p class="px-3">\(a \times log_2(2) = 5\)</p>
+                        <p class="px-3">\(a = 5\)</p>
+                        <h4 class="px-3 pb-2 mt-3">Jadi nilai dari \(a\) adalah \(5\)</h4>
+                    </div>
+                </div>
+
+                <!-- Contoh soal 2 -->
+                <div class="mb-8" id="c2">
+                    <h2 class="pt-3 text-indigo-700">Contoh soal 2</h2>
+                    <div class="bg-gray-300 rounded-md" id="contoh_2">
+                        <p class="p-3">Jika persamaan \(2^{(x-1)} = 8\), maka hasil dari persamaan \(2x^{(2x+4)}\)
+                            adalah .....</p>
+                    </div>
+
+                    <div class="bg-gray-200 rounded-md pb-5" id="contoh_2">
+                        <h3 class="p-3">Pembahasan</h3>
+                        <h4 class="px-3 pb-2">Langkah 1: Sederhanakan</h4>
+                        <p class="px-3">\(2^x \times 2^{-1} = 8\)</p>
+                        <p class="px-3">\(2^x \times 2^{-1} = 8\)</p>
+                        <p class="px-3">\(2^x = 8 \times 2\)</p>
+                        <p class="px-3">\(2^x = 16\)</p>
+                        <p class="px-3">\(x = 4\)</p>
+                        <h4 class="px-3 pb-2">Langkah 2: Selesaikan permasalahan</h4>
+                        <p class="px-3">\(2x^{(2x+4)} = 2 \times 4^{((2 \times 4)+4)}\)</p>
+                        <p class="px-3 ml-10">\( = 2 \times 4^{(12)}\)</p>
+                        <p class="px-3 ml-10">\( = 2 \times 2^{(24)}\)</p>
+                        <p class="px-3 ml-10">\( = 2^{(25)}\)</p>
+                        <p class="px-3 ml-10">\( = 33554432\)</p>
+                    </div>
+
+                    <h4 class="pt-3">Coba kerjakan soal yg serupa</h4>
+                    <div class="bg-gray-300 rounded-md" id="contoh_2">
+                        <p class="p-3">Jika persamaan \(2^{(2x+4)} = 20\), maka hasil dari persamaan \(x+2\)
+                            adalah .....</p>
+                    </div>
+                    <div class="answer-container">
+                        <div id="result-container" class="mt-4"></div>
+                        <input type="number" id="coba_1" name="coba_1" placeholder="Masukkan jawaban Anda"
+                            class="p-2 border rounded-md w-full" />
+                        <button onclick="cekJawaban_c1()" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded-md">Cek
+                            Jawaban</button>
+                        <button class="showAnswerButton bg-blue-500 text-white p-2 rounded-md mt-3"
+                            data-answer-id="answer_2">Lihat Pembahasan</button>
+                    </div>
+                    <div class="bg-gray-300 rounded-md pb-5 hidden" id="answer_2">
+                        <h3 class="p-3">Pembahasan</h3>
+                        <h4 class="px-3 pb-2">Langkah 1: Sederhanakan</h4>
+                        <p class="px-3">\(2^{(x+4)} = 128\)</p>
+                        <p class="px-3">\(2^{x} \times 2^4 = 128\)</p>
+                        <p class="px-3">\(2^{x} \times 16 = 128\)</p>
+                        <p class="px-3">\(2^{x} \times 16 = 128\)</p>
+                        <p class="px-3">\(2^{x} = 8\)</p>
+                        <p class="px-3">\(x = 3\)</p>
+                        <h4 class="px-3 pb-2">Langkah 2: Selesaikan permasalahan</h4>
+                        <p class="px-3">Penyelesaian dari masalah \( x + 2\) adalah \(3+2\) = \(5\)</p>
+                    </div>
+                </div>
             </div>
-
-            <div class="mb-4">
-                <label for="annual-rate" class="block text-sm font-semibold">Tingkat Pertumbuhan Tahunan (%):</label>
-                <input type="number" id="annual-rate" name="annual-rate"
-                    class="w-full p-2 border rounded focus:outline-none focus:border-blue-500">
-            </div>
-
-            <div class="mb-4">
-                <label for="years" class="block text-sm font-semibold">Jumlah Tahun:</label>
-                <input type="number" id="years" name="years"
-                    class="w-full p-2 border rounded focus:outline-none focus:border-blue-500">
-            </div>
-
-            <button type="button" onclick="calculateInvestment()"
-                class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue">
-                Hitung Pertumbuhan Investasi
-            </button>
-        </form>
-
-        <div id="result" class="mt-8"></div>
+        </div>
+        <footer class="text-center py-4 bg-gray-300 bottom-0">
+            <p class="text-sm text-gray-600">&copy Tim Mathsip | 10 Januari 2024</p>
+        </footer>
     </div>
-
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
     <script>
-        function calculateInvestment() {
-            const initialInvestment = parseFloat(document.getElementById('initial-investment').value);
-            const annualRate = parseFloat(document.getElementById('annual-rate').value);
-            const years = parseInt(document.getElementById('years').value);
+        function cekJawaban_c1() {
+            // Ambil nilai jawaban dari input
+            var jawabanInput = document.getElementById("coba_1");
+            var jawaban = jawabanInput.value;
 
-            const futureValue = initialInvestment * Math.pow(1 + (annualRate / 100), years);
+            // Lakukan pengecekan jawaban
+            var resultContainer = document.getElementById("result-container");
 
-            displayResult(futureValue.toFixed(2));
+            if (jawaban === "" || isNaN(jawaban)) {
+                resultContainer.innerHTML = "<p class='text-red-500'>Masukkan jawaban dalam bentuk angka.</p>";
+            } else {
+                // Gantilah nilai 42 dengan jawaban yang benar
+                var jawabanBenar = 5;
+
+                if (parseInt(jawaban) === jawabanBenar) {
+                    resultContainer.innerHTML = "<p class='text-green-500'>Jawaban Anda benar!</p>";
+                } else {
+                    resultContainer.innerHTML = "<p class='text-red-500'>Jawaban Anda salah. Coba lagi!</p>";
+                }
+            }
         }
 
-        function displayResult(result) {
-            const resultElement = document.getElementById('result');
-            resultElement.innerHTML = `<p class="text-lg font-semibold">Nilai Investasi di Akhir: $${result}</p>`;
-        }
+        var showAnswerButtons = document.querySelectorAll('.showAnswerButton');
+        // Loop melalui setiap tombol
+        showAnswerButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                // Ambil ID jawaban dari atribut data-answer-id
+                var answerId = this.dataset.answerId;
 
+                // Toggle class 'hidden' untuk menyembunyikan atau menampilkan pembahasan
+                document.getElementById(answerId).classList.toggle('hidden');
+
+                // Ganti teks tombol berdasarkan kondisi
+                var buttonText = document.getElementById(answerId).classList.contains('hidden') ? 'Lihat Pembahasan' : 'Sembunyikan Pembahasan';
+                this.innerText = buttonText;
+            });
+        });
     </script>
 </body>
 

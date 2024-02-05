@@ -15,6 +15,7 @@ module.exports = {
     "../../experimen/leaderboard.html",
     "../../experimen/contoh_soal.html",
     "../../experimen/eskponen-dan-logaritma.html",
+    "../../templates/landing-page.html",
   ],
   theme: {
     extend: {

@@ -70,6 +70,9 @@
             </div>
         </div>
     </div>
+    <footer class="text-center py-4 bg-gray-300">
+        <p class="text-sm text-gray-600">&copy Ditulis oleh Ahmad Ilyas | 10 Januari 2024</p>
+    </footer>
     <script type="text/javascript" async
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
         </script>
@@ -78,9 +81,9 @@
             window.location.href = '/Dahsboard';
         }
 
-        document.getElementById('backLesson').addEventListener('click', function() {
+        document.getElementById('backLesson').addEventListener('click', function () {
             var lessonId = this.getAttribute('data-topics');
-            window.location.href = '/Learning/' + "get='" + lessonId +"'";
+            window.location.href = '/Learning/' + "get='" + lessonId + "'";
         });
         // Event click pada tombol "Save Progress"
         const saveProgressButton = document.getElementById('save-progress');
